@@ -1,8 +1,8 @@
-# FourSystem: Sistema de Gerenciamento de Projetos Empresariais
+# SystemForTeam: Sistema de Gerenciamento de Projetos Empresariais
 
 ## Descrição
 
-O **FourSystem** é um sistema robusto desenvolvido para otimizar o gerenciamento de projetos empresariais. Com uma interface intuitiva e funcionalidades abrangentes, o FourSystem facilita o planejamento, a execução e o monitoramento de projetos, promovendo a colaboração entre equipes e aumentando a eficiência operacional.
+O **SystemForTeam** é um sistema robusto desenvolvido para otimizar o gerenciamento de projetos empresariais. Com uma interface intuitiva e funcionalidades abrangentes, o FourSystem facilita o planejamento, a execução e o monitoramento de projetos, promovendo a colaboração entre equipes e aumentando a eficiência operacional.
 
 ## Tecnologias Utilizadas
 
