@@ -1,8 +1,10 @@
 @charset "UTF-8";
 
 body {
+  margin: 0;
   background-color: rgb(17, 30, 46);
   display: flex;
+  justify-content: center;
   align-items: center;
   height: 100vh;
   width: 100%;
@@ -15,7 +17,7 @@ body.light {
 
 .container { 
   margin: 0 auto;
-  max-width: 100%;
+  background: inherit; /* Permite que o fundo do formulário siga o tema */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -23,21 +25,15 @@ body.light {
 }
 
 .imagem-container {
-  height: 150px; /* Defina uma altura fixa */
-  width: 100%;
-  overflow: hidden;
+  max-height: 200px;
+  max-width: 100%;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  text-align: center;
 }
 
 .imagem-container #ImagemLogo {
-  max-height: 70%;
-  max-width: 100%;
-  object-fit: contain; /* Ajusta a imagem para caber dentro do contêiner */
+  max-height: 100px;
 }
-
-
 
 /* Formulário de Login */
 .form {
@@ -48,20 +44,14 @@ body.light {
   width: 100%;
   max-width: 300px;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  border-radius: 20px;
-  box-shadow: 2px 2px 10px rgba(94, 94, 94, 0.616);
-  background-color: #00000052;
-  padding-top: 10px;
-  padding-bottom: 10px;
-}
-
-body.light .form {
-  box-shadow: 2px 2px 10px rgba(24, 24, 24, 0.493);
-  background-color: #004AAD;
+  border-radius: 10px;
+  padding: 25px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  background-color: #29282896;
 }
 
 .form .input-span {
-  width: 80%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   margin-bottom: 0.5rem;
@@ -80,44 +70,44 @@ body.light .form {
 }
 
 .form input[type="text"],
-.form input[type="password"] {
-  border-radius: 1rem;
-  padding: 0.5rem 0.5rem;
+.form input[type="email"],
+.form input[type="user"],
+.form input[type="password"],
+.form input[type="confirm-password"] {
+  border-radius: 0.9rem;
+  padding: 1rem 0.75rem;
   width: 100%;
   border: none;
-  outline: 2px solid rgb(151, 151, 151) ;
-  color: rgb(0, 0, 0);
-  background-color: white; 
+  outline: 2px solid white;
+  color: rgb(255, 255, 255);
+  background-color: rgb(39, 39, 39);
+  height: 40px; 
 }
 
 body.light .form input {
-  background-color: #fff; /* Modo claro */
-  color: black; /* Texto escuro no modo claro */
-  outline: 2px solid #002b63;
+  background-color: #fff; 
+  color: black;
 }
 
 .form input[type="text"]:focus,
-.form input[type="password"]:focus {
-  outline: 2px solid rgba(83, 83, 83, 0.445);
+.form input[type="email"]:focus,
+.form input[type="user"]:focus,
+.form input[type="password"]:focus,
+.form input[type="confirm-password"]:focus {
+  outline: 2px solid rgba(41, 41, 46, 0.445);
 }
 
 .form input[type="text"]:hover,
-.form input[type="password"]:hover {
-  background-color: rgb(155, 155, 155); 
+.form input[type="email"]:hover,
+.form input[type="user"]:hover,
+.form input[type="password"]:hover,
+.form input[type="confirm-password"]:hover {
+  background-color: rgb(68, 68, 68);
+  
+  
 }
 
-body.light .form input[type="text"]:focus,
-body.light .form input[type="password"]:focus {
-  outline: 2px solid #002b63;
-}
-
-body.light .form input[type="text"]:hover,
-body.light .form input[type="password"]:hover {
-  background-color: rgb(221, 221, 221); 
-}
-
-.label {
-  align-self: flex-start;
+.label{
   color: #efefef;
   font-weight: 600;
   margin: 5px auto;
@@ -131,7 +121,7 @@ body.light .form input[type="password"]:hover {
   display: flex;
   align-items: center;
   justify-content: center; 
-  border-radius: 3rem;
+  border-radius: 2rem;
   margin-top: 10px;
   background-color: rgba(25, 72, 201, 0.74);
   color: white;
@@ -144,7 +134,7 @@ body.light .form input[type="password"]:hover {
 }
 
 body.light .form .submit {
-  background-color: rgba(0, 122, 255, 0.74); /* Modo claro */
+  background-color: rgba(0, 122, 255, 0.74); 
 }
 
 .form .submit:hover {
@@ -153,35 +143,19 @@ body.light .form .submit {
   outline: 1px solid white;
 }
 
-.esqueceu-senha {
+.tem-conta {
   margin-top: 5px;
-  margin: 0 auto;
-  text-align: center;
 }
 
-.esqueceu-senha a {
-  color:white;
+.tem-conta a {
+  color: white;
   text-decoration: none;
-  font-size: 15px;
-  font-weight: bolder;
+  font-size: 12px;
 }
 
-body.light .esqueceu-senha {
-  margin-top: 5px;
-  margin: 0 auto;
-  text-align: center;
-}
 
-body.light .esqueceu-senha a {
-  color: black;
-  text-decoration: none;
-  font-size: 15px;
-  font-weight: bolder;
-}
-
-/* Título de início */
 body.light h2 {
-  color: black; /* Muda a cor do h2 para preto no tema claro */
+  color: black;
 }
 
 h2 {

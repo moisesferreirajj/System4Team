@@ -4,65 +4,67 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>System4Team - Login</title>
+    <title>System4Team - Painel Administrativo</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/config.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/painel-style.css') }}">
     <script src="{{ url_for('static', filename='js/config.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/theme.js') }}"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/favicon.png') }}">
 </head>
 <body>
     <header>
-        <h1>Bem-vindo ao Painel de Gestão Empresarial</h1>
-        <nav>
-            <ul>
-                <li><a href="{{ url_for('painel') }}">Painel</a></li>
-                <li><a href="{{ url_for('logout') }}">Sair</a></li>
-            </ul>
+        <nav class="navbar">
+            <div class="Options">
+                <ul>
+                    <li><a href="{{ url_for('painel.painel') }}">Painel</a></li>
+                    <li><a href="{{ url_for('painel.painel') }}">Clientes</a></li>
+                    <li><a href="{{ url_for('painel.painel') }}">Empresas</a></li>
+                    <li><a href="{{ url_for('painel.painel') }}">Funcionários</a></li>
+                    <li><a href="{{ url_for('painel.painel') }}">Pedidos</a></li>
+                    <li><a href="{{ url_for('painel.painel') }}">Produtos</a></li>
+                    <li><a href="{{ url_for('painel.painel') }}">Relatórios</a></li>
+                    <li><a href="{{ url_for('painel.painel') }}">Usuários</a></li>
+                    <li><a href="{{ url_for('painel.painel') }}">Vendas</a></li>
+                    <li id='sair'><a href="{{ url_for('auth.logout') }}">Sair</a></li>
+                </ul>
+            </div>
         </nav>
     </header>
-
+    <h1 class="title">Bem-vindo ao Painel de Gestão Empresarial</h1>
     <section id="Principal">
         <div id="dados">
             <div id="vendas">
-                <h2 id="vendasValor">$ 0</h2>
-                <p>Vendas</p>
+                <div class="card" type="button">
+                    <div class="content">Vendas: <span id="vendasValor">0</span></div>
+                </div>
             </div>
             <div id="pedidos">
-                <h2 id="pedidosValor">0</h2>
-                <p>Pedidos</p>
+                <div class="card" type="button">
+                    <div class="content">Pedidos: <span id="pedidosValor">0</span></div>
+                </div>
             </div>
-            <div id="inscricoes">
-                <h2 id="inscricoesValor">0</h2>
-                <p>Inscrições</p>
+            <div id="clientes">
+                <div class="card" type="button">
+                    <div class="content">Clientes: <span id="clientesValor">0</span></div>
+                </div>
             </div>
             <div id="receita">
-                <h2 id="receitaValor">$ 0</h2>
-                <p>Receita</p>
-            </div>
-
-            <div class="card">
-                <div class="title">
-                    <span class="icon-placeholder"></span>
-                    <p class="title-text">Sales</p>
-                    <p class="percent">20%</p>
+                <div class="card" type="button">
+                    <div class="content">Receita: <span id="receitaValor">0</span></div>
                 </div>
-                <div class="data">
-                    <p>39,500</p>
-                    <div class="range">
-                        <div class="fill"></div>
-                    </div>
-                </div>
-            </div>
-            
+            </div>    
         </div> 
 
-        
         <div>
-            <h2>Gráfico de Lucro</h2>
-            <canvas id="lucroChart" width="400" height="200"></canvas>
+            <h2>Gráfico de Lucros</h2>
+            <canvas id="lucroChart" width="1000" height="350"></canvas>
         </div>
     </section>
-</body>
+    <button id="toggle-theme" style="background: none; border: none; cursor: pointer; position: fixed; bottom: 20px; right: 20px; z-index: 1000;">
+        <span id="theme-icon">☀️</span>
+    </button>
+ </body>
 </html>

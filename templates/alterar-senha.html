@@ -18,26 +18,26 @@
   <section class="container">
 
     <button id="toggle-theme" style="background: none; border: none; cursor: pointer; position: fixed; bottom: 20px; right: 20px; z-index: 1000;">
-      <span id="theme-icon">☀️</span>
-  </button>
-  
+        <span id="theme-icon">☀️</span>
+    </button>
+    
     <div class="imagem-container">
       <img id="ImagemLogo" src="static/images/logo.png" alt="Imagem Logo">
     </div> 
 
-    <h2>Esqueceu a Senha?</h2>
-    <h3>Enviamos um link de alteração de senha para o seu e-mail</h3>
+    <h2>Alterar Senha</h2>
     <form action="/login" method="POST" id="log" class="form">
       <span class="input-span">
-        <label for="password" class="label">Código:</label>
+        <label for="password" class="label">Nova Senha:</label>
         <input type="reset-password" id="reset-password" name="reset-password" required />
       </span>
-      <button type="submit" class="submit">Verificar</button>
+      <span class="input-span">
+        <label for="password" class="label">Confirmar Senha:</label>
+          <input type="reset-co-password" id="reset-co-password" name="reset-co-password" required />
+      </span>
+      <button type="submit" class="submit">Alterar Senha</button>
     </form>   
-    <span class="esqueceu-senha">
-      <a>Não recebeu o E-mail?</a><br>
-      <a href="/envia">Clique aqui para enviar novamente</a>
-    </span>
+
   </section>
 </body>
 </html>
