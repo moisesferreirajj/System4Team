@@ -1,0 +1,197 @@
+@charset "UTF-8";
+
+body {
+  margin: 0;
+  background-color: rgb(17, 30, 46);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+}
+
+body.light {
+  background-color: #fff;
+  color: black;
+}
+
+.container { 
+  margin: 0 auto;
+  background: inherit; /* Permite que o fundo do formulário siga o tema */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.imagem-container {
+  max-height: 200px;
+  max-width: 100%;
+  display: flex;
+  text-align: center;
+  margin-bottom: -8px;
+}
+
+.imagem-container #ImagemLogo {
+  max-height: 100px;
+}
+
+/* Formulário de Login */
+.form {
+    margin: 0 auto; 
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    width: 100%;
+    max-width: 300px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    background-color: #00000052;
+  }
+  
+  body.light .form {
+    box-shadow: 2px 2px 10px rgba(24, 24, 24, 0.493);
+    background-color: #004AAD;
+  }
+  
+  body.light .esqueceu-senha h4 {
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: bold;
+  }
+
+  body.light .esqueceu-senha a {
+    color: white;
+    text-decoration: subline;
+    font-size: 15px;
+    font-weight: bold;
+  }
+  
+  .input-span input {
+    padding-right: 35px; /* Espaço para o ícone */
+  }
+  
+  .form input[type="text"],
+  .form input[type="username"],
+  .form input[type="email"],
+  .form input[type="reset-password"] {
+    border-radius: 0.9rem;
+    padding: 1rem 0.75rem;
+    width: 100%; /* Ajuste de volta para 100% */
+    border: none;
+    outline: 2px solid rgb(148, 147, 147);
+    color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
+    height: 40px; /* Ajuste de volta para 40px */
+  }
+  
+  body.light .form input {
+    background-color: #fff; 
+    color: black;
+  }
+  
+  .form input[type="text"]:focus,
+  .form input[type="username"]:focus,
+  .form input[type="email"]:focus,
+  .form input[type="reset-password"]:focus {
+    outline: 2px solid rgba(41, 41, 46, 0.445);
+  }
+  
+  .form input[type="text"]:hover,
+  .form input[type="username"]:hover,
+  .form input[type="email"]:hover,
+  .form input[type="reset-password"]:hover {
+    background-color: rgb(230, 230, 230); 
+  }
+  
+
+.label{
+  color: #efefef;
+  font-weight: 600;
+  margin: 5px auto;
+  text-align: left;
+  width: 100%;
+}
+
+.form .submit {
+  padding: 0.5rem 0.75rem;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  border-radius: 2rem;
+  margin-top: 15px;
+  background-color: rgba(25, 72, 201, 0.74);
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: all 300ms;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+body.light .form .submit {
+  background-color: rgba(0, 122, 255, 0.74); 
+}
+
+.form .submit:hover {
+  background-color: rgba(42, 125, 233, 0.74);
+  color: rgba(255, 255, 255, 0.74);
+  outline: 1px solid white;
+}
+
+h4 {
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+    margin-top:5px;
+  }
+
+  .light h4{
+    color:black
+  }
+
+.esqueceu-senha {
+  margin-top: 3.5px;
+  justify-content:center;
+
+}
+
+.esqueceu-senha a {
+  color: white;
+  text-decoration: subline;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+
+body.light h2 {
+  color: black;
+}
+
+h2 {
+  color: rgb(255, 255, 255);
+  text-align: center;
+  font-size: 25px;
+}
+
+h3 {
+    font-size:20px;
+    padding:5px;
+    color:white;
+    text-align:center;
+}
+
+body.light h3 {
+    color: black;
+  }
+
+
+.light a {
+  color: rgb(0, 0, 0);
+}
+

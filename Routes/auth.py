@@ -6,10 +6,15 @@ auth_bp = Blueprint('auth', __name__)
 
 @auth_bp.route("/", methods=["GET", "POST"])
 def passlogin():
+    if 'username' in session:
+     return redirect(url_for('painel.painel'))
     return render_template('index.html')
     
 @auth_bp.route("/login", methods=["GET", "POST"])
 def login():
+    if 'username' in session:
+        return redirect(url_for('painel.painel'))
+
     if request.method == "POST":
         username = request.form['username']
         password = request.form['password'].encode('utf-8')
@@ -20,6 +25,7 @@ def login():
             return redirect(url_for('painel.painel'))
         
         flash('Usuário ou senha inválidos!', 'error')
+    
     return render_template('index.html')
 
 @auth_bp.route("/logout")

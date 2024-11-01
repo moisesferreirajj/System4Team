@@ -1,5 +1,6 @@
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
+from datetime import datetime
 
 db = SQLAlchemy()
 
@@ -105,6 +106,9 @@ class Usuario(db.Model):
     cargo_relacionado = db.relationship('Cargo', backref='usuarios')
     funcionario_relacionado = db.relationship('Funcionario', backref='usuarios')
 
+    def __repr__(self):
+        return f'<CodigoRecuperacao {self.codigo} para {self.email}>'
+    
     def set_password(self, senha):
         self.senha = generate_password_hash(senha)
 
@@ -113,3 +117,13 @@ class Usuario(db.Model):
 
     def __repr__(self):
         return f'<Usuário {self.usuario}>'
+    
+class CodigoRecuperacao(db.Model):
+    __tablename__ = 'codigos_recuperacao'
+    id = db.Column(db.Integer, primary_key=True)
+    email = db.Column(db.String(120), nullable=False)
+    codigo = db.Column(db.String(6), nullable=False)
+    data_envio = db.Column(db.DateTime, default=datetime.utcnow)
+    usuario_id = db.Column(db.Integer, db.ForeignKey('usuarios.id'), nullable=False)
+    usado = db.Column(db.Boolean, default=True)
+    usuario = db.relationship('Usuario', backref='codigos_recuperacao')

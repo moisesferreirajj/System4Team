@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>System4Team - Login</title>
+    <title>System4Team - Esqueceu a senha?</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style-login.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/forgot-style.css') }}">
     <script src="{{ url_for('static', filename='js/theme.js') }}"></script>
     <script src="{{ url_for('static', filename='js/password.js') }}"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
@@ -25,19 +25,31 @@
       <img id="ImagemLogo" src="static/images/logo.png" alt="Imagem Logo">
     </div> 
 
-    <h2>Esqueceu a Senha?</h2>
-    <h3>Enviamos um link de alteração de senha para o seu e-mail</h3>
-    <form action="/login" method="POST" id="log" class="form">
+    <h2>Esqueceu sua Senha?</h2>
+    <h3>Enviaremos um código de redefinição de senha para o seu e-mail.</h3>
+    <form action="/esqueceu-a-senha" method="POST" id="log" class="form">
       <span class="input-span">
-        <label for="password" class="label">Código:</label>
-        <input type="reset-password" id="reset-password" name="reset-password" required />
+        <label for="username" class="label">Usuário:</label>
+        <input type="text" id="username" name="username" required />
+      </span>
+      <span class="input-span">
+        <label for="email" class="label">Email:</label>
+        <input type="email" id="email" name="email" required />
       </span>
       <button type="submit" class="submit">Verificar</button>
-    </form>   
-    <span class="esqueceu-senha">
-      <a>Não recebeu o E-mail?</a><br>
-      <a href="/envia">Clique aqui para enviar novamente</a>
-    </span>
+      <div class="esqueceu-senha">
+        <h4>Não recebeu o E-mail? <a href="/esqueceu-a-senha">Clique aqui!</a> </h4>
+      </div>
+      </form>   
   </section>
+
+  {% with messages = get_flashed_messages() %}
+  {% if messages %}
+      <script>
+          alert("{{ messages[0] }}");
+      </script>
+  {% endif %}
+{% endwith %}
+
 </body>
 </html>
