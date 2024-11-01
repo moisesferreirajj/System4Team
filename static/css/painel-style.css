@@ -2,7 +2,7 @@
 
 body {
   margin: 0;  
-  background-color: rgb(0, 0, 0);
+  background-color: rgb(17, 30, 46);
   display: flex;
   align-items: center;
   height: 100vh;
@@ -12,6 +12,11 @@ body {
   position: fixed;
   flex-direction: column;
   display:flex;
+}
+
+body.light {
+  background-color: #fff;
+  color: black;
 }
 
 header {
@@ -27,7 +32,7 @@ body.light .title {
   top:0;
   width:100%;
   text-align:center;
-  margin-top:60px;
+  margin:50px;
   color:black;
 }
 
@@ -42,7 +47,7 @@ body.light .title h2 {
   top:0;
   width:100%;
   text-align:center;
-  margin-top:60px;
+  margin:100px;
   color:white;
 }
 
@@ -98,9 +103,9 @@ h2 {
   cursor:pointer;
   padding: 20px;
   text-align: center;
-  border-radius: 5px;
+  border-radius: 15px;
   background-color: #0a31cf;
-  background: #38587e;
+  background: linear-gradient(135deg, #1146c3, #2a5ec5);
   height: 90px;
   text-decoration: none;
   margin-top:10px;
@@ -110,7 +115,6 @@ h2 {
   color:white;
   font-size:20px;
 }
-
 button {
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -134,7 +138,7 @@ a {
   outline: none;
   background-color: #151515;
   color: #eee;
-  border-radius: 7px;
+  border-radius: 15px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.25s ease-out;
@@ -145,6 +149,7 @@ a {
 a :hover {
   transform: translateY(-3px);
 }
+
 
 a -span {
   color: #aaa;
@@ -186,4 +191,16 @@ a -span {
 
 #lucroChart{
   margin-right: 10px;
+}
+
+
+a.sair {
+    background-color: rgb(255, 42, 42);
+}
+
+.divider {
+  border: none; 
+  height: 2px; 
+  background-color: #ffffff; 
+  margin: 20px 0;
 }

@@ -28,12 +28,11 @@
                     <li><a href="{{ url_for('painel.painel') }}">Relatórios</a></li>
                     <li><a href="{{ url_for('painel.painel') }}">Usuários</a></li>
                     <li><a href="{{ url_for('painel.painel') }}">Vendas</a></li>
-                    <li id='sair'><a href="{{ url_for('auth.logout') }}">Sair</a></li>
+                    <li><a class='sair' href="{{ url_for('auth.logout') }}">Sair</a></li>
                 </ul>
             </div>
         </nav>
     </header>
-    <h1 class="title">Bem-vindo ao Painel de Gestão Empresarial</h1>
     <section id="Principal">
         <div id="dados">
             <div id="vendas">
@@ -59,9 +58,10 @@
         </div> 
 
         <div>
-            <h2>Gráfico de Lucros</h2>
-            <canvas id="lucroChart" width="1000" height="350"></canvas>
+            <h2>Seja bem-vindo {{ username }} a nossa Gestão Empresarial!</h2>
+            <canvas id="lucroChart" width="1000" height="350" ></canvas>
         </div>
+        <hr class="divider">
     </section>
     <button id="toggle-theme" style="background: none; border: none; cursor: pointer; position: fixed; bottom: 20px; right: 20px; z-index: 1000;">
         <span id="theme-icon">☀️</span>

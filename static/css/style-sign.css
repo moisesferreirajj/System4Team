@@ -47,26 +47,26 @@ body.light {
   border-radius: 10px;
   padding: 25px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-  background-color: #29282896;
+  background-color: #00000052;
 }
 
-.form .input-span {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 0.5rem;
-}
-
-#exibe-senha {
+.input-span {
   position: relative;
+  display: inline-block;
 }
 
-#exibe-senha i{
-  font-size: 25px;
-  cursor: pointer;
+.input-span input {
+  padding-right: 35px; /* Espaço para o ícone */
+}
+
+.input-span i {
   position: absolute;
-  left: 85%;
-  color: black;
+  top: 70%;
+  right: 10px; /* Ajuste conforme necessário */
+  transform: translateY(-50%);
+  font-size: 18px;
+  cursor: pointer;
+  color: rgb(0, 0, 0);
 }
 
 .form input[type="text"],
@@ -78,9 +78,9 @@ body.light {
   padding: 1rem 0.75rem;
   width: 100%;
   border: none;
-  outline: 2px solid white;
-  color: rgb(255, 255, 255);
-  background-color: rgb(39, 39, 39);
+  outline: 2px solid rgb(148, 147, 147);
+  color: rgb(0, 0, 0);
+  background-color: rgb(255, 255, 255);
   height: 40px; 
 }
 
@@ -102,9 +102,7 @@ body.light .form input {
 .form input[type="user"]:hover,
 .form input[type="password"]:hover,
 .form input[type="confirm-password"]:hover {
-  background-color: rgb(68, 68, 68);
-  
-  
+  background-color: rgb(230, 230, 230); 
 }
 
 .label{
@@ -150,7 +148,8 @@ body.light .form .submit {
 .tem-conta a {
   color: white;
   text-decoration: none;
-  font-size: 12px;
+  font-size: 15px;
+  font-weight: bolder;
 }
 
 
@@ -159,7 +158,7 @@ body.light h2 {
 }
 
 h2 {
-  color: white;
+  color: rgb(255, 255, 255);
   text-align: center;
   font-size: 20px;
 }

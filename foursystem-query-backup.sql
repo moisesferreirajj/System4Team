@@ -1,6 +1,6 @@
 -- --------------------------------------------------------
 -- Servidor:                     127.0.0.1
--- Versão do servidor:           10.4.22-MariaDB - mariadb.org binary distribution
+-- Versão do servidor:           10.4.32-MariaDB - mariadb.org binary distribution
 -- OS do Servidor:               Win64
 -- HeidiSQL Versão:              12.8.0.6908
 -- --------------------------------------------------------
@@ -16,7 +16,7 @@
 
 
 -- Copiando estrutura do banco de dados para system4team
-CREATE DATABASE IF NOT EXISTS `system4team` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
+CREATE DATABASE IF NOT EXISTS `system4team` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */;
 USE `system4team`;
 
 -- Copiando estrutura para tabela system4team.cargos
@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS `cargos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Copiando dados para a tabela system4team.cargos: ~5 rows (aproximadamente)
 DELETE FROM `cargos`;
@@ -48,7 +48,7 @@ CREATE TABLE IF NOT EXISTS `clientes` (
   UNIQUE KEY `cpf` (`cpf`),
   KEY `id_empresa` (`id_empresa`),
   CONSTRAINT `clientes_ibfk_1` FOREIGN KEY (`id_empresa`) REFERENCES `empresas` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Copiando dados para a tabela system4team.clientes: ~0 rows (aproximadamente)
 DELETE FROM `clientes`;
@@ -63,9 +63,9 @@ CREATE TABLE IF NOT EXISTS `empresas` (
   `email` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `cnpj` (`cnpj`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Copiando dados para a tabela system4team.empresas: ~0 rows (aproximadamente)
+-- Copiando dados para a tabela system4team.empresas: ~1 rows (aproximadamente)
 DELETE FROM `empresas`;
 INSERT INTO `empresas` (`id`, `nome`, `cnpj`, `endereco`, `telefone`, `email`) VALUES
 	(1, 'SystemForTeam', '11111111111111', 'Rua Inexistente 147, Joinville SC', '47991270120', 'nubmoises321@gmail.com');
@@ -83,9 +83,9 @@ CREATE TABLE IF NOT EXISTS `funcionarios` (
   KEY `id_empresa` (`id_empresa`),
   CONSTRAINT `funcionarios_ibfk_1` FOREIGN KEY (`cargo`) REFERENCES `cargos` (`id`),
   CONSTRAINT `funcionarios_ibfk_2` FOREIGN KEY (`id_empresa`) REFERENCES `empresas` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Copiando dados para a tabela system4team.funcionarios: ~0 rows (aproximadamente)
+-- Copiando dados para a tabela system4team.funcionarios: ~1 rows (aproximadamente)
 DELETE FROM `funcionarios`;
 INSERT INTO `funcionarios` (`id`, `nome`, `cargo`, `email`, `telefone`, `id_empresa`) VALUES
 	(1, 'Moises João Ferreira', 1, 'nubmoises@gmail.com', '47991270120', 1);
@@ -109,7 +109,7 @@ CREATE TABLE IF NOT EXISTS `pedidos` (
   CONSTRAINT `pedidos_ibfk_2` FOREIGN KEY (`id_produto`) REFERENCES `produtos` (`id`),
   CONSTRAINT `pedidos_ibfk_3` FOREIGN KEY (`id_funcionario`) REFERENCES `funcionarios` (`id`),
   CONSTRAINT `pedidos_ibfk_4` FOREIGN KEY (`id_empresa`) REFERENCES `empresas` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Copiando dados para a tabela system4team.pedidos: ~1 rows (aproximadamente)
 DELETE FROM `pedidos`;
@@ -126,7 +126,7 @@ CREATE TABLE IF NOT EXISTS `produtos` (
   PRIMARY KEY (`id`),
   KEY `id_empresa` (`id_empresa`),
   CONSTRAINT `produtos_ibfk_1` FOREIGN KEY (`id_empresa`) REFERENCES `empresas` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Copiando dados para a tabela system4team.produtos: ~1 rows (aproximadamente)
 DELETE FROM `produtos`;
@@ -147,16 +147,17 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   KEY `id_funcionario` (`id_funcionario`),
   CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`cargo`) REFERENCES `cargos` (`id`),
   CONSTRAINT `usuarios_ibfk_2` FOREIGN KEY (`id_funcionario`) REFERENCES `funcionarios` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Copiando dados para a tabela system4team.usuarios: ~5 rows (aproximadamente)
+-- Copiando dados para a tabela system4team.usuarios: ~6 rows (aproximadamente)
 DELETE FROM `usuarios`;
 INSERT INTO `usuarios` (`id`, `usuario`, `senha`, `email`, `cargo`, `imagem`, `id_funcionario`) VALUES
 	(1, 'moises', '$2b$12$Vccc7Rwb1x4C5RnjvRHXIeUSJ57.n1Gl/wGcdGlUvxN.B/uJBlEe6', 'nubmoises@gmail.com', 1, NULL, 1),
 	(2, 'igor', '$2b$12$Vccc7Rwb1x4C5RnjvRHXIeUSJ57.n1Gl/wGcdGlUvxN.B/uJBlEe6', 'igor@gmail.com', 2, NULL, NULL),
 	(3, 'mark', '$2b$12$Vccc7Rwb1x4C5RnjvRHXIeUSJ57.n1Gl/wGcdGlUvxN.B/uJBlEe6', 'mark@gmail.com', 2, NULL, NULL),
 	(4, 'yohan', '$2b$12$wouY5sgcHGuw9b7oKGJ9aurC/iYBkA6f53GK5DUSC1d00BlY4p9cS', 'yohan@gmail.com', NULL, NULL, NULL),
-	(5, 'senhorinha', '$2b$12$R4AFjGq1m/p6fqUSY2hIxekvKKrNHOyUIGizntzEfzjMpFewaBJ/e', 'marciosenhorinha@gmail.com', NULL, NULL, NULL);
+	(5, 'senhorinha', '$2b$12$R4AFjGq1m/p6fqUSY2hIxekvKKrNHOyUIGizntzEfzjMpFewaBJ/e', 'marciosenhorinha@gmail.com', NULL, NULL, NULL),
+	(6, 'Bolas Rochas Que nem Batata Doce', '$2b$12$/IEUn9PwVJQBm5IdOuJD8eqO/3EJ.bfjGD0NybiSLWR9btdrPjMTK', 'MaeK20hz@gmail.com', NULL, NULL, NULL);
 
 -- Copiando estrutura para tabela system4team.vendas
 CREATE TABLE IF NOT EXISTS `vendas` (
@@ -175,7 +176,7 @@ CREATE TABLE IF NOT EXISTS `vendas` (
   CONSTRAINT `vendas_ibfk_2` FOREIGN KEY (`id_funcionario`) REFERENCES `funcionarios` (`id`),
   CONSTRAINT `vendas_ibfk_3` FOREIGN KEY (`id_produto`) REFERENCES `produtos` (`id`),
   CONSTRAINT `vendas_ibfk_4` FOREIGN KEY (`id_empresa`) REFERENCES `empresas` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Copiando dados para a tabela system4team.vendas: ~0 rows (aproximadamente)
 DELETE FROM `vendas`;
