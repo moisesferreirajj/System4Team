@@ -23,9 +23,9 @@ def cadastrar():
             return redirect(url_for('cadastro.cadastrar'))
 
         #VERIFICA SE É COMPLEXA
-        password_pattern = r'^(?=.*[A-Z])(?=(.*[0-9]){4})(?=.*[!@#$%^&*()_+\[\]{};":\\|,.<>?]).{6,}$'
+        password_pattern = r'^(?=.*[A-Z])(?=(.*[0-9]){1})(?=.*[!@#$%^&*()_+\[\]{};":\\|,.<>?]).{6,}$'
         if not re.match(password_pattern, password):
-            flash("A senha deve conter pelo menos 1 letra maiúscula, 4 números e 1 símbolo especial.", "error")
+            flash("A senha deve conter pelo menos 1 letra maiúscula, 1 número e 1 símbolo especial.", "danger")
             return redirect(url_for('cadastro.cadastrar'))
 
         #VERIFICA SE A SENHA É IGUAL

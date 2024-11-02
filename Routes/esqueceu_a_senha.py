@@ -27,33 +27,33 @@ def esqueceu():
             # URL da logo
             logo_url = "https://cdn.discordapp.com/attachments/1273695375991115856/1302001573785768088/logo.png?ex=672686f5&is=67253575&hm=741949539d1b580b1591e76d30d55d8d1433966973e06ce7e036626ff992fcc9&"
             msg = Message('Recuperação de Senha', recipients=[email])
-        #     if usuario and usuario.funcionario_relacionado:
-        #      nome_usuario = usuario.funcionario_relacionado.nome
-        # else:
-        #      nome_usuario = usuario.usuario  # Caso não tenha um funcionário relacionado, usa o identificador
-        msg.html = f'''
-<html>
-    <body>
-        <h1 style="text-align: center; color: #4A90E2;">Recuperação de Senha - System4Team</h1>
-        <div style="text-align: center;">
-            <img src="{logo_url}" alt="Logo System4Team" style="width: 200px; height: auto;">
-        </div>
-        <p style="font-size: 16px; text-align: center;">
-            Olá! Aqui é da System4Team! Seu código de recuperação é: <strong style="font-size: 24px; color: #D0021B;">{codigo_recuperacao}</strong>
-        </p>
-        <p style="text-align: center;">
-            Caso não tenha solicitado esta recuperação, ignore este e-mail.
-        </p>
-        <p style="text-align: center; color: #999;">A equipe System4Team</p>
-    </body>
-</html>
+            #DEFINE O NOME DO USUARIO NO EMAIL
+            nome_usuario = usuario.funcionario_relacionado.nome if usuario.funcionario_relacionado else usuario.usuario
+            #CONTEUDO DO EMAIL
+            msg.html = f'''
+            <html>
+                <body>
+                    <h1 style="text-align: center; color: #4A90E2;">Recuperação de Senha - System4Team</h1>
+                    <div style="text-align: center;">
+                        <img src="{logo_url}" alt="Logo System4Team" style="width: 200px; height: auto;">
+                    </div>
+                    <p style="font-size: 16px; text-align: center;">
+                        Olá {nome_usuario} aqui é da System4Team, como você esqueceu sua senha, aqui estará um código para tentar redefinir a mesma! Seu código de recuperação é: 
+                        <strong style="font-size: 24px; color: #D0021B;">{codigo_recuperacao}</strong>
+                    </p>
+                    <p style="text-align: center;">
+                        Caso não tenha solicitado esta recuperação, ignore este e-mail.
+                    </p>
+                    <p style="text-align: center; color: #999;">A equipe System4Team agradece sua atenção!</p>
+                </body>
+            </html>
             '''
-        mail.send(msg)
-        flash('Código de recuperação enviado para seu e-mail!', 'success')
-        session['email'] = email
-        return redirect(url_for('esqueceu_a_senha.confirma_codigo'))
-    else:
-        flash('E-mail não encontrado!', 'danger')
+            mail.send(msg)
+            flash('Código de recuperação enviado para seu e-mail!', 'success')
+            session['email'] = email
+            return redirect(url_for('esqueceu_a_senha.confirma_codigo'))
+        else:
+            flash('E-mail não encontrado!', 'danger')
 
     return render_template('esqueceu-a-senha.html')
 
