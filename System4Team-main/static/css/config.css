@@ -1,0 +1,212 @@
+@charset "UTF-8";
+
+body {
+  margin: 0;
+  background-color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+}
+
+body.light {
+  background-color: #fff;
+  color: black;
+}
+
+section { 
+  margin: 0 auto;
+  background: inherit; /* Permite que o fundo do formulário siga o tema */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.imagem-container {
+  display: flex;
+  animation: moveUpDown 2s ease-in-out infinite;
+}
+
+/* Formulário de Login */
+.form {
+  margin: 0 auto; 
+  display: flex;
+  flex-direction: column; 
+  align-items: center; 
+  width: 100%;
+  max-width: 300px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  border-radius: 20px;
+  padding: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  background-color: #29282896;
+}
+
+.form .input-span {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form input[type="text"],
+.form input[type="username"],
+.form input[type="password"],
+.form input[type="email"] {
+  border-radius: 1rem;
+  padding: 1rem 0.75rem;
+  width: 100%;
+  border: none;
+  outline: 2px solid white;
+  color: rgb(255, 255, 255);
+  background-color: #00000096; 
+}
+
+body.light .form input {
+  background-color: #fff; /* Modo claro */
+  color: black; /* Texto escuro no modo claro */
+}
+
+.label {
+  align-self: center;
+  color: #efefef;
+  font-weight: 600;
+}
+
+.form .submit {
+  padding: 1rem 0.75rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  border-radius: 3rem;
+  background-color: rgba(25, 72, 201, 0.74);
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: all 300ms;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+body.light .form .submit {
+  background-color: rgba(0, 122, 255, 0.74); /* Modo claro */
+}
+
+.form .submit:hover {
+  background-color: rgba(42, 125, 233, 0.74);
+  color: rgba(255, 255, 255, 0.74);
+  outline: 1px solid white;
+}
+
+.span {
+  text-decoration: none;
+  margin: 5px;
+  align-self: right;
+  color: black
+}
+
+.span a {
+  color: white;
+}
+
+/* Título de início */
+body.light h2 {
+  color: black; /* Muda a cor do h2 para preto no tema claro */
+}
+
+h2 {
+  color: white;
+  text-align: center;
+  font-size: 30px;
+}
+
+/* ANIMAÇÃO DO NEGOCIO */
+@keyframes moveUpDown {
+  0%, 100% {
+    transform: translateY(0);
+  }
+
+/* From Uiverse.io by Yaya12085 */ 
+.card {
+  padding: 1rem;
+  background-color: #fff;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  max-width: 320px;
+  border-radius: 20px;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+}
+
+.title span {
+  position: relative;
+  padding: 0.5rem;
+  background-color: #10B981;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 9999px;
+}
+
+.title span svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #ffffff;
+  height: 1rem;
+}
+
+.title-text {
+  margin-left: 0.5rem;
+  color: #374151;
+  font-size: 18px;
+}
+
+.percent {
+  margin-left: 0.5rem;
+  color: #02972f;
+  font-weight: 600;
+  display: flex;
+}
+
+.data {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.data p {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  color: #1F2937;
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+  font-weight: 700;
+  text-align: left;
+}
+
+.data .range {
+  position: relative;
+  background-color: #E5E7EB;
+  width: 100%;
+  height: 0.5rem;
+  border-radius: 0.25rem;
+}
+
+.data .range .fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #10B981;
+  width: 76%;
+  height: 100%;
+  border-radius: 0.25rem;
+}  50% {
+    transform: translateY(-10px);
+  }
+}
