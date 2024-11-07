@@ -44,5 +44,4 @@ O **SystemForTeam** é um sistema robusto desenvolvido para otimizar o gerenciam
 
 ## Instalação e Uso
 - **Descrição:**  
-Para utilização do sistema será necessário baixar [         ] e instalar as [         ] necessárias. Em seguida, acesse o IP http://127.0.0.1:5001/ e siga as instruções de login e cadastro. Após o login, você poderá acessar o painel principal do sistema e começar a utilizar as funcionalidades.
-
+Para utilização do sistema será necessário baixar o Python na versão 3.13.0 ou posterior e instalar as bibliotecas. Em seguida, acesse o IP http://127.0.0.1:5001/ e siga as instruções de login e cadastro. Após o login, você poderá acessar o painel principal do sistema e começar a utilizar as funcionalidades.
