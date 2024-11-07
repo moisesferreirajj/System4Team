@@ -11,7 +11,7 @@ O **SystemForTeam** é um sistema robusto desenvolvido para otimizar o gerenciam
     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" />
           
 - **HTML/CSS**: A interface do usuário é projetada com HTML e CSS, proporcionando uma experiência visual atraente e responsiva.
-    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" />
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" width="50" height="50" />
     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original-wordmark.svg" />
 - **JavaScript**: Funcionalidades interativas são implementadas em JavaScript, melhorando a dinâmica da aplicação e a experiência do usuário.
     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript
