@@ -21,14 +21,20 @@
       <span id="theme-icon">☀️</span>
   </button>
   
+
+
+
     <div class="imagem-container">
       <img id="ImagemLogo" src="static/images/logo.png" alt="Imagem Logo">
     </div> 
 
-    <h2>Esqueceu sua Senha?</h2>
-    <h3>Enviaremos um código de redefinição de senha para o seu e-mail.</h3>
+
+
+
     <form action="/esqueceu-a-senha" method="POST" id="log" class="form">
       <span class="input-span">
+        <h2>Recuperar senha</h2>
+        <h3>insira suas informações abaixo</h3>
         <label for="username" class="label">Usuário:</label>
         <input type="text" id="username" name="username" required />
       </span>
@@ -43,13 +49,14 @@
       </form>   
   </section>
 
-  {% with messages = get_flashed_messages() %}
-  {% if messages %}
-      <script>
-          alert("{{ messages[0] }}");
-      </script>
-  {% endif %}
-{% endwith %}
+    <!-- MENSAGENS ERRO -->
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <script>
+            alert("{{ messages[0] }}");
+        </script>
+      {% endif %}
+    {% endwith %}
 
 </body>
 </html>

@@ -17,7 +17,7 @@ body.light {
 
 .container { 
   margin: 0 auto;
-  background: inherit; /* Permite que o fundo do formulário siga o tema */
+  background: inherit;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -29,7 +29,7 @@ body.light {
   max-width: 100%;
   display: flex;
   text-align: center;
-  margin-bottom: -8px;
+  margin-bottom: -3px;
 }
 
 .imagem-container #ImagemLogo {
@@ -177,14 +177,18 @@ h2 {
   color: rgb(255, 255, 255);
   text-align: center;
   font-size: 25px;
+  
+  
 }
 
 h3 {
-    font-size:20px;
-    padding:5px;
+    font-size:17px;
+    padding-top: 0px;
     color:white;
     text-align:center;
-}
+    font-weight: 10;
+    margin-top: -8px;
+  }
 
 body.light h3 {
     color: black;
@@ -194,4 +198,3 @@ body.light h3 {
 .light a {
   color: rgb(0, 0, 0);
 }
-
