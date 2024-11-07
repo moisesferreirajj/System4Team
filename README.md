@@ -87,7 +87,7 @@ pip install dotenv
 ```
 <br>
 
-Em seguida, baixe os arquivos do repositório e acesse o IP http://127.0.0.1:5001/ . 
+Em seguida, baixe os arquivos do repositório e acesse o IP: http://127.0.0.1:5001/ . 
 Depois siga as instruções de login e cadastro. Após o login, você poderá acessar o painel principal do sistema e começar a utilizar as funcionalidades.
 
 
