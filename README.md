@@ -1,4 +1,4 @@
-    # SystemForTeam: Sistema de Gerenciamento de Projetos Empresariais
+# SystemForTeam: Sistema de Gerenciamento de Projetos Empresariais
 
 Olá, bem-vindo ao SystemForTeam! Este é um sistema de gestão empresarial feito pelos alunos: Moisés, Yohan, Igor e Mark para o curso técnico de Desenvolvimento de Sistemas.
 
