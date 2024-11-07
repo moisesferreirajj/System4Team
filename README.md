@@ -1,6 +1,6 @@
-# SystemForTeam: Sistema de Gerenciamento de Projetos Empresariais
+## SystemForTeam: Sistema de Gerenciamento de Projetos Empresariais
 
-Olá, bem-vindo ao SystemForTeam! Este é um sistema de gestão empresarial feito pelos alunos: Moisés, Yohan, Igor e Mark para a disciplina de Desenvolvimento de Sistemas.
+Olá, bem-vindo ao SystemForTeam! Este é um sistema de gestão empresarial feito pelos alunos: Moisés, Yohan, Igor e Mark para o curso técnico de Desenvolvimento de Sistemas.
 
 ### Descrição
 
@@ -10,26 +10,26 @@ O **SystemForTeam** é um sistema robusto desenvolvido para otimizar o gerenciam
 
 <div align="center">
     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" width="50" height="50" /><br>
-    <strong>Python</strong>: O backend é construído em Python, utilizando frameworks como Flask ou Django, garantindo escalabilidade e desempenho.
+    <strong>Python</strong><br>O backend é construído em Python, utilizando frameworks como Flask ou Django, garantindo escalabilidade e desempenho.
 </div>
 <br>
 
 <div align="center">
-    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original-wordmark.svg" width="50" height="50" />
-    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original-wordmark.svg" width="50" height="50" /><br>
-    <strong>HTML/CSS</strong>: A interface do usuário é projetada com HTML e CSS, proporcionando uma experiência visual atraente e responsiva.
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" width="50" height="50" />
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg"  width="50" height="50" /><br>
+    <strong>HTML | CSS</strong><br>A interface do usuário é projetada com HTML e CSS, proporcionando uma experiência visual atraente e responsiva.
 </div>
 <br>
 
 <div align="center">
     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" width="50" height="50" /><br>
-    <strong>JavaScript</strong>: Funcionalidades interativas são implementadas em JavaScript, melhorando a dinâmica da aplicação e a experiência do usuário.
+    <strong>JavaScript</strong><br>Funcionalidades interativas são implementadas em JavaScript, melhorando a dinâmica da aplicação e a experiência do usuário.
 </div>
 <br>
 
 <div align="center">
     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg" width="50" height="50" /><br>
-    <strong>Banco de Dados SQL</strong>: Utilizamos SQL, como MySQL, para armazenar informações de projetos, usuários e tarefas de forma estruturada e segura.
+    <strong>Banco de Dados SQL</strong><br>Utilizamos SQL, como MySQL, para armazenar informações de projetos, usuários e tarefas de forma estruturada e segura.
 </div>
 <br>
 
@@ -45,3 +45,4 @@ O **SystemForTeam** é um sistema robusto desenvolvido para otimizar o gerenciam
 ## Instalação e Uso
 - **Descrição:**  
 Para utilização do sistema será necessário baixar [         ] e instalar as [         ] necessárias. Em seguida, acesse o IP http://127.0.0.1:5001/ e siga as instruções de login e cadastro. Após o login, você poderá acessar o painel principal do sistema e começar a utilizar as funcionalidades.
+
