@@ -2,10 +2,10 @@
 from flask import Blueprint, render_template, session, redirect, url_for, flash
 from models import Usuario, Cargo, db 
 
-painel_bp = Blueprint('painel', __name__)
+vendas_bp = Blueprint('vendas', __name__)
 
-@painel_bp.route("/painel")
-def painel():
+@vendas_bp.route("/vendas")
+def vendas():
     if 'username' not in session:
         flash('Você precisa fazer login primeiro!')
         return redirect(url_for('auth.login'))
@@ -26,4 +26,4 @@ def painel():
         flash('Você não tem permissão para acessar o painel!')
         return redirect(url_for('auth.login'))
 
-    return render_template('painel.html', username=username, cargo=cargo_nome)
+    return render_template('vendas.html', username=username, cargo=cargo_nome)

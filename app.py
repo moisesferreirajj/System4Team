@@ -10,9 +10,11 @@ from config import Config
 from models import db
 from Routes.auth import auth_bp
 from Routes.cadastro import cadastro_bp
-from Routes.painel import painel_bp
-from Routes.dados_painel import dados_painel_bp
 from Routes.esqueceu_a_senha import esqueceu_a_senha_bp, init_mail
+from Routes.dados_painel import dados_painel_bp
+from Routes.painel import painel_bp
+from Routes.vendas import vendas_bp
+from Routes.relatorios import relatorios_bp
 
 app = Flask(__name__)
 app.config.from_object(Config)
@@ -20,15 +22,17 @@ app.config.from_object(Config)
 # INICIALIZA A DB
 db.init_app(app)
 
-# Inicializa o Mail
+# Inicializa o Ma
 init_mail(app)
 
 # REGISTRA AS ROTAS
 app.register_blueprint(auth_bp)
 app.register_blueprint(cadastro_bp)
-app.register_blueprint(painel_bp)
-app.register_blueprint(dados_painel_bp)
 app.register_blueprint(esqueceu_a_senha_bp)
+app.register_blueprint(dados_painel_bp)
+app.register_blueprint(painel_bp)
+app.register_blueprint(vendas_bp)
+app.register_blueprint(relatorios_bp)
 
 # CRIA A CONNECTION DO DB
 with app.app_context():

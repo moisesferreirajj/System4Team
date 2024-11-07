@@ -7,7 +7,7 @@ body {
   width: 100%;
   color: #e6e6ef;
   display: flex;
-
+  transition: background-color 0.3s ease, color 0.5
 }
 
 body.light {
@@ -33,26 +33,8 @@ h2 {
   font-size: 30px;
 }
 
-#dados-botoes {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;  
-  margin: 0 auto;
-  margin-bottom: 10px;
-}
-
 .card {
-  height: 5rem;
-  cursor: pointer;
-  width: 10rem;
-  background-color: #2a5ec5;
-  transition: transform .3s;
-  border-radius: 20px;
-}
-
-.card:hover {
-  transform: scale(1.05);
-  transition: all .3s;
+  height: 100%;
 }
 
 .content {
@@ -70,6 +52,13 @@ h2 {
   width: 100%;
 }
 
+#dados-botoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;  
+  margin: 0 auto;
+}
+
 #canvas-e-titulo{
   width: 50rem;
   display: flex;
@@ -78,8 +67,6 @@ h2 {
   align-items: center;
   margin: 0 auto;
 }
-
-
 
 /*Sidebar do Painel*/
 #sidebar {
