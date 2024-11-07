@@ -1,4 +1,4 @@
-## SystemForTeam: Sistema de Gerenciamento de Projetos Empresariais
+    # SystemForTeam: Sistema de Gerenciamento de Projetos Empresariais
 
 Olá, bem-vindo ao SystemForTeam! Este é um sistema de gestão empresarial feito pelos alunos: Moisés, Yohan, Igor e Mark para o curso técnico de Desenvolvimento de Sistemas.
 
@@ -17,7 +17,7 @@ O **SystemForTeam** é um sistema robusto desenvolvido para otimizar o gerenciam
 <div align="center">
     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" width="50" height="50" />
     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg"  width="50" height="50" /><br>
-    <strong>HTML | CSS</strong><br>A interface do usuário é projetada com HTML e CSS, proporcionando uma experiência visual atraente e responsiva.
+    <strong>HTML  | CSS</strong><br>A interface do usuário é projetada com HTML e CSS, proporcionando uma experiência visual atraente e responsiva.
 </div>
 <br>
 
@@ -42,6 +42,53 @@ O **SystemForTeam** é um sistema robusto desenvolvido para otimizar o gerenciam
 - **Integração com Ferramentas de Terceiros**: A possibilidade de integrar com plataformas como Slack, Google Drive e outros serviços, potencializando a funcionalidade do sistema.
 - **Análise de Risco**: Ferramentas que ajudam a identificar e mitigar riscos, assegurando que os projetos sejam concluídos com sucesso.
 
-## Instalação e Uso
-- **Descrição:**  
-Para utilização do sistema será necessário baixar o Python na versão 3.13.0 ou posterior e instalar as bibliotecas. Em seguida, acesse o IP http://127.0.0.1:5001/ e siga as instruções de login e cadastro. Após o login, você poderá acessar o painel principal do sistema e começar a utilizar as funcionalidades.
+## Instalação e Uso  
+**Pré-Requisitos**<br>Python na versão 3.13.0 ou posterior e instalar as  seguintes bibliotecas:<br>
+*bcrypt* - Para a criptografia de senhas
+```
+pip install bcrypt
+```
+<br>
+
+_flask_ - para um micro framework multiplataforma em Python para uma estrutura simplificada e limpa.
+```
+pip install flask
+```
+<br>
+
+_flask-mail_ - para previnir conflitos entre diferentes projetos ou instalações do Python em todo sistema, além de mandar e-mails pelo Python.
+```
+pip install flask-mail
+```
+<br>
+
+_Flask-SQLAlchemy_ - para simplificar a integração de bancos de dados em aplicações web Flask.
+```
+pip install Flask-SQLAlchemy
+```
+<br>
+
+_mysql-connector_ - para executar consultas complexas no Banco SQL de forma eficiente e obter os resultados desejados.
+```
+pip install mysql-connector
+```
+
+<br>
+
+_SQLAlchemy_ - para interações simples e eficiente do Python com o banco de dados SQL.
+```
+pip install SQLAlchemy
+```
+<br>
+
+_dotenv_ - para a acessar variáveis de ambiente a partir de um arquivo "_.env_".
+```
+pip install dotenv
+```
+<br>
+
+Em seguida, baixe os arquivos do repositório e acesse o IP http://127.0.0.1:5001/ . 
+Depois siga as instruções de login e cadastro. Após o login, você poderá acessar o painel principal do sistema e começar a utilizar as funcionalidades.
+
+
+
