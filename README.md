@@ -8,16 +8,16 @@ O **SystemForTeam** é um sistema robusto desenvolvido para otimizar o gerenciam
 
 - **Python**: O backend é construído em Python, utilizando frameworks como Flask ou Django, garantindo escalabilidade e desempenho.
         
-    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" />
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" width="50" height="50"/>
           
 - **HTML/CSS**: A interface do usuário é projetada com HTML e CSS, proporcionando uma experiência visual atraente e responsiva.
     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" width="50" height="50" />
-    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original-wordmark.svg" />
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original-wordmark.svg" width="50" height="50"/>
 - **JavaScript**: Funcionalidades interativas são implementadas em JavaScript, melhorando a dinâmica da aplicação e a experiência do usuário.
     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript
-    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" />    
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" width="50" height="50" />    
 - **Banco de Dados SQL**: Utilizamos SQL, como MySQL, para armazenar informações de projetos, usuários e tarefas de forma estruturada e segura.
-    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql" />
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql" width="50" height="50" />
 
 ### Funcionalidades Principais
 
