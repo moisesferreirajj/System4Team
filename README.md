@@ -52,6 +52,10 @@ python --version
 Após a certeza, basta seguir o passo-a-passo abaixo:<br>
 - Dentro da pasta "Requirements":<br>
 ```
+python -m venv venv
+```
+- Após isso ainda na pasta "Requirements":<br>
+```
 pip install -r requirements.txt
 ```
 - Verifique se todas bibliotecas foram instaladas:<br>
