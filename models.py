@@ -84,7 +84,7 @@ class Pedido(db.Model):
     preco_total = db.Column(db.Numeric(10, 2), nullable=False)
     data_pedido = db.Column(db.DateTime, default=db.func.current_timestamp())
     id_empresa = db.Column(db.Integer, db.ForeignKey('empresas.id'))
-
+    finalizado = db.Column(db.Boolean, nullable=False, default=False)
     cliente = db.relationship('Cliente', backref='pedidos')
     produto = db.relationship('Produto', backref='pedidos')
     funcionario = db.relationship('Funcionario', backref='pedidos')

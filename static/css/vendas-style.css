@@ -260,7 +260,7 @@ h2 {
     overflow: hidden;
     margin-bottom:50px;
   }
-  
+
   .card__title {
     color: white;
     font-weight: bold;
@@ -305,3 +305,215 @@ h2 {
     background: rgb(234, 235, 234);
   }
   
+
+
+  #VendasAnuais {
+    text-align: left;
+  }
+  
+  .vendas h3 {
+    font-size: 20px;
+    color: rgb(197, 197, 197);
+    font-weight: bold;
+    margin-bottom: 28px;
+  }
+  
+  .vendas {
+    flex-direction: column;
+    display: flex;
+    margin-top: 5px;
+    margin-left: 10px;
+  }
+  
+  .vendas h1 {
+    font-size: 60px;
+    font-weight: 400;
+  }
+  
+  .vendas div {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-left: 10px;
+    padding: 10px 50px;
+  }
+  
+  #VendasMensais {
+    text-align: left;
+  }
+  
+  #VendasAnuais {
+    text-align: left;
+  }
+  
+  .vendas h3 {
+    font-size: 20px;
+    color: rgb(197, 197, 197);
+    font-weight: bold;
+    margin-bottom: 28px;
+  }
+  
+  .vendas {
+    flex-direction: column;
+    display: flex;
+    margin-top: 1px;
+  
+  }
+  
+  .vendas h1 {
+    font-size: 60px;
+    font-weight: 400;
+  }
+  
+  .vendas div {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-left: 10px;
+    padding: 10px 50px;
+  }
+  
+  #VendasMensais {
+    text-align: left;
+  }
+  
+  .Meta {
+    flex-direction: column;
+    display: flex;
+  }
+  
+  #MetaVendas h3 {
+    font-size: 20px;
+    color: rgb(197, 197, 197);
+    font-weight: bold;
+    margin-bottom: 30px;
+  }
+  
+  #MetaVendas h1 {
+    color: rgb(255, 255, 255);
+    margin-left: 5px;
+    font-weight: 400;
+    font-size: 60px;
+    border-bottom: 0.5px solid #ffffff52;
+    margin: 5px;
+  }
+  
+  #MetaValor2,
+  #MetaValor3 {
+    font-weight: 400;
+    font-size: 30px;
+    color: rgb(230, 229, 229);
+  }
+  
+  #MetaVendas {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-left: 10px;
+    padding: 10px 50px;
+  }
+  
+  /* Estilos para a nova seção de Produtos */
+  .Produto {
+    margin-top: 1px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  #TopProdutos {
+    background-color: rgba(255, 255, 255, 0.05);
+    margin-top: 10px;
+    border-radius: 10px;
+    margin-left: 10px;
+    padding: 10px 50px;
+  }
+  
+  #TopProdutos h3 {
+    font-size: 20px;
+    color: rgb(197, 197, 197);
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  #TopProdutos h1 {
+    color: rgb(255, 255, 255);
+    margin-left: 5px;
+    font-weight: 400;
+    font-size: 60px;
+    border-bottom: 0.5px solid #ffffff52;
+    margin: 5px;
+  }
+  
+  #Produto2, #Produto3 {
+    font-weight: 400;
+    color: rgb(230, 229, 229);
+  }
+  
+  #Produto1 {
+    color: rgb(255, 255, 255);
+    margin-left: 5px;
+    font-weight: 400;
+    font-size: 50px;
+    margin: 5px;
+  }
+  
+  #Produto2 {
+    font-size: 20px;
+  }
+  
+  #Produto3 {
+    font-size: 20px;
+  }
+  
+  /* Responsividade - Ajustes para dispositivos menores */
+  
+  /* Para telas de até 768px (tablets e celulares pequenos) */
+  @media (max-width: 768px) {
+    .vendas, .Meta, .Produto {
+      padding: 10px;
+    }
+  
+    .vendas h1, #MetaVendas h1, #TopProdutos h1 {
+      font-size: 40px;
+    }
+  
+    .vendas h3, #MetaVendas h3, #TopProdutos h3 {
+      font-size: 18px;
+    }
+  
+    .vendas div, #MetaVendas, #TopProdutos {
+      padding: 10px 20px;
+      margin-left: 0;
+      width: 100%;
+    }
+  
+    #MetaValor2, #MetaValor3, #Produto1, #Produto2, #Produto3 {
+      font-size: 24px;
+    }
+  }
+  
+  /* Para telas de até 480px (celulares) */
+  @media (max-width: 480px) {
+    .vendas h1, #MetaVendas h1, #TopProdutos h1 {
+      font-size: 30px;
+    }
+  
+    .vendas h3, #MetaVendas h3, #TopProdutos h3 {
+      font-size: 16px;
+    }
+  
+    #MetaValor2, #MetaValor3, #Produto1, #Produto2, #Produto3 {
+      font-size: 20px;
+    }
+  
+    .vendas div, #MetaVendas, #TopProdutos {
+      padding: 10px;
+    }
+  
+    #TopProdutos {
+      padding: 10px;
+    }
+  }
+  
+

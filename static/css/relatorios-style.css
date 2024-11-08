@@ -76,7 +76,7 @@ h2 {
   justify-content: space-between;
   background-color: rgb(37, 55, 77);
   height: 100vh;
-  border-radius: 0px 18px 18px 0px;
+  border-radius: 0px 0px 18px 0px;
   position: relative;
   transition: all .5s;
   min-width: 82px;
@@ -248,4 +248,138 @@ h2 {
 ::-webkit-scrollbar-thumb {
   background-color: #1146c3;
   border-radius: 15px;
+}
+
+
+.input-wrapper {
+  width: 100% !important;
+  height: 45px;
+  padding: 5px;
+  box-sizing: content-box;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color:rgb(37, 55, 77);
+  justify-content: flex-start;
+}
+
+.legend {
+  color: white;
+  margin-right:10px;
+  padding:5px;
+}
+
+.select-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.input {
+  max-width: 170px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  outline: none;
+  padding: 12px;
+  background-color: rgb(37, 55, 77);
+  color: #e6e6ef;
+  font-size: 1em;
+  transition: all 0.3;
+  height:45px;
+  padding:10px;
+  margin-left:8px; 
+}
+
+.input:focus {
+  border-color:#2a5ec5;
+  background-color: rgb(28, 42, 61);
+}
+
+.input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px #292524 inset;
+  -webkit-text-fill-color: #ffffff;
+}
+
+button.search-btn {
+  height: 100%;
+  width: 95px;
+  border: none;
+  border-radius: 8px;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+  background-color: #2a5ec5;
+  font-weight: 500;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: all 0.3s;
+  padding: 12px 20px;
+  font-weight: 500;
+  transition: all 0.3s;
+  margin-left:10px;
+}
+
+button.search-btn:hover {
+  background-color: #1a4c9e; /* Tom mais escuro de azul no hover */
+}
+
+.input-wrapper legend {
+  width: 120px;
+  display: inline-block; 
+  margin-left:40px;  
+}
+
+.label{
+  margin-left:20px;
+}
+
+.tabela {
+  width: 100%; /* Ajuste a largura da div para ocupar todo o espaço disponível */
+  max-width: 800px; /* Largura máxima para a tabela */
+  margin: 0 auto; /* Centraliza a tabela */
+  border-radius: 12px; /* Suaviza os cantos */
+  background: rgba(0, 0, 0, 0.637);
+  box-shadow: 5px 5px 10px rgb(63, 63, 63), -5px -5px 10px grey;
+  padding: 20px; /* Aumenta o espaço interno da div */
+  overflow: hidden; /* Garante que conteúdo extra não ultrapasse os limites */
+}
+
+table {
+  width: 100%; /* Faz a tabela ocupar toda a largura da div */
+  color: #e6e6ef; /* Cor do texto */
+  border-collapse: collapse; /* Remove os espaços entre as células */
+  table-layout: fixed; /* Impede a tabela de se expandir além do necessário */
+}
+
+th, td {
+  padding: 10px; /* Aumenta o espaço interno das células */
+  text-align: center; /* Alinha o conteúdo das células ao centro */
+  border: 1px solid #ddd; /* Borda clara nas células */
+  word-wrap: break-word; /* Garante que o texto seja quebrado corretamente se for muito longo */
+}
+
+th {
+  background-color: rgba(0, 0, 0, 0.8); /* Cor de fundo para cabeçalhos */
+  color: #ffffff; /* Cor do texto nos cabeçalhos */
+}
+
+tr:nth-child(even) {
+  background-color: rgba(0, 0, 0, 0.5); /* Cor de fundo alternada para linhas pares */
+}
+
+tr:nth-child(odd) {
+  background-color: rgba(0, 0, 0, 0.7); /* Cor de fundo alternada para linhas ímpares */
+}
+
+tr:hover {
+  background-color: rgba(255, 255, 255, 0.2); /* Efeito de hover sobre as linhas */
+}
+
+table thead tr th {
+  font-weight: bold; /* Deixa os cabeçalhos mais fortes */
+}
+
+table tbody tr td {
+  font-size: 14px; /* Ajusta o tamanho da fonte para as células */
 }

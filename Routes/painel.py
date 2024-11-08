@@ -1,4 +1,3 @@
-# Em painel.py
 from flask import Blueprint, render_template, session, redirect, url_for, flash
 from models import Usuario, Cargo, db 
 
@@ -20,9 +19,16 @@ def painel():
         return redirect(url_for('auth.login'))
     #CONFERE O CARGO DO USUÁRIO
     cargo_relacionado = usuario.cargo_relacionado
+    #CASO O USUÁRIO NÃO FOR DE NENHUM CARGO
+    if not cargo_relacionado:
+        session.pop('username', None)
+        flash('Você não tem permissão para acessar o painel!')
+        return redirect(url_for('auth.login'))
     cargos_permitidos = [1, 2, 3, 4, 5]
     cargo_nome = cargo_relacionado.nome
+    #CASO O USUÁRIO NÃO ESTIVER DENTRO DOS CARGOS PERMITIDOS
     if cargo_relacionado.id not in cargos_permitidos:
+        session.pop('username', None)
         flash('Você não tem permissão para acessar o painel!')
         return redirect(url_for('auth.login'))
 

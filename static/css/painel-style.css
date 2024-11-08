@@ -1,13 +1,12 @@
 @charset "UTF-8";
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-  
+
 body {
   background-color: rgb(17, 30, 46);
   height: 100vh;
   width: 100%;
   color: #e6e6ef;
   display: flex;
-
 }
 
 body.light {
@@ -33,6 +32,16 @@ h2 {
   font-size: 30px;
 }
 
+#dados {
+  display: flex;
+  margin: 0 auto;
+  padding: 0;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+}
+
 #dados-botoes {
   display: flex;
   flex-wrap: wrap;
@@ -42,7 +51,7 @@ h2 {
 }
 
 .card {
-  height: 5rem;
+  height: 4.5rem;
   cursor: pointer;
   width: 10rem;
   background-color: #2a5ec5;
@@ -59,42 +68,23 @@ h2 {
   color:white;
   font-size:20px;
   text-align: center;
-}
-
-#dados {
-  display: flex;
-  margin: 0 auto;
-  padding: 0;
-  flex-direction: column;
-  height: 100vh;
-  width: 100%;
-}
+} 
 
 #canvas-e-titulo{
-  width: 50rem;
+  width: 100%;
   display: flex;
   flex-direction: column;
   height:350px;
   align-items: center;
-  margin: 0 auto;
 }
 
-
+#lucroChart {
+  width: 100% !important;
+  min-width: 300px;
+  max-width: 800px;   
+}
 
 /*Sidebar do Painel*/
-#sidebar {
-  font-family: 'Poppins', sans-serif;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  background-color: rgb(37, 55, 77);
-  height: 100vh;
-  border-radius: 0px 18px 18px 0px;
-  position: relative;
-  transition: all .5s;
-  min-width: 82px;
-}
-
 #sidebar-content {
   padding: 12px;
 }
@@ -246,6 +236,44 @@ h2 {
 
 #sidebar.open-sidebar .side_item a {
   justify-content: flex-start;
+}
+
+@media (min-width:900px) {
+  #sidebar {
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: rgb(37, 55, 77);
+    height: 100vh;
+    border-radius: 0px 18px 18px 0px;
+    position: relative;
+    transition: all .5s;
+    min-width: 82px;
+  }
+}
+@media (max-width:899px){
+  #sidebar {
+    font-family: 'Poppins', sans-serif;
+    display: flex;    
+    flex-direction: column;
+    justify-content: space-between; 
+    background-color: rgb(37, 55, 77);
+    height: 100vh;
+    border-radius: 0px 18px 18px 0px;
+    position: absolute;
+    transition: all .5s;
+    min-width: 82px;
+    z-index: 1;
+  }
+
+  #sidebar.open-sidebar {
+    position: fixed;
+  }
+
+  #Principal {
+    margin-left: 120px;
+  }
 }
 
 

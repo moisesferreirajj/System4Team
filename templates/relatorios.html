@@ -4,15 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>System4Team - Painel Administrativo</title>
+    <title>System4Team - Relatórios</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/relatorios-style.css') }}">
-    <script src="{{ url_for('static', filename='js/config.js') }}"></script>
     <script src="{{ url_for('static', filename='js/theme.js') }}"></script>
     <script src="{{ url_for('static', filename='js/navbar.js') }}"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/favicon.png') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
@@ -29,7 +27,7 @@
             </div>
 
             <ul id="side_items">
-                <li class="side_item active">
+                <li>
                     <a href="/painel">
                         <i class="fa-solid fa-house"></i>
                         <span class="item-description">
@@ -62,7 +60,7 @@
                         </span>
                     </a>
                 </li>
-                <li class="side_item">
+                <li class="side_item active">
                     <a href="/relatorios">
                         <i class="fa-solid fa-chart-line"></i>
                         <span class="item-description">
@@ -85,30 +83,70 @@
         </div>
                 
     </nav>
-    <fieldset>
-        <legend>Pesquisar</fieldset>
-            <label for="mes">Mês<label>
-                <select name="selmes" id="mes">
+    
+    <form method="POST" action="/relatorios">
+        <fieldset class="input-wrapper">
+            <legend>Pesquisar</legend>
+            
+            <label for="mes" class="label">Mês</label>
+            <div class="select-wrapper">
+                <select name="mes" id="mes" class="input">
                     <option value="">Escolha</option>
-                    <option value="JA">Janeiro</option>
-                    <option value="FV">Fevereiro</option>
-                    <option value="MC">Março</option>
-                    <option value="AB">Abril</option>
-                    <option value="MA">Maio</option>
-                    <option value="JN">Junho</option>
-                    <option value="JL">Julho</option>
-                    <option value="AG">Agosto</option>
-                    <option value="ST">Setembro</option>
-                    <option value="OT">Outubro</option>
-                    <option value="NO">Novembro</option>
-                    <option value="DZ">Dezembro</option>
+                    {% for mes_ano in meses_anos %}
+                        <option value="{{ mes_ano.mes }}">{{ mes_ano.mes | nomedomes }}</option>
+                    {% endfor %}
                 </select>
-            <label for="ano">Ano<label>
-                <select name="selano" id="ano">
+            </div>
+    
+            <label for="ano" class="label">Ano</label>
+            <div class="select-wrapper">
+                <select name="ano" id="ano" class="input">
                     <option value="">Escolha</option>
+                    {% for mes_ano in meses_anos %}
+                        <option value="{{ mes_ano.ano }}">{{ mes_ano.ano }}</option>
+                    {% endfor %}
                 </select>
-                <button onclick="pesquisa_relatorios()">Pesquisar<button>
-        </div>
+            </div>
+    
+            <button class="search-btn" type="submit">
+                Pesquisar
+            </button>
+        </fieldset>
+    </form>
+    
+    <div class="tabela">
+        {% if pedidos %}
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Cliente</th>
+                        <th>Produto</th>
+                        <th>Quantidade</th>
+                        <th>Preço Total</th>
+                        <th>Data</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for pedido in pedidos %}
+                        <tr>
+                            <td>{{ pedido.id }}</td>
+                            <td>{{ pedido.cliente.nome }}</td>
+                            <td>{{ pedido.produto.nome }}</td>
+                            <td>{{ pedido.quantidade }}</td>
+                            <td>{{ pedido.preco_total }}</td>
+                            <td>{{ pedido.data_pedido.strftime('%d/%m/%Y') }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <p>Total de Vendas: R$ {{ total_vendas }}</p>
+            <p>Total de Pedidos: {{ total_pedidos }}</p>
+        {% else %}
+            <p>Nenhum pedido encontrado para o período selecionado.</p>
+        {% endif %}
+    </div>
+            
     </section>
     <button id="toggle-theme" style="background: none; border: none; cursor: pointer; position: fixed; bottom: 20px; right: 20px; z-index: 1000;">
         <span id="theme-icon">☀️</span>
