@@ -42,50 +42,22 @@ O **SystemForTeam** é um sistema robusto desenvolvido para otimizar o gerenciam
 - **Integração com Ferramentas de Terceiros**: A possibilidade de integrar com plataformas como Slack, Google Drive e outros serviços, potencializando a funcionalidade do sistema.
 - **Análise de Risco**: Ferramentas que ajudam a identificar e mitigar riscos, assegurando que os projetos sejam concluídos com sucesso.
 
-## Instalação e Uso  
-**Pré-Requisitos**<br>Python na versão 3.13.0 ou posterior e instalar as  seguintes bibliotecas:<br>
-*bcrypt* - Para a criptografia de senhas
-```
-pip install bcrypt
-```
-<br>
+# Instalação e Uso  
+**Pré-Requisitos:** Python e utilização de Powershell, Terminal SSH ou Console.<br>
 
-_flask_ - para um micro framework multiplataforma em Python para uma estrutura simplificada e limpa.
+### Certifique que seu python está instalado com o comando abaixo:
 ```
-pip install flask
+python --version
 ```
-<br>
-
-_flask-mail_ - para previnir conflitos entre diferentes projetos ou instalações do Python em todo sistema, além de mandar e-mails pelo Python.
+Após a certeza, basta seguir o passo-a-passo abaixo:<br>
+- Dentro da pasta "Requirements":<br>
 ```
-pip install flask-mail
+pip install -r requirements.txt
 ```
-<br>
-
-_Flask-SQLAlchemy_ - para simplificar a integração de bancos de dados em aplicações web Flask.
+- Verifique se todas bibliotecas foram instaladas:<br>
 ```
-pip install Flask-SQLAlchemy
-```
-<br>
-
-_mysql-connector_ - para executar consultas complexas no Banco SQL de forma eficiente e obter os resultados desejados.
-```
-pip install mysql-connector
+pip list
 ```
 
-<br>
-
-_SQLAlchemy_ - para interações simples e eficiente do Python com o banco de dados SQL.
-```
-pip install SQLAlchemy
-```
-<br>
-
-_dotenv_ - para a acessar variáveis de ambiente a partir de um arquivo "_.env_".
-```
-pip install dotenv
-```
-<br>
-
-Em seguida,baixe os arquivos do repositório e acesse o IP http://127.0.0.1:5001/ . 
+Em seguida, inicie o arquivo "app.py" e acesse o IP http://127.0.0.1:5001/ . 
 Depois siga as instruções de login e cadastro. Após o login, você poderá acessar o painel principal do sistema e começar a utilizar as funcionalidades.
