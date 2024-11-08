@@ -1,0 +1,7 @@
+bcrypt
+flask
+flask-mail
+Flask-SQLAlchemy
+mysql-connector
+SQLAlchemy
+python-dotenv
