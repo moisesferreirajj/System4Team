@@ -27,7 +27,7 @@
             </div>
 
             <ul id="side_items">
-                <li>
+                <li class="side_item">
                     <a href="/painel">
                         <i class="fa-solid fa-house"></i>
                         <span class="item-description">
@@ -83,68 +83,69 @@
         </div>
                 
     </nav>
-    
-    <form method="POST" action="/relatorios">
-        <fieldset class="input-wrapper">
-            <legend>Pesquisar</legend>
-            
-            <label for="mes" class="label">Mês</label>
-            <div class="select-wrapper">
-                <select name="mes" id="mes" class="input">
-                    <option value="">Escolha</option>
-                    {% for mes_ano in meses_anos %}
-                        <option value="{{ mes_ano.mes }}">{{ mes_ano.mes | nomedomes }}</option>
-                    {% endfor %}
-                </select>
-            </div>
-    
-            <label for="ano" class="label">Ano</label>
-            <div class="select-wrapper">
-                <select name="ano" id="ano" class="input">
-                    <option value="">Escolha</option>
-                    {% for mes_ano in meses_anos %}
-                        <option value="{{ mes_ano.ano }}">{{ mes_ano.ano }}</option>
-                    {% endfor %}
-                </select>
-            </div>
-    
-            <button class="search-btn" type="submit">
-                Pesquisar
-            </button>
-        </fieldset>
-    </form>
-    
-    <div class="tabela">
-        {% if pedidos %}
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Cliente</th>
-                        <th>Produto</th>
-                        <th>Quantidade</th>
-                        <th>Preço Total</th>
-                        <th>Data</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for pedido in pedidos %}
+    <div class="opop">
+        <form method="POST" action="/relatorios">
+            <fieldset class="input-wrapper">
+                <legend>Pesquisar</legend>
+                
+                <label for="mes" class="label">Mês</label>
+                <div class="select-wrapper">
+                    <select name="mes" id="mes" class="input">
+                        <option value="">Escolha</option>
+                        {% for mes_ano in meses_anos %}
+                            <option value="{{ mes_ano.mes }}">{{ mes_ano.mes | nomedomes }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+        
+                <label for="ano" class="label">Ano</label>
+                <div class="select-wrapper">
+                    <select name="ano" id="ano" class="input">
+                        <option value="">Escolha</option>
+                        {% for mes_ano in meses_anos %}
+                            <option value="{{ mes_ano.ano }}">{{ mes_ano.ano }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+        
+                <button class="search-btn" type="submit">
+                    Pesquisar
+                </button>
+            </fieldset>
+        </form>
+        
+        <div class="tabela">
+            {% if pedidos %}
+                <table class="table">
+                    <thead>
                         <tr>
-                            <td>{{ pedido.id }}</td>
-                            <td>{{ pedido.cliente.nome }}</td>
-                            <td>{{ pedido.produto.nome }}</td>
-                            <td>{{ pedido.quantidade }}</td>
-                            <td>{{ pedido.preco_total }}</td>
-                            <td>{{ pedido.data_pedido.strftime('%d/%m/%Y') }}</td>
+                            <th class="tb-title">ID</th>
+                            <th class="tb-title">Cliente</th>
+                            <th class="tb-title">Produto</th>
+                            <th class="tb-title">Quantidade</th>
+                            <th class="tb-title">Preço Total</th>
+                            <th class="tb-title">Data</th>
                         </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-            <p>Total de Vendas: R$ {{ total_vendas }}</p>
-            <p>Total de Pedidos: {{ total_pedidos }}</p>
-        {% else %}
-            <p>Nenhum pedido encontrado para o período selecionado.</p>
-        {% endif %}
+                    </thead>
+                    <tbody>
+                        {% for pedido in pedidos %}
+                            <tr>
+                                <td class="itns">{{ pedido.id }}</td>
+                                <td class="itns">{{ pedido.cliente.nome }}</td>
+                                <td class="itns">{{ pedido.produto.nome }}</td>
+                                <td class="itns">{{ pedido.quantidade }}</td>
+                                <td class="itns">{{ pedido.preco_total }}</td>
+                                <td class="itns">{{ pedido.data_pedido.strftime('%d/%m/%Y') }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <p>Total de Vendas: R$ {{ total_vendas }}</p>
+                <p>Total de Pedidos: {{ total_pedidos }}</p>
+            {% else %}
+                <p>Nenhum pedido encontrado para o período selecionado.</p>
+            {% endif %}
+        </div>
     </div>
             
     </section>
