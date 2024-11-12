@@ -4,7 +4,7 @@ Olá, bem-vindo ao SystemForTeam! Este é um sistema de gestão empresarial feit
 
 ### Descrição
 
-O **SystemForTeam** é um sistema robusto desenvolvido para otimizar o gerenciamento de projetos empresariais. Com uma interface intuitiva e funcionalidades abrangentes, o FourSystem facilita o planejamento, a execução e o monitoramento de projetos, promovendo a colaboração entre equipes e aumentando a eficiência operacional.
+O **SystemForTeam** é um sistema robusto desenvolvido para otimizar o gerenciamento de projetos empresariais. Com uma interface intuitiva e funcionalidades abrangentes, o System4System facilita o planejamento, a execução e o monitoramento financeiro, facilitando o gerenciamento e aumentando a eficiência operacional.
 
 ### Tecnologias Utilizadas
 
