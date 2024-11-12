@@ -1,10 +1,12 @@
 # System4Team: Sistema de Gerenciamento de Projetos Empresariais
 
-Olá, bem-vindo ao System4Team! Este é um sistema de gestão empresarial feito pelos alunos: Moisés, Yohan, Igor e Mark para a disciplina de Desenvolvimento de Sistemas.
+Olá, bem-vindo ao System4Team! Este é um sistema de gestão empresarial feito pelos alunos: Moisés, Yohan, Igor e Mark para a disciplina de Desenvolvimento de Sist# SystemForTeam: Sistema de Gerenciamento de Projetos Empresariais
+
+Olá, bem-vindo ao SystemForTeam! Este é um sistema de gestão empresarial feito pelos alunos: Moisés, Yohan, Igor e Mark para a disciplina de Desenvolvimento de Sistemas.
 
 ### Descrição
 
-O **System4Team** é um sistema robusto desenvolvido para otimizar o gerenciamento de projetos empresariais. Com uma interface intuitiva e funcionalidades abrangentes, o FourSystem facilita o planejamento, a execução e o monitoramento de projetos, promovendo a colaboração entre equipes e aumentando a eficiência operacional.
+O **SystemForTeam** é um sistema robusto desenvolvido para otimizar o gerenciamento de projetos empresariais. Com uma interface intuitiva e funcionalidades abrangentes, o FourSystem facilita o planejamento, a execução e o monitoramento de projetos, promovendo a colaboração entre equipes e aumentando a eficiência operacional.
 
 ### Tecnologias Utilizadas
 
@@ -47,11 +49,11 @@ O **System4Team** é um sistema robusto desenvolvido para otimizar o gerenciamen
 
 **Altere o nome do arquivo "enviroment.env" para apenas ".env";** <br><br>
 **Execute o Xampp ou qualquer serviço MySQL com a porta 3307, sem senha e com a database "system4team", isso pode ser alterado dentro do ".env".;**
-### Certifique que seu python está instalado com o comando abaixo:
-<br>
+### Certifique que seu python está instalado com o comando abaixo:<br>
 ``
 python --version
 ``
+
 Após a certeza, basta seguir o passo-a-passo abaixo:<br>
 - Dentro da pasta "Requirements":<br>
 ``
@@ -65,7 +67,7 @@ pip install -r requirements.txt
 
 - Verifique se todas bibliotecas foram instaladas:<br>
 ``
-pip list7
+pip list
 ``
 
 Em seguida, inicie o arquivo "app.py" e acesse o IP http://127.0.0.1:5001/ . 
