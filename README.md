@@ -2,11 +2,11 @@
 
 Olá, bem-vindo ao SystemForTeam! Este é um sistema de gestão empresarial feito pelos alunos: Moisés, Yohan, Igor e Mark para a disciplina de Desenvolvimento de Sistemas.
 
-### Descrição
+# Descrição
 
 O **SystemForTeam** é um sistema robusto desenvolvido para otimizar o gerenciamento de projetos empresariais. Com uma interface intuitiva e funcionalidades abrangentes, o System4System facilita o planejamento, a execução e o monitoramento financeiro, facilitando o gerenciamento e aumentando a eficiência operacional.
 
-### Tecnologias Utilizadas
+## Tecnologias Utilizadas
 
 <div align="center">
     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" width="50" height="50" /><br>
