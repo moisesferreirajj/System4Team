@@ -48,18 +48,24 @@ O **SystemForTeam** é um sistema robusto desenvolvido para otimizar o gerenciam
 **Altere o nome do arquivo "enviroment.env" para apenas ".env";** <br><br>
 **Execute o Xampp ou qualquer serviço MySQL com a porta 3307, sem senha e com a database "system4team", isso pode ser alterado dentro do ".env".;**
 ### Certifique que seu python está instalado com o comando abaixo:
+``
 python --version
-
+``
 Após a certeza, basta seguir o passo-a-passo abaixo:<br>
 - Dentro da pasta "Requirements":<br>
+``
 python -m venv venv
+``
 
 - Após isso ainda na pasta "Requirements":<br>
+``
 pip install -r requirements.txt
+``
 
 - Verifique se todas bibliotecas foram instaladas:<br>
-pip list
-
+``
+pip list7
+``
 
 Em seguida, inicie o arquivo "app.py" e acesse o IP http://127.0.0.1:5001/ . 
 Depois siga as instruções de login e cadastro. Após o login, você poderá acessar o painel principal do sistema e começar a utilizar as funcionalidades.
