@@ -48,6 +48,7 @@ O **SystemForTeam** é um sistema robusto desenvolvido para otimizar o gerenciam
 **Altere o nome do arquivo "enviroment.env" para apenas ".env";** <br><br>
 **Execute o Xampp ou qualquer serviço MySQL com a porta 3307, sem senha e com a database "system4team", isso pode ser alterado dentro do ".env".;**
 ### Certifique que seu python está instalado com o comando abaixo:
+<br>
 ``
 python --version
 ``
