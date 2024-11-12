@@ -1,10 +1,10 @@
-# SystemForTeam: Sistema de Gerenciamento de Projetos Empresariais
+# System4Team: Sistema de Gerenciamento de Projetos Empresariais
 
-Olá, bem-vindo ao SystemForTeam! Este é um sistema de gestão empresarial feito pelos alunos: Moisés, Yohan, Igor e Mark para a disciplina de Desenvolvimento de Sistemas.
+Olá, bem-vindo ao System4Team! Este é um sistema de gestão empresarial feito pelos alunos: Moisés, Yohan, Igor e Mark para a disciplina de Desenvolvimento de Sistemas.
 
 ### Descrição
 
-O **SystemForTeam** é um sistema robusto desenvolvido para otimizar o gerenciamento de projetos empresariais. Com uma interface intuitiva e funcionalidades abrangentes, o FourSystem facilita o planejamento, a execução e o monitoramento de projetos, promovendo a colaboração entre equipes e aumentando a eficiência operacional.
+O **System4Team** é um sistema robusto desenvolvido para otimizar o gerenciamento de projetos empresariais. Com uma interface intuitiva e funcionalidades abrangentes, o FourSystem facilita o planejamento, a execução e o monitoramento de projetos, promovendo a colaboração entre equipes e aumentando a eficiência operacional.
 
 ### Tecnologias Utilizadas
 
