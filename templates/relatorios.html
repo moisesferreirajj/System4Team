@@ -26,6 +26,7 @@
                 </p>
             </div>
 
+            <!-- NAVBAR BY MOISES AND YOHAN -->
             <ul id="side_items">
                 <li class="side_item">
                     <a href="/painel">
@@ -44,11 +45,11 @@
                         </span>
                     </a>
                 </li>
-                <li class="side_item">
-                    <a href="#">
-                        <i class="fa-solid fa-truck-fast"></i>
+                <li class="side_item active">
+                    <a href="/relatorios">
+                        <i class="fa-solid fa-chart-line"></i>
                         <span class="item-description">
-                            Pedidos
+                            Relatórios
                         </span>
                     </a>
                 </li>
@@ -60,11 +61,11 @@
                         </span>
                     </a>
                 </li>
-                <li class="side_item active">
-                    <a href="/relatorios">
-                        <i class="fa-solid fa-chart-line"></i>
+                <li class="side_item">
+                    <a href="/configuracoes">
+                        <i class="fa-solid fa-gear"></i>
                         <span class="item-description">
-                            Relatórios
+                            Configurações
                         </span>
                     </a>
                 </li>
@@ -129,13 +130,17 @@
                     </thead>
                     <tbody>
                         {% for pedido in pedidos %}
-                            <tr>
-                                <td class="itns">{{ pedido.id }}</td>
-                                <td class="itns">{{ pedido.cliente.nome }}</td>
-                                <td class="itns">{{ pedido.produto.nome }}</td>
-                                <td class="itns">{{ pedido.quantidade }}</td>
-                                <td class="itns">{{ pedido.preco_total }}</td>
-                                <td class="itns">{{ pedido.data_pedido.strftime('%d/%m/%Y') }}</td>
+                            <tr class="itns">
+                                <td>{{ pedido.id_venda }}</td>
+                                <td>{{ pedido.cliente.nome }}</td>
+                                <td class="desc">
+                                    <span data-toggle="tooltip" data-placement="top" title="{{ pedido.produto.descricao }}" class="desc">
+                                        {{ pedido.produto.nome }}
+                                    </span>
+                                </td>
+                                <td>{{ pedido.quantidade }}</td>
+                                <td>{{ pedido.produto.preco }}</td> <!-- Exibindo preço do produto -->
+                                <td>{{ pedido.data_pedido.strftime('%d/%m/%Y') }}</td>
                             </tr>
                         {% endfor %}
                     </tbody>

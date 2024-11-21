@@ -81,7 +81,7 @@ class Pedido(db.Model):
     id_produto = db.Column(db.Integer, db.ForeignKey('produtos.id'), nullable=False)
     id_funcionario = db.Column(db.Integer, db.ForeignKey('funcionarios.id'))
     quantidade = db.Column(db.Integer, nullable=False)
-    preco_total = db.Column(db.Numeric(10, 2), nullable=False)
+    id_venda = db.Column(db.Integer, nullable=False)
     data_pedido = db.Column(db.DateTime, default=db.func.current_timestamp())
     id_empresa = db.Column(db.Integer, db.ForeignKey('empresas.id'))
     finalizado = db.Column(db.Boolean, nullable=False, default=False)

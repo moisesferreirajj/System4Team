@@ -387,27 +387,28 @@ form{
   justify-content:center;
   width:100%;
   margin-right:10px;
+
 }
 
-.desc{
-  background: #25374D;
+[data-tooltip] {
+  position: relative;
+  font-weight: bold
+}
+
+[data-tooltip]:after {
+  display: none;
+  position:absolute;
+  top: -5px;
+  padding: 5px;
+  border-radius: 3px;
+  left: calc(100% + 2px);
+  content: attr(data-tooltip);
+  white-space: nowrap;
+  background: #0095ff;
   color: white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-size: 14px;
+}
+
+[data-tooltip]:hover:after {
+  display: block;
   cursor:pointer;
-  transition: background-color ease, transform 0.2s ease;
 }
-
-
-.desc:hover {
-  background: #2A5EC5;
-  transform: scale(1.05);
-  box-shadow: 0px 4px 8p
-
-}
-
-
-.desc[]data-toggle=""tololtip:hover::hover:after;{}
-  
-content: attr

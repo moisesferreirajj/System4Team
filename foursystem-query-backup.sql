@@ -22,27 +22,11 @@ INSERT IGNORE INTO `cargos` (`id`, `nome`) VALUES
 	(4, 'CTO'),
 	(5, 'Cliente');
 
--- Copiando dados para a tabela system4team.clientes: ~0 rows (aproximadamente)
+-- Copiando dados para a tabela system4team.clientes: ~1 rows (aproximadamente)
+INSERT IGNORE INTO `clientes` (`id`, `nome`, `cpf`, `endereco`, `telefone`, `email`, `id_empresa`) VALUES
+	(1, 'DeideCosta', '11122233344', 'Inexistente, 66', '4791270100', 'system@gmail.com', 1);
 
--- Copiando dados para a tabela system4team.codigos_recuperacao: ~17 rows (aproximadamente)
-INSERT IGNORE INTO `codigos_recuperacao` (`id`, `email`, `codigo`, `data_envio`, `usuario_id`, `usado`) VALUES
-	(1, 'markstolfi2@gmail.com', 'oUOHuV', '2024-11-01 19:21:51', 3, 0),
-	(2, 'markstolfi2@gmail.com', 'sFEuhS', '2024-11-01 19:44:58', 3, 0),
-	(3, 'nubmoises@gmail.com', 'dkAh1x', '2024-11-01 19:48:00', 1, 0),
-	(4, 'nubmoises321@gmail.com', 'nAEXLR', '2024-11-01 19:49:19', 13, 0),
-	(5, 'markstolfi2@gmail.com', 'sBkHhr', '2024-11-01 19:58:43', 3, 1),
-	(6, 'markstolfi2@gmail.com', 'epSlSl', '2024-11-01 19:58:45', 3, 1),
-	(7, 'markstolfi2@gmail.com', 'rLB8sU', '2024-11-01 19:59:04', 3, 1),
-	(8, 'markstolfi2@gmail.com', 'KJivUq', '2024-11-01 20:00:54', 3, 1),
-	(9, 'markstolfi2@gmail.com', '4yu1XH', '2024-11-01 20:00:59', 3, 1),
-	(10, 'nubmoises@gmail.com', 'cP6KbR', '2024-11-01 20:01:53', 1, 1),
-	(11, 'parameuamigosun4@gmail.com', 'OPEdm0', '2024-11-01 20:05:36', 1, 1),
-	(12, 'parameuamigosun4@gmail.com', 'kZ9kMS', '2024-11-01 20:10:17', 1, 0),
-	(13, 'NataliAlberton@gmail.com', 'yZGwp0', '2024-11-01 20:15:16', 14, 1),
-	(14, 'NataliAlberton@gmail.com', '0RA4w5', '2024-11-01 20:15:18', 14, 1),
-	(15, 'NataliAlberton@gmail.com', '1y4ER6', '2024-11-01 20:15:43', 14, 1),
-	(16, 'NataliAlberton@gmail.com', 'dHbeTA', '2024-11-01 20:15:50', 14, 1),
-	(17, 'alberton.natali@gmail.com', 'ZIgNkl', '2024-11-01 20:16:23', 14, 0);
+-- Copiando dados para a tabela system4team.codigos_recuperacao: ~0 rows (aproximadamente)
 
 -- Copiando dados para a tabela system4team.empresas: ~1 rows (aproximadamente)
 INSERT IGNORE INTO `empresas` (`id`, `nome`, `cnpj`, `endereco`, `telefone`, `email`) VALUES
@@ -53,24 +37,24 @@ INSERT IGNORE INTO `funcionarios` (`id`, `nome`, `cargo`, `email`, `telefone`, `
 	(1, 'Moises João Ferreira', 1, 'nubmoises@gmail.com', '47991270120', 1);
 
 -- Copiando dados para a tabela system4team.pedidos: ~1 rows (aproximadamente)
-INSERT IGNORE INTO `pedidos` (`id`, `id_cliente`, `id_produto`, `id_funcionario`, `quantidade`, `preco_total`, `data_pedido`, `id_empresa`) VALUES
-	(1, NULL, NULL, NULL, 1, 220.00, '2024-10-31 15:56:02', NULL);
+INSERT IGNORE INTO `pedidos` (`id`, `id_cliente`, `id_produto`, `id_funcionario`, `quantidade`, `id_venda`, `data_pedido`, `id_empresa`, `finalizado`) VALUES
+	(1, 1, 2, 1, 1, 1, '2024-11-21 14:27:58', 1, 1);
 
--- Copiando dados para a tabela system4team.produtos: ~1 rows (aproximadamente)
-INSERT IGNORE INTO `produtos` (`id`, `nome`, `descricao`, `preco`, `id_empresa`) VALUES
-	(1, 'Site', 'Um site desenvolvido', 1000.00, 1);
+-- Copiando dados para a tabela system4team.produtos: ~2 rows (aproximadamente)
+INSERT IGNORE INTO `produtos` (`id`, `nome`, `descricao`, `preco`, `quantidade`, `id_empresa`) VALUES
+	(1, 'Site', 'Um site desenvolvido', 1000.00, 1, 1),
+	(2, 'Yohan', 'Corpo do yohan desovado', 2000.00, 1, 1);
 
--- Copiando dados para a tabela system4team.usuarios: ~7 rows (aproximadamente)
+-- Copiando dados para a tabela system4team.usuarios: ~8 rows (aproximadamente)
 INSERT IGNORE INTO `usuarios` (`id`, `usuario`, `senha`, `email`, `cargo`, `imagem`, `id_funcionario`) VALUES
-	(1, 'moises', '$2b$12$COoAGcMBJMW19TkFhOvHEOu82G/XbPp/PH03Nllwmp/Hz4XiaSwTm', 'parameuamigosun4@gmail.com', 1, NULL, 1),
+	(1, 'moises', '$2b$12$COoAGcMBJMW19TkFhOvHEOu82G/XbPp/PH03Nllwmp/Hz4XiaSwTm', 'parameuamigosun4@gmail.com', 1, 'moises.jfif', 1),
 	(2, 'igor', '$2b$12$Vccc7Rwb1x4C5RnjvRHXIeUSJ57.n1Gl/wGcdGlUvxN.B/uJBlEe6', 'igor@gmail.com', 2, NULL, NULL),
 	(3, 'mark', '$2b$12$m2.E4QS0lr/RVqopPhqrnecTNwGtHF.dCBij2naH3307IrJ1TM4iK', 'markstolfi2@gmail.com', 2, NULL, NULL),
-	(4, 'yohan', '$2b$12$wouY5sgcHGuw9b7oKGJ9aurC/iYBkA6f53GK5DUSC1d00BlY4p9cS', 'yohan@gmail.com', NULL, NULL, NULL),
+	(4, 'yohan', '$2b$12$wouY5sgcHGuw9b7oKGJ9aurC/iYBkA6f53GK5DUSC1d00BlY4p9cS', 'yohan@gmail.com', 4, NULL, NULL),
 	(5, 'senhorinha', '$2b$12$R4AFjGq1m/p6fqUSY2hIxekvKKrNHOyUIGizntzEfzjMpFewaBJ/e', 'marciosenhorinha@gmail.com', NULL, NULL, NULL),
-	(13, 'Moises Ferreira', '$2b$12$WxhkPj5xkA1.OMmBSyPTdeUbuvCQ0cj7WLFsikBPKPHjNix68Ngpq', 'nubmoises321@gmail.com', NULL, NULL, NULL),
-	(14, 'NataliAlberton', '$2b$12$lPh1kDvrR3eUWFiX8X1oWO.6GwUbzR30IlyZHCukeFSxfQx7KvuQC', 'alberton.natali@gmail.com', NULL, NULL, NULL);
-
--- Copiando dados para a tabela system4team.vendas: ~0 rows (aproximadamente)
+	(13, 'Moises Ferreira', '$2b$12$WxhkPj5xkA1.OMmBSyPTdeUbuvCQ0cj7WLFsikBPKPHjNix68Ngpq', 'nubmoises321@gmail.com', NULL, 'moises.jfif', NULL),
+	(14, 'NataliAlberton', '$2b$12$lPh1kDvrR3eUWFiX8X1oWO.6GwUbzR30IlyZHCukeFSxfQx7KvuQC', 'alberton.natali@gmail.com', NULL, NULL, NULL),
+	(15, 'mark12', '$2b$12$rOt8bTKPreCQ51uXUWmD8ex9rIoNBSM.xJ25OZ0r23FKBcLuXtQtS', 'markstolf2i2@gmail.com', 3, NULL, NULL);
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

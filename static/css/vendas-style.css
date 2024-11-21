@@ -308,7 +308,7 @@ h2 {
 
 
   #VendasAnuais {
-    text-align: left;
+    text-align: inherit;
   }
   
   .vendas h3 {
@@ -321,8 +321,7 @@ h2 {
   .vendas {
     flex-direction: column;
     display: flex;
-    margin-top: 5px;
-    margin-left: 10px;
+    margin-top
   }
   
   .vendas h1 {

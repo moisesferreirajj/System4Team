@@ -15,14 +15,15 @@ from Routes.dados_painel import dados_painel_bp
 from Routes.painel import painel_bp
 from Routes.vendas import vendas_bp
 from Routes.relatorios import relatorios_bp
+from Routes.configuracoes import configuracoes_bp
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static')
 app.config.from_object(Config)
 
 # INICIALIZA A DB
 db.init_app(app)
 
-# Inicializa o Ma
+# Inicializa o Mail
 init_mail(app)
 
 # REGISTRA AS ROTAS
@@ -33,6 +34,7 @@ app.register_blueprint(dados_painel_bp)
 app.register_blueprint(painel_bp)
 app.register_blueprint(vendas_bp)
 app.register_blueprint(relatorios_bp)
+app.register_blueprint(configuracoes_bp)
 
 # CRIA A CONNECTION DO DB
 with app.app_context():

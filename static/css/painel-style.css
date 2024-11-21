@@ -87,6 +87,7 @@ h2 {
 /*Sidebar do Painel*/
 #sidebar-content {
   padding: 12px;
+  height: 100%;
 }
 
 #user {
@@ -118,6 +119,7 @@ h2 {
   gap: 8px;
   padding: 0;
   list-style: none;
+  flex-grow: 1;
 }
 
 .side_item {
@@ -185,7 +187,6 @@ h2 {
   color:rgba(255, 0, 0, 0.795)
 }
 
-
 #open_btn {
   position: absolute;
   top: 30px;
@@ -236,6 +237,10 @@ h2 {
 
 #sidebar.open-sidebar .side_item a {
   justify-content: flex-start;
+}
+
+#config {
+  
 }
 
 @media (min-width:900px) {
@@ -333,7 +338,7 @@ h2 {
     gap:14px
   }
   
-  .side_item.active {
+  .side_item.active {    
     background-color: #2a5ec5;
   }
   
