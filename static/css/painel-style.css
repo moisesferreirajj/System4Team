@@ -239,10 +239,6 @@ h2 {
   justify-content: flex-start;
 }
 
-#config {
-  
-}
-
 @media (min-width:900px) {
   #sidebar {
     font-family: 'Poppins', sans-serif;

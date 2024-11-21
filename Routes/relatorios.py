@@ -84,9 +84,14 @@ def relatorios():
     # Quantidade de clientes (exemplo de métrica adicional)
     total_clientes = Cliente.query.count()
 
+    # Garantir que a imagem esteja configurada corretamente
+    imagem_usuario = usuario.imagem if usuario.imagem else 'default.png'
+    print(imagem_usuario)  # Verifique se o nome da imagem está correto
+
     return render_template(
         'relatorios.html',
         username=username,
+        imagem_usuario=imagem_usuario,
         cargo=cargo_nome,
         pedidos=pedidos,
         total_vendas=total_vendas,

@@ -8,6 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/relatorios-style.css') }}">
     <script src="{{ url_for('static', filename='js/theme.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/relatorios.js') }}"></script>
     <script src="{{ url_for('static', filename='js/navbar.js') }}"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
@@ -18,7 +19,7 @@
     <nav id="sidebar">
         <div id="sidebar-content">
             <div id="user">
-                <img src="/static/images/favicon.png" alt="Logo" id="logo-sidebar">
+                <img src="{{ url_for('static', filename='images/profile/' + imagem_usuario) }}" alt="Logo" id="logo-sidebar">
 
                 <p id="user_infos">
                     <span class="item-description">{{ username }}</span>
@@ -133,13 +134,13 @@
                             <tr class="itns">
                                 <td>{{ pedido.id_venda }}</td>
                                 <td>{{ pedido.cliente.nome }}</td>
-                                <td class="desc">
-                                    <span data-toggle="tooltip" data-placement="top" title="{{ pedido.produto.descricao }}" class="desc">
-                                        {{ pedido.produto.nome }}
-                                    </span>
+                                <td>
+                                 <span class="desc" data-tooltip="{{ pedido.produto.descricao }}">
+                                    {{ pedido.produto.nome }}
+                                 </span>
                                 </td>
                                 <td>{{ pedido.quantidade }}</td>
-                                <td>{{ pedido.produto.preco }}</td> <!-- Exibindo preço do produto -->
+                                <td>{{ pedido.produto.preco }}</td>
                                 <td>{{ pedido.data_pedido.strftime('%d/%m/%Y') }}</td>
                             </tr>
                         {% endfor %}

@@ -25,7 +25,7 @@ def esqueceu():
             db.session.commit()
 
             # URL da logo
-            logo_url = "https://cdn.discordapp.com/attachments/1273695375991115856/1302001573785768088/logo.png?ex=672686f5&is=67253575&hm=741949539d1b580b1591e76d30d55d8d1433966973e06ce7e036626ff992fcc9&"
+            logo_url = "https://raw.githubusercontent.com/MoisesFerreiraSun/System4Team/refs/heads/main/static/images/Impact.png?token=GHSAT0AAAAAACZPI7YS36XWXVQJFMPCPSI4ZZ7RAXQ"
             msg = Message('Recuperação de Senha', recipients=[email])
             #DEFINE O NOME DO USUARIO NO EMAIL
             nome_usuario = usuario.funcionario_relacionado.nome if usuario.funcionario_relacionado else usuario.usuario

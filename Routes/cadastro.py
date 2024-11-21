@@ -54,6 +54,5 @@ def cadastrar():
         flash("Usuário cadastrado com sucesso!", "success")
         session['username'] = username  #LOGA NO PAINEL AUTOMATICAMENTE
         return redirect(url_for('painel.painel'))
-
-    messages = get_flashed_messages()
-    return render_template('cadastro.html', messages=messages)
+    
+    return render_template('cadastro.html')

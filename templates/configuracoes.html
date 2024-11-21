@@ -18,7 +18,7 @@
     <nav id="sidebar">
         <div id="sidebar-content">
             <div id="user">
-                <img src="/static/images/favicon.png" alt="Logo" id="logo-sidebar">
+                <img src="{{ url_for('static', filename='images/profile/' + imagem_usuario) }}" alt="Logo" id="logo-sidebar">
 
                 <p id="user_infos">
                     <span class="item-description">{{ username }}</span>

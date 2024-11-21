@@ -35,4 +35,8 @@ def painel():
     imagem_usuario = usuario.imagem if usuario.imagem else 'default.png'
     print(imagem_usuario)  # Verifique se o nome da imagem está correto
 
-    return render_template('painel.html', usuario=usuario, username=username, cargo=cargo_nome, imagem_usuario=imagem_usuario)
+    return render_template('painel.html',
+                           usuario=usuario,
+                           username=username,
+                           cargo=cargo_nome,
+                           imagem_usuario=imagem_usuario)
