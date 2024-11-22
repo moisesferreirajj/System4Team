@@ -307,75 +307,45 @@ h2 {
   
 
 
-  #VendasAnuais {
+  #Vendas_Anuais_Mensais {
     text-align: inherit;
-  }
-  
-  .vendas h3 {
+}
+
+.vendas h3 {
     font-size: 20px;
     color: rgb(197, 197, 197);
     font-weight: bold;
     margin-bottom: 28px;
-  }
-  
-  .vendas {
+}
+
+.vendas {
     flex-direction: column;
     display: flex;
-    margin-top
-  }
-  
-  .vendas h1 {
+}
+
+.vendas h1 {
     font-size: 60px;
     font-weight: 400;
-  }
-  
-  .vendas div {
+}
+
+.vendas div {
     background-color: rgba(255, 255, 255, 0.05);
     border-radius: 10px;
     margin-top: 10px;
     margin-left: 10px;
     padding: 10px 50px;
-    background-
-  }
-  
-  #VendasMensais {
-    text-align: left;
-  }
-  
-  #VendasAnuais {
-    text-align: left;
-  }
-  
-  .vendas h3 {
-    font-size: 20px;
-    color: rgb(197, 197, 197);
-    font-weight: bold;
-    margin-bottom: 28px;
-  }
-  
-  .vendas {
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+    min-width: 670px;
+    max-width: auto;
+}
+
+.vendas {
     flex-direction: column;
     display: flex;
     margin-top: 1px;
-  
-  }
-  
-  .vendas h1 {
-    font-size: 60px;
-    font-weight: 400;
-  }
-  
-  .vendas div {
-    background-color: rgba(255, 255, 255, 0.05);
-    border-radius: 10px;
-    margin-top: 10px;
-    margin-left: 10px;
-    padding: 10px 50px;
-  }
-  
-  #VendasMensais {
-    text-align: left;
-  }
+}
+
+
   
   .Meta {
     flex-direction: column;
@@ -387,6 +357,7 @@ h2 {
     color: rgb(197, 197, 197);
     font-weight: bold;
     margin-bottom: 30px;
+    height: 32px;
   }
   
   #MetaVendas h1 {
@@ -411,6 +382,7 @@ h2 {
     margin-top: 10px;
     margin-left: 10px;
     padding: 10px 50px;
+    box-shadow: 3px 3px 10px  rgba(0, 0, 0, 0.5);
   }
   
   /* Estilos para a nova seção de Produtos */
@@ -427,6 +399,8 @@ h2 {
     border-radius: 10px;
     margin-left: 10px;
     padding: 10px 50px;
+    box-shadow: 3px 3px 10px  rgba(0, 0, 0, 0.5);
+    position: relative;
   }
   
   #TopProdutos h3 {
@@ -516,4 +490,30 @@ h2 {
     }
   }
   
+    .estatisticas{
+      flex-direction: column;
+      display: flex; 
+    }
+    .estatisticas h3 {
+      font-size: 20px;
+      color: rgb(197, 197, 197);
+      font-weight: bold;
+      margin-bottom: 28px;
+    }
 
+    .estatisticas div{
+      background-color: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+      margin-top: 10px;
+      margin-left: 10px;
+      padding: 10px 50px;
+      box-shadow: 3px 3px 10px  rgba(0, 0, 0, 0.5);
+      min-width: 670px;
+      max-width: auto;
+    }
+    #Principal{
+      margin: 0px;
+      padding: 0px;
+      width: 680px;
+    }
+   

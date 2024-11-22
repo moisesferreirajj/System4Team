@@ -424,3 +424,11 @@ form{
   border-color: transparent transparent #2A5EC5 transparent;
   z-index: 9;
 }
+
+p {
+  margin: 10px 10px;
+}
+
+.desc:hover{
+  cursor: pointer;
+}

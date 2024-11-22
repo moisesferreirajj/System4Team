@@ -83,7 +83,19 @@
             </a>
         </div>
                 
-    </nav>
+    </nav> 
+    <div class="profile">
+        <div class="card">
+            <div class="profile__avatar">
+                <img src="{{ url_for('static', filename='images/profile/' + imagem_usuario) }}" alt="Avatar" id="profile_avatar">
+            </div>
+            <div class="profile__content">
+                <div class="profile__title">{{ username }}</div>
+                <div class="profile__subtitle">{{ cargo }}</div>
+            </div>
+        </div>
+    </div>
+    
     
     <!-- CONSTRUIR AQUI O RESTANTE DA LOGICA DE CONFIGURAÇÕES PARA ALTERAR IMAGENS ETC -->
 

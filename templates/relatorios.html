@@ -140,7 +140,7 @@
                                  </span>
                                 </td>
                                 <td>{{ pedido.quantidade }}</td>
-                                <td>{{ pedido.produto.preco }}</td>
+                                <td>R${{ pedido.produto.preco }}</td>
                                 <td>{{ pedido.data_pedido.strftime('%d/%m/%Y') }}</td>
                             </tr>
                         {% endfor %}
