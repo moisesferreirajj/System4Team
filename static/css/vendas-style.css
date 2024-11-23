@@ -43,6 +43,20 @@ h2 {
   text-align: center;
 }
 
+#canvas-e-titulo{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  height:350px;
+  align-items: center;
+}
+
+#lucroChart {
+  width: 100% !important;
+
+  max-width: 800px;   
+}
+
 #dados {
   display: flex;
   margin: 0 auto;
@@ -332,10 +346,10 @@ h2 {
     background-color: rgba(255, 255, 255, 0.05);
     border-radius: 10px;
     margin-top: 10px;
-    margin-left: 10px;
+    margin-left: 25px;
     padding: 10px 50px;
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
-    min-width: 670px;
+    min-width: 1480px;
     max-width: auto;
 }
 
@@ -490,30 +504,16 @@ h2 {
     }
   }
   
-    .estatisticas{
-      flex-direction: column;
-      display: flex; 
-    }
-    .estatisticas h3 {
-      font-size: 20px;
-      color: rgb(197, 197, 197);
-      font-weight: bold;
-      margin-bottom: 28px;
-    }
+  
+  
 
-    .estatisticas div{
-      background-color: rgba(255, 255, 255, 0.05);
-      border-radius: 10px;
-      margin-top: 10px;
-      margin-left: 10px;
-      padding: 10px 50px;
-      box-shadow: 3px 3px 10px  rgba(0, 0, 0, 0.5);
-      min-width: 670px;
-      max-width: auto;
-    }
     #Principal{
       margin: 0px;
       padding: 0px;
-      width: 680px;
+      width: 79%;
     }
    
+    #Direita{
+      font-weight: 0px;
+
+    }

@@ -1,5 +1,7 @@
-from flask import Blueprint, render_template, session, redirect, url_for, flash
-from models import Usuario, Cargo, db 
+from flask import Blueprint, render_template, session, redirect, url_for, flash, jsonify
+from models import Usuario, Pedido, Produto, Despesa, Cargo, db 
+from sqlalchemy import func, extract, cast, Date
+from datetime import datetime, timedelta
 
 vendas_bp = Blueprint('vendas', __name__)
 
@@ -36,6 +38,82 @@ def vendas():
     imagem_usuario = usuario.imagem if usuario.imagem else 'default.png'
     print(imagem_usuario)  # Verifique se o nome da imagem está correto
 
-    return render_template('vendas.html', username=username,
-                           imagem_usuario=imagem_usuario,
-                           cargo=cargo_nome)
+    # Calcular as vendas anuais e mensais
+    hoje = datetime.now()
+    um_ano_atras = hoje - timedelta(days=365)
+    um_mes_atras = hoje - timedelta(days=30)
+
+    vendas_anuais = db.session.query(
+        func.sum(Produto.preco * Pedido.quantidade).label('total')
+    ).join(Pedido, Produto.id == Pedido.id_produto
+    ).filter(Pedido.finalizado == True, Pedido.data_pedido >= um_ano_atras).scalar() or 0
+
+    vendas_mensais = db.session.query(
+        func.sum(Produto.preco * Pedido.quantidade).label('total')
+    ).join(Pedido, Produto.id == Pedido.id_produto
+    ).filter(Pedido.finalizado == True, Pedido.data_pedido >= um_mes_atras).scalar() or 0
+
+    #FORMATAÇÃO
+    vendas_anuais_formatado = f'{vendas_anuais:,.2f}'.replace(",", ".")
+    vendas_mensais_formatado = f'{vendas_mensais:,.2f}'.replace(",", ".") if vendas_mensais else '0'
+
+    return render_template(
+        'vendas.html',
+        username=username,
+        imagem_usuario=imagem_usuario,
+        cargo=cargo_relacionado.nome,
+        vendas_anuais=vendas_anuais_formatado,
+        vendas_mensais=vendas_mensais_formatado
+    )
+    
+@vendas_bp.route("/dados-vendas")
+def dados():
+    if 'username' not in session:
+        flash('Você precisa fazer login primeiro!')
+        return redirect(url_for('auth.login'))
+    
+    username = session['username']
+    if username and username[0].islower():
+        username = username.capitalize()
+
+    usuario = Usuario.query.filter_by(usuario=username).first()
+    if not usuario:
+        flash('Usuário não encontrado!')
+        return redirect(url_for('auth.login'))
+
+    cargo_relacionado = usuario.cargo_relacionado
+    if not cargo_relacionado or cargo_relacionado.id not in [1, 2, 3, 4, 5]:
+        session.pop('username', None)
+        flash('Você não tem permissão para acessar o painel!')
+        return redirect(url_for('auth.login'))
+
+    hoje = datetime.now()
+    um_ano_atras = hoje - timedelta(days=365)
+
+    # Consultar os produtos mais vendidos no último ano
+    produtos_mais_vendidos = db.session.query(
+        Produto.nome,
+        func.sum(Pedido.quantidade).label('quantidade_vendida'),
+        func.sum(Produto.preco * Pedido.quantidade).label('lucro')
+    ).join(Pedido, Produto.id == Pedido.id_produto
+    ).filter(Pedido.finalizado == True, Pedido.data_pedido >= um_ano_atras).group_by(Produto.id).order_by(func.sum(Pedido.quantidade).desc()).limit(5).all()
+
+    # Organizar os dados dos produtos mais vendidos
+    produtos_dados = []
+    labels = []
+    vendas_produtos = []
+    for produto in produtos_mais_vendidos:
+        produtos_dados.append({
+            'nome': produto.nome,
+            'quantidade': produto.quantidade_vendida,
+            'lucro': produto.lucro
+        })
+        labels.append(produto.nome)  # Labels como nomes dos produtos
+        vendas_produtos.append(produto.lucro)  # Lucro de cada produto
+
+    # Retornar os dados em formato JSON
+    return jsonify({
+        'produtos_mais_vendidos': produtos_dados,
+        'labels': labels,
+        'vendas_produtos': vendas_produtos
+    })
