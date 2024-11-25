@@ -15,6 +15,7 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 -- Copiando dados para a tabela system4team.cargos: ~5 rows (aproximadamente)
+
 INSERT IGNORE INTO `cargos` (`id`, `nome`) VALUES
 	(1, 'Tech-Lead'),
 	(2, 'Senior'),

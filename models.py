@@ -127,3 +127,16 @@ class CodigoRecuperacao(db.Model):
     usuario_id = db.Column(db.Integer, db.ForeignKey('usuarios.id'), nullable=False)
     usado = db.Column(db.Boolean, default=True)
     usuario = db.relationship('Usuario', backref='codigos_recuperacao')
+
+class Despesa(db.Model):
+    __tablename__ = 'despesas'
+    
+    id = db.Column(db.Integer, primary_key=True)
+    id_empresa = db.Column(db.Integer, db.ForeignKey('empresas.id'))
+    valor = db.Column(db.Numeric(10, 2), nullable=False)
+    data_despesa = db.Column(db.DateTime, nullable=False)
+    
+    empresa_relacionada = db.relationship('Empresa', backref='despesas')
+    
+    def __repr__(self):
+        return f'<Despesa {self.id}, Valor {self.valor}, Data {self.data_despesa}>'

@@ -277,9 +277,7 @@ h2 {
 
 
 .profile {
-  --main-color: #000;
-  --submain-color: #78858F;
-  --bg-color: #fff;
+  background-color:#25374D;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   position: relative;
   width: 80%;
@@ -291,61 +289,66 @@ h2 {
   gap: 15px;
   flex-direction: row;
   align-items:flex-start ;
+  margin-left: 30px;
 }
 
-.profile__img {
-  height: 192px;
-  width: 100%;
-  display: none;
-}
-
-.profile__img svg {
-  height: 100%;
-  border-radius: 20px 20px 0 0;
-}
 
 .profile__avatar {
-  width: 100px;
-  height: 100px;
-  background: var(--bg-color);
+  width: 200px;
+  height: 200px;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   flex-shrink: 0 ;
+  border-radius: 100%;
+  align-items: center;
+  overflow: hidden;
+  margin-top: 20px;
+  margin-left: 15px;
 }
 
-.profile__avatar svg {
-  width: 80px;
-  height: 80px;
+.profile__avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
 }
 
 .profile__title {
   font-weight: 500;
-  font-size: 18px;
-  color: var(--main-color);
+  font-size: 40px;
+  color: black;
   display: flex;
   flex-direction: row;
   align-items: flex-start;
 }
 
 .profile__subtitle {
-  margin-top: 5px;
   font-weight: 400;
-  font-size: 15px;
-  color: var(--submain-color);
+  font-size: 40px;
+  color: rgba(10, 10, 10, 0.788);
 }
 
 
 .profile__content{
   display: flex;
   flex-direction: row;
-  align-items: flex-start
+  align-items: flex-start;
+  margin-left: 0;
+  margin-top:100px;
+  font-size: 40px;
 }
 
 .card{
-  width:700px;
-  height: 150px;
+  width:100%;
+  height:450px;
   display: flex;
-  align-items: center;
   gap: 15px;
+  justify-content: flex-start;
+  flex-direction: row;
+}
+
+.barra{
+  font-weight: bold;
+  color: black
 }

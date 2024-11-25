@@ -90,8 +90,10 @@
                 <img src="{{ url_for('static', filename='images/profile/' + imagem_usuario) }}" alt="Avatar" id="profile_avatar">
             </div>
             <div class="profile__content">
-                <div class="profile__title">{{ username }}</div>
-                <div class="profile__subtitle">{{ cargo }}</div>
+                <div class="profile__title">{{ username }}&nbsp;</div>|
+                <div class="profile__subtitle">&nbsp;{{ cargo }}</div>
+                <br>
+                <div class="profile__name">seu nome </div>
             </div>
         </div>
     </div>
