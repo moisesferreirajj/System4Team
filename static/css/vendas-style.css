@@ -1,103 +1,91 @@
+
 @charset "UTF-8";
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-  
+
 body {
   background-color: rgb(17, 30, 46);
   height: 100vh;
   width: 100%;
   color: #e6e6ef;
   display: flex;
-  transition: background-color 0.3s ease, color 0.5
 }
 
-body.light {
-  background-color: #fff;
-  color: white;
+html{
+  font-family: "Poppins", sans-serif;
 }
 
 #Principal {
-  width: 100%;
-  height: 100vh;
-  display: flex; 
-  margin-top: 5%;
-  margin-bottom: 0;
-}
-  
-body.light h2 {
-  color: black;
-}
-
-h2 {
-  color: white;
-  text-align: center;
-  font-size: 30px;
-}
-
-.card {
-  height: 100%;
-}
-
-.content {
-  color:white;
-  font-size:20px;
-  text-align: center;
-}
-
-#canvas-e-titulo{
-  width: 100%;
+  height: inherit;
+  width: inherit;
   display: flex;
+}
+
+.Vendas{
+  display: inherit;
+  font-weight: 100;
+  font-style: normal;
   flex-direction: column;
-  height:350px;
-  align-items: center;
-}
-
-#lucroChart {
-  width: 100% !important;
-
-  max-width: 800px;   
-}
-
-#dados {
-  display: flex;
-  margin: 0 auto;
-  padding: 0;
-  flex-direction: column;
-  height: 100vh;
   width: 100%;
-  justify-content: center;
-  text-align: center;
+  height: 40%;
 }
 
-#dados-botoes {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+#Vendas_Anuais_Mensais{
+  background-color: rgba(255, 255, 255, 0.05);
+  margin: 20px;
+  border-radius: 10px;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+  width: 50%;
+  padding: 20px;
 }
 
-#canvas-e-titulo{
-  width: 50rem;
-  display: flex;
+#VendasMensaisValor{
+  color: rgb(211, 211, 211);
   flex-direction: column;
-  height:350px;
-  align-items: center;
+  display: flex;
+}   
+
+.Meta{
+  background-color: rgba(255, 255, 255, 0.05);
+  margin: 20px;
+  border-radius: 10px;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+  height: 50%;
+  padding: 20px;
+  text-align: center;
+  width: 400px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*Sidebar do Painel*/
-#sidebar {
-  font-family: 'Poppins', sans-serif;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  background-color: rgb(37, 55, 77);
-  height: 100vh;
-  border-radius: 0px 18px 18px 0px;
-  position: relative;
-  transition: all .5s;
-  min-width: 82px;
-}
-
 #sidebar-content {
   padding: 12px;
+  height: 100%;
 }
 
 #user {
@@ -129,6 +117,7 @@ h2 {
   gap: 8px;
   padding: 0;
   list-style: none;
+  flex-grow: 1;
 }
 
 .side_item {
@@ -196,7 +185,6 @@ h2 {
   color:rgba(255, 0, 0, 0.795)
 }
 
-
 #open_btn {
   position: absolute;
   top: 30px;
@@ -249,6 +237,197 @@ h2 {
   justify-content: flex-start;
 }
 
+@media (min-width:900px) {
+  #sidebar {
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: rgb(37, 55, 77);
+    height: 100vh;
+    border-radius: 0px 18px 18px 0px;
+    position: relative;
+    transition: all .5s;
+    min-width: 82px;
+  }
+}
+@media (max-width:899px){
+  #sidebar {
+    font-family: 'Poppins', sans-serif;
+    display: flex;    
+    flex-direction: column;
+    justify-content: space-between; 
+    background-color: rgb(37, 55, 77);
+    height: 100vh;
+    border-radius: 0px 18px 18px 0px;
+    position: absolute;
+    transition: all .5s;
+    min-width: 82px;
+    z-index: 1;
+  }
+
+  #sidebar.open-sidebar {
+    position: fixed;
+  }
+
+  #Principal {
+    margin-left: 120px;
+  }
+}
+@media (max-width: 820px) {
+  #Principal {
+    margin: 0 auto;
+    padding-bottom: 60px; /* Espaço para a barra horizontal */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  #dados {
+    margin: 0 auto;
+    margin-top: 10%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    height: 4.5rem;
+    cursor: pointer;
+    width: 10rem;
+    background-color: #2a5ec5;
+    border-radius: 20px;
+  }
+  
+  .card:hover {
+    background-color: #1a5ada;
+  }
+
+  #canvas-e-titulo{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    height:350px;
+    align-items: center;
+  }
+  
+  #lucroChart {
+    width: 100% !important;
+  
+    max-width: 800px;   
+  }
+
+  #sidebar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    background-color: rgb(37, 55, 77);
+    padding: 10px 0;
+    border-radius: 0;
+    z-index: 1000;
+  }
+
+  #sidebar-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    justify-content: space-around;
+    padding: 0;
+  }
+
+  #side_items {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 0;
+    padding: 0;
+    width: 100%;
+  }
+
+  .side_item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    padding: 10px 15px;
+    gap: 8px;
+  }
+
+  .side_item a {
+    justify-content: center;
+  }
+
+  #user {
+    display: none;
+  }
+
+  #logout {
+    position: fixed;
+    border: none;
+    padding: 0;
+    margin: 0;
+    top: 20px;
+    right: 0;
+    margin-bottom: 16px;
+  }
+
+  #logout_btn {
+    align-items: center;
+    gap: 14px;
+    border: none;
+    padding: 12px;
+    display: flex;
+    color:white;
+  }
+
+  #open_btn {
+    display: none;
+  }
+
+  #toggle-theme {
+    top: 0;
+  }
+
+  @media (max-width: 370px) {
+    #sidebar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: auto;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      background-color: rgb(37, 55, 77);
+      overflow-x: auto;
+      white-space: nowrap;
+      padding: 10px 0;
+      z-index: 1000;
+    }
+
+    #side_items {
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+      padding: 0;
+      margin: 0;
+    }
+
+    .side_item {
+      flex-shrink: 0;
+      padding: 10px 15px;
+    }
+  }
+}
+
 
 /**Scroll Página**/
 ::-webkit-scrollbar {
@@ -263,257 +442,3 @@ h2 {
   background-color: #1146c3;
   border-radius: 15px;
 } 
-.card {
-    width: 250px;
-    background: rgb(44, 44, 44);
-    font-family: "Courier New", Courier, monospace;
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-    overflow: hidden;
-    margin-bottom:50px;
-  }
-
-  .card__title {
-    color: white;
-    font-weight: bold;
-    padding: 5px 10px;
-    border-bottom: 1px solid rgb(167, 159, 159);
-    font-size: 0.95rem;
-  }
-  
-  .card__data {
-    font-size: 0.8rem;
-    display: flex;
-    justify-content: space-between;
-    border-right: 1px solid rgb(203, 203, 203);
-    border-left: 1px solid rgb(203, 203, 203);
-    border-bottom: 1px solid rgb(203, 203, 203);
-  }
-  
-  .card__right {
-    width: 60%;
-    border-right: 1px solid rgb(203, 203, 203);
-  }
-  
-  .card__left {
-    width: 40%;
-    text-align: end;
-  }
-  
-  .item {
-    padding: 3px 0;
-    background-color: white;
-  }
-  
-  .card__right .item {
-    padding-left: 0.8em;
-  }
-  
-  .card__left .item {
-    padding-right: 0.8em;
-  }
-  
-  .item:nth-child(even) {
-    background: rgb(234, 235, 234);
-  }
-  
-
-
-  #Vendas_Anuais_Mensais {
-    text-align: inherit;
-}
-
-.vendas h3 {
-    font-size: 20px;
-    color: rgb(197, 197, 197);
-    font-weight: bold;
-    margin-bottom: 28px;
-}
-
-.vendas {
-    flex-direction: column;
-    display: flex;
-}
-
-.vendas h1 {
-    font-size: 60px;
-    font-weight: 400;
-}
-
-.vendas div {
-    background-color: rgba(255, 255, 255, 0.05);
-    border-radius: 10px;
-    margin-top: 10px;
-    margin-left: 25px;
-    padding: 10px 50px;
-    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
-    min-width: 1480px;
-    max-width: auto;
-}
-
-.vendas {
-    flex-direction: column;
-    display: flex;
-    margin-top: 1px;
-}
-
-
-  
-  .Meta {
-    flex-direction: column;
-    display: flex;
-  }
-  
-  #MetaVendas h3 {
-    font-size: 20px;
-    color: rgb(197, 197, 197);
-    font-weight: bold;
-    margin-bottom: 30px;
-    height: 32px;
-  }
-  
-  #MetaVendas h1 {
-    color: rgb(255, 255, 255);
-    margin-left: 5px;
-    font-weight: 400;
-    font-size: 60px;
-    border-bottom: 0.5px solid #ffffff52;
-    margin: 5px;
-  }
-  
-  #MetaValor2,
-  #MetaValor3 {
-    font-weight: 400;
-    font-size: 30px;
-    color: rgb(230, 229, 229);
-  }
-  
-  #MetaVendas {
-    background-color: rgba(255, 255, 255, 0.05);
-    border-radius: 10px;
-    margin-top: 10px;
-    margin-left: 10px;
-    padding: 10px 50px;
-    box-shadow: 3px 3px 10px  rgba(0, 0, 0, 0.5);
-  }
-  
-  /* Estilos para a nova seção de Produtos */
-  .Produto {
-    margin-top: 1px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  
-  #TopProdutos {
-    background-color: rgba(255, 255, 255, 0.05);
-    margin-top: 10px;
-    border-radius: 10px;
-    margin-left: 10px;
-    padding: 10px 50px;
-    box-shadow: 3px 3px 10px  rgba(0, 0, 0, 0.5);
-    position: relative;
-  }
-  
-  #TopProdutos h3 {
-    font-size: 20px;
-    color: rgb(197, 197, 197);
-    font-weight: bold;
-    margin-bottom: 20px;
-  }
-  
-  #TopProdutos h1 {
-    color: rgb(255, 255, 255);
-    margin-left: 5px;
-    font-weight: 400;
-    font-size: 60px;
-    border-bottom: 0.5px solid #ffffff52;
-    margin: 5px;
-  }
-  
-  #Produto2, #Produto3 {
-    font-weight: 400;
-    color: rgb(230, 229, 229);
-  }
-  
-  #Produto1 {
-    color: rgb(255, 255, 255);
-    margin-left: 5px;
-    font-weight: 400;
-    font-size: 50px;
-    margin: 5px;
-  }
-  
-  #Produto2 {
-    font-size: 20px;
-  }
-  
-  #Produto3 {
-    font-size: 20px;
-  }
-  
-  /* Responsividade - Ajustes para dispositivos menores */
-  
-  /* Para telas de até 768px (tablets e celulares pequenos) */
-  @media (max-width: 768px) {
-    .vendas, .Meta, .Produto {
-      padding: 10px;
-    }
-  
-    .vendas h1, #MetaVendas h1, #TopProdutos h1 {
-      font-size: 40px;
-    }
-  
-    .vendas h3, #MetaVendas h3, #TopProdutos h3 {
-      font-size: 18px;
-    }
-  
-    .vendas div, #MetaVendas, #TopProdutos {
-      padding: 10px 20px;
-      margin-left: 0;
-      width: 100%;
-    }
-  
-    #MetaValor2, #MetaValor3, #Produto1, #Produto2, #Produto3 {
-      font-size: 24px;
-    }
-  }
-  
-  /* Para telas de até 480px (celulares) */
-  @media (max-width: 480px) {
-    .vendas h1, #MetaVendas h1, #TopProdutos h1 {
-      font-size: 30px;
-    }
-  
-    .vendas h3, #MetaVendas h3, #TopProdutos h3 {
-      font-size: 16px;
-    }
-  
-    #MetaValor2, #MetaValor3, #Produto1, #Produto2, #Produto3 {
-      font-size: 20px;
-    }
-  
-    .vendas div, #MetaVendas, #TopProdutos {
-      padding: 10px;
-    }
-  
-    #TopProdutos {
-      padding: 10px;
-    }
-  }
-  
-  
-  
-
-    #Principal{
-      margin: 0px;
-      padding: 0px;
-      width: 79%;
-    }
-   
-    #Direita{
-      font-weight: 0px;
-
-    }
