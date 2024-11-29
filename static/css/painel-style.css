@@ -484,3 +484,13 @@ h2 {
   background-color: #1146c3;
   border-radius: 15px;
 }
+
+/* Parte Branca(Apartheid Reverso) */
+body.light {
+  background-color: #fff;
+  color: white;
+}
+
+body.light h2 {
+  color: black;
+}

@@ -11,7 +11,6 @@ def gerar_relatorio_pdf():
     if 'username' not in session:
         flash('Você precisa fazer login primeiro!')
         return redirect(url_for('auth.login'))
-
     username = session['username']
     if username and username[0].islower():
         username = username.capitalize()

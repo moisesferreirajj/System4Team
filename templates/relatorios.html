@@ -55,7 +55,7 @@
                     </a>
                 </li>
                 <li class="side_item">
-                    <a href="#">
+                    <a href="/clientes">
                         <i class="fa-solid fa-user"></i>
                         <span class="item-description">
                             Clientes
@@ -85,14 +85,15 @@
         </div>
                 
     </nav>
-    <div class="opop">
+
+    <section class="opop">
         <form method="POST" action="/relatorios">
             <fieldset class="input-wrapper">
-                <legend>Pesquisar</legend>
+                <i class="fa-solid fa-magnifying-glass"></i>
                 
                 <!-- SELEÇÃO DE MÊS -->
                 <select name="mes" id="mes" class="input">
-                    <option value="">Escolha</option>
+                    <option value="">Pesquisar</option>
                     {% for mes_ano in meses_anos %}
                         <option value="{{ mes_ano[0] }}">{{ meses_portugues[mes_ano[0] - 1] }}</option>
                     {% endfor %}
@@ -147,16 +148,22 @@
                         {% endfor %}
                     </tbody>
                 </table>
-                <p>Total de Vendas: R$ {{ total_vendas }}</p>
-                <p>Total de Pedidos: {{ total_pedidos }}</p>
-            {% else %}
-                <p>Nenhum pedido encontrado para o período selecionado.</p>
-            {% endif %}
+                <div id="p-total">
+                    <div id="total-vendas">
+                        <h5>Total de Vendas: </h5>
+                        <p>R$ {{ total_vendas }}</p>
+                    </div>
+                    <div id="total-pedidos">
+                        <h5>Total de Pedidos:</h5>  
+                        <p>{{ total_pedidos }}</p> 
+                    </div> 
+                    {% else %}
+                        <p>Nenhum pedido encontrado para o período selecionado.</p>
+                    {% endif %}
+                </div>
         </div>
-    </div>
-            
     </section>
-    
+
     <button id="toggle-theme" style="background: none; border: none; cursor: pointer; position: fixed; bottom: 20px; right: 20px; z-index: 1000;">
         <span id="theme-icon">☀️</span>
     </button>

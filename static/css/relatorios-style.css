@@ -16,12 +16,13 @@ body.light {
   color: white;
 }
 
-#Principal {
-  width: 100%;
+.opop {
+  flex-direction: column;
+  align-items:center;
+  justify-content:center;
+  margin: 0 auto;
+  width:100%;
   height: 100vh;
-  display: flex; 
-  margin-top: 5%;
-  margin-bottom: 0;
 }
   
 body.light h2 {
@@ -232,7 +233,7 @@ h2 {
     justify-content: space-between;
     background-color: rgb(37, 55, 77);
     height: 100vh;
-    border-radius: 0px 18px 18px 0px;
+    border-radius: 0px 0px 18px 0px;
     position: relative;
     transition: all .5s;
     min-width: 82px;
@@ -453,24 +454,8 @@ h2 {
   }
 }
 
-
-/**Scroll Página**/
-::-webkit-scrollbar {
-  width:13px;
-}
-
-::-webkit-scrollbar-track {
-  background: rgb(37, 55, 77) ;
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: #1146c3;
-  border-radius: 15px;
-}
-
-
 .input-wrapper {
-  width: 100%;
+  width: 100% !important;
   height: 45px;
   padding: 5px;
   box-sizing: content-box;
@@ -482,18 +467,6 @@ h2 {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-
-}
-
-.legend {
-  color: white;
-  margin-right:10px;
-  padding:5px;
-}
-
-.select-wrapper {
-  display: flex;
-  align-items: center;
 }
 
 .input {
@@ -577,20 +550,15 @@ button.relatorio-btn:hover {
   margin-left:40px;  
 }
 
-.label{
-  margin-left:20px;
-}
-
 table {
   width: 100%;
   background: rgb(17, 25, 36);
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  border-top-left-radius: 12px;
-  border-top-right-radius: 12px;
-  border-bottom-left-radius: 4px;
-  border-bottom-right-radius: 4px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
   overflow: hidden;
-  margin-left:10px;
 }
 
 .tb-title {
@@ -617,18 +585,12 @@ form{
 }
 
 .tabela{
-  width:100%;
+  width:80%;
+  margin: 0 auto;
 }
 
 .tb-title, .itns {
   text-align:left;
-}
-.opop {
-  flex-direction: column;
-  align-items:center;
-  justify-content:center;
-  width:100%;
-  margin-right:10px;
 }
 
 .desc:hover::after {
@@ -667,10 +629,50 @@ form{
   z-index: 9;
 }
 
-p {
-  margin: 10px 10px;
-}
-
 .desc:hover{
   cursor: pointer;
 }
+
+#p-total {
+  background: rgb(44, 56, 72);
+  border-radius: 10px;
+  width: 15rem;
+  padding: 1%;
+}
+
+#total-vendas, #total-pedidos {
+  background: rgba(83, 99, 119, 0.63);  
+  padding-top: 2%;
+  padding-bottom: 2%;
+  padding-left: 5%;
+  padding-right: 5%;
+  border-radius: 5px;
+}
+
+#total-vendas{
+  margin-bottom: 7%;
+}
+
+h5 { 
+  margin: 2% auto;
+  font-size: 20px;
+}
+
+p {
+  margin: 0 auto;
+  font-size: 15px;
+}
+
+/**Scroll Página**/
+::-webkit-scrollbar {
+  width:13px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(37, 55, 77) ;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #1146c3;
+  border-radius: 15px;
+} 
