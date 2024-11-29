@@ -34,7 +34,7 @@ h2 {
   font-size: 30px;
 }
 
-.profile {
+.card {
   height: 100%;
 }
 
@@ -453,6 +453,7 @@ h2 {
   }
 }
 
+
 /**Scroll Página**/
 ::-webkit-scrollbar {
   width:13px;
@@ -467,172 +468,193 @@ h2 {
   border-radius: 15px;
 }
 
-
-
-.card{
-  width:83%;
-  height:96.5%;
-  display: flex;
-  padding: 10px;
-  flex-direction: column;
+table {
+  width: 98.5%;
+  background: rgb(17, 25, 36);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   border-radius: 10px;
-  margin-left:50px;
-  background: rgb(17, 36, 59);
-  margin-top:20px;
-  
-}
-
-.profile__action {
-  display: inline-flex;
-  align-items: center;
-  font-size: 20px;
-  margin-top: 15px;
-  gap: 0;
-}
-
-.profile__action svg {
-  width: 20px;
-  height: 20px;
-
-}
-
-.profile__avatar {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  flex-shrink: 0 ;
-  border-radius: 100%;
-  align-items: center;
   overflow: hidden;
-  margin-top: 20px;
-  margin-left: 15px;
+  margin-left: 10px;
 }
-
-.profile__avatar img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 50%;
-}
-
-.profile__title {
-  font-weight: 500;
-  font-size: 45px;
-  color: rgb(255, 255, 255);
-  margin-top:100px;
-  margin-left:20px;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-}
-.barra {
-  margin-top:100px;
-  color:rgba(240, 233, 233, 0.525);
-}
-.profile__subtitle {
-  font-weight: 400;
-  font-size: 45px;
-  color: rgb(255, 255, 255);
-  margin-top:100px;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-}
-
-
-.profile__content{
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  margin-left: 20px;
-  font-size: 40px;
-}
-
-.profile__name{
-  margin-top: -10px;
-  margin-bottom:7.5px;
-  margin-left:200px;
-  font-size: 20px;
-  color: rgba(240, 233, 233, 0.525);
-  padding:5px 10px;
-  border-radius: 5px;
-  background: transparent;
-  font-weight:bold;
-}
-
-.card .separator {
-  border-top: 1.5px solid #42434a8e;
-}
-
-.card .list {
-  list-style-type: none;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding: 0px 10px;
-}
-
-.card .list .element {
-  display: flex;
-  align-items: center;
-  color: #7e8590;
-  transition: all 0.3s ease-out;
-  padding: 2px 3.5px;
-  border-radius: 6px;
-  cursor: pointer;
-  margin-left: 0;
-  margin-bottom: -10px;
+form{
   width:100%;
-  box-sizing: border-box;
+  margin-bottom:20px;
 }
 
-.card .list .element svg {
-  width: 19px;
-  height: 19px;
-  transition: all 0.3s ease-out;
-  margin-right: 15px;
-  margin-left:10px;
+.search-bar {
+    width: 100%;
+    height: 45px;
+    padding: 5px;
+    box-sizing: content-box;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
-.card .list .element:hover {
-  background-color: #5353ff;
-  color: #ffffff;
-  transform: translate(2px);
-}
-.card .list .delete:hover {
-  background-color: #8e2a2a;
+.tabela{
+    width:100%
 }
 
-.card .list .element:active {
-  transform: scale(0.99);
+.search{
+    background-color: #0241be;
+    color:white;
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    border-style: none;
+    margin-right:40px;
+    border: 1px solid #0241be;
+    border-radius:0 20px 20px 0;
+    transition: background-color 0.5s ease, color 0.5s ease;
 }
 
-.card .list:not(:last-child) .element:hover svg {
-  stroke: #ffffff;
+.search:hover{
+    background-color: #ffffff;
+    color:#0241be;
+    border: 1px solid transparent;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
 }
 
-.card .list:last-child svg {
-  stroke: #bd89ff;
-}
-.card .list:last-child .element {
-  color: #bd89ff;
-}
-
-.card .list:last-child .element:hover {
-  background-color: rgba(56, 45, 71, 0.836);
+.input[type="text"]{
+    background-color:rgb(37, 55, 77);
+    border: 1px solid rgba(37, 55, 77, 0.575);
+    color:white;
+    border-radius: 10px 0 0 10px;
+    padding-left:10px;
+    margin-left:350px;
 }
 
-.list{
-  gap:12px;
+.input[type="text"]::placeholder{
+    color:rgb(177, 177, 177);
 }
 
-.subcard{
-  width:83%;
-  height:90%;
-  display: flex;
-  padding: 10px 20px;
-  flex-direction: column;
-  border-radius: 10px;
-  position: relative;
-  margin-left:50px;
-  background: rgb(17, 30, 46);
-  margin-bottom: 20px;
+.add-client{
+    background-color: #0241be;
+    color:white;
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    border-style: none;
+    margin-right:40px;
+    border: 1px solid #0241be;
+    border-radius:20px;
+    transition: background-color 0.5s ease, color 0.5s ease;
+
+}
+.add-client:hover{
+    background-color: #ffffff;
+    color:#0241be;
+    border: 1px solid transparent;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+}
+
+.edit{
+    color:rgb(64, 199, 52);
+    border-radius: 5px;
+    background-color: transparent;
+    border: none;
+}
+
+.delete{
+    color:rgb(228, 2, 2);
+    border-radius: 5px;
+    background-color: transparent;
+    border: none;
+}
+
+.actions svg{
+    width:15px;
+    height:15px;
+    margin-bottom: 5px;
+ }
+
+ td, th{
+    padding-left:5px;
+ }
+
+ .fields:nth-child(even) {
+    background: rgb(17, 25, 36);
+    color: #e6e6ef
+  }
+  
+  .fields:nth-child(odd) {
+    color: #e6e6ef;
+    background: rgb(0, 38, 90);
+  }
+
+  /* Modal container */
+#addClientModal {
+    
+}
+
+/* Modal dialog */
+#addClientModal .modal-dialog {
+
+}
+
+/* Modal content */
+#addClientModal .modal-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 350px;
+    padding: 20px;
+    padding-bottom:-30px;
+    border-radius: 20px;
+    position: relative;
+    background-color: #1a1a1a;
+    color: #fff;
+    border: 1px solid #333;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+/* Modal header */  
+#addClientModal .modal-header {
+    
+}
+
+/* Modal title */
+#addClientModal .modal-title {
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: -1px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    color: #00bfff; 
+}
+
+/* Close button */
+#addClientModal .btn-close {
+    color:white;
+}
+
+/* Modal body */
+#addClientModal .modal-body {
+    
+}
+
+/* Form input fields */
+#addClientModal .form-label {
+    
+}
+
+#addClientModal .form-control {
+    
+}
+
+/* Modal footer */
+#addClientModal .modal-footer {
+}
+
+/* Cancel button */
+#addClientModal .btn-secondary {
+    
+}
+
+/* Save button */
+#addClientModal .btn-primary {
+    
 }

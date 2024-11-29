@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System4Team - Relatórios</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/clients.css') }}">
+    <script src="{{ url_for('static', filename='js/theme.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/clientes.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/navbar.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/favicon.png') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>      
+    <nav id="sidebar">
+        <div id="sidebar-content">
+            <div id="user">
+                <img src="{{ url_for('static', filename='images/profile/' + imagem_usuario) }}" alt="Logo" id="logo-sidebar">
+
+                <p id="user_infos">
+                    <span class="item-description">{{ username }}</span>
+                    <span class="item-description">Cargo: {{ cargo }}</span>
+                </p>
+            </div>
+
+            <!-- NAVBAR BY MOISES AND YOHAN -->
+            <ul id="side_items">
+                <li class="side_item">
+                    <a href="/painel">
+                        <i class="fa-solid fa-house"></i>
+                        <span class="item-description">
+                            Inicio
+                        </span>
+                    </a>
+                </li>
+                
+                <li class="side_item">
+                    <a href="/vendas">
+                        <i class="fa-solid fa-money-bill-1"></i>
+                        <span class="item-description">
+                            Vendas
+                        </span>
+                    </a>
+                </li>
+                <li class="side_item">
+                    <a href="/relatorios">
+                        <i class="fa-solid fa-chart-line"></i>
+                        <span class="item-description">
+                            Relatórios
+                        </span>
+                    </a>
+                </li>
+                <li class="side_item active">
+                    <a href="/clientes">
+                        <i class="fa-solid fa-user"></i>
+                        <span class="item-description">
+                            Clientes
+                        </span>
+                    </a>
+                </li>
+                <li class="side_item">
+                    <a href="/configuracoes">
+                        <i class="fa-solid fa-gear"></i>
+                        <span class="item-description">
+                            Configurações
+                        </span>
+                    </a>
+                </li>
+            </ul>
+
+            <button id="open_btn">
+                <i class="fa-solid fa-chevron-right" id="open_btn_icon"></i>
+            </button>
+        </div>
+
+        <div id="logout">
+            <a href="{{ url_for('auth.logout') }}" id="logout_btn" style="width: 100%; text-decoration: none;">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <span class="item-description">Logout</span>
+            </a>
+        </div>     
+    </nav>
+    <div class="tabela">
+        <h2>Clientes</h2>
+        <div class="search-bar">
+            <input class="input" type="text" placeholder="Pesquisar clientes...">
+            <button class="search">Pesquisar</button>
+            <button class="add-client" data-bs-toggle="modal" data-bs-target="#addClientModal">+ Adicionar Cliente</button>
+        </div>
+        
+
+        <table class="clients">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>Telefone</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="fields">
+                    <td>001</td>
+                    <td>DeideCosta</td>
+                    <td>BalãoSuspeito@email.com</td>
+                    <td>(11) 98765-4321</td>
+                    <td class="actions">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#40c734"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M21.2799 6.40005L11.7399 15.94C10.7899 16.89 7.96987 17.33 7.33987 16.7C6.70987 16.07 7.13987 13.25 8.08987 12.3L17.6399 2.75002C17.8754 2.49308 18.1605 2.28654 18.4781 2.14284C18.7956 1.99914 19.139 1.92124 19.4875 1.9139C19.8359 1.90657 20.1823 1.96991 20.5056 2.10012C20.8289 2.23033 21.1225 2.42473 21.3686 2.67153C21.6147 2.91833 21.8083 3.21243 21.9376 3.53609C22.0669 3.85976 22.1294 4.20626 22.1211 4.55471C22.1128 4.90316 22.0339 5.24635 21.8894 5.5635C21.7448 5.88065 21.5375 6.16524 21.2799 6.40005V6.40005Z" stroke="#40c734" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M11 4H6C4.93913 4 3.92178 4.42142 3.17163 5.17157C2.42149 5.92172 2 6.93913 2 8V18C2 19.0609 2.42149 20.0783 3.17163 20.8284C3.92178 21.5786 4.93913 22 6 22H17C19.21 22 20 20.2 20 18V13" stroke="#40c734" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+                        <button class="edit" >Editar</button>
+                        <svg fill="#e40202" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" stroke="#e40202"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M831.24 280.772c5.657 0 10.24-4.583 10.24-10.24v-83.528c0-5.657-4.583-10.24-10.24-10.24H194.558a10.238 10.238 0 00-10.24 10.24v83.528c0 5.657 4.583 10.24 10.24 10.24H831.24zm0 40.96H194.558c-28.278 0-51.2-22.922-51.2-51.2v-83.528c0-28.278 22.922-51.2 51.2-51.2H831.24c28.278 0 51.2 22.922 51.2 51.2v83.528c0 28.278-22.922 51.2-51.2 51.2z"></path><path d="M806.809 304.688l-58.245 666.45c-.544 6.246-6.714 11.9-12.99 11.9H290.226c-6.276 0-12.447-5.654-12.99-11.893L218.99 304.688c-.985-11.268-10.917-19.604-22.185-18.619s-19.604 10.917-18.619 22.185l58.245 666.45c2.385 27.401 26.278 49.294 53.795 49.294h445.348c27.517 0 51.41-21.893 53.796-49.301l58.244-666.443c.985-11.268-7.351-21.201-18.619-22.185s-21.201 7.351-22.185 18.619zM422.02 155.082V51.3c0-5.726 4.601-10.342 10.24-10.342h161.28c5.639 0 10.24 4.617 10.24 10.342v103.782c0 11.311 9.169 20.48 20.48 20.48s20.48-9.169 20.48-20.48V51.3c0-28.316-22.908-51.302-51.2-51.302H432.26c-28.292 0-51.2 22.987-51.2 51.302v103.782c0 11.311 9.169 20.48 20.48 20.48s20.48-9.169 20.48-20.48z"></path><path d="M496.004 410.821v460.964c0 11.311 9.169 20.48 20.48 20.48s20.48-9.169 20.48-20.48V410.821c0-11.311-9.169-20.48-20.48-20.48s-20.48 9.169-20.48 20.48zm-192.435 1.767l39.936 460.964c.976 11.269 10.903 19.612 22.171 18.636s19.612-10.903 18.636-22.171l-39.936-460.964c-.976-11.269-10.903-19.612-22.171-18.636s-19.612 10.903-18.636 22.171zm377.856-3.535l-39.936 460.964c-.976 11.269 7.367 21.195 18.636 22.171s21.195-7.367 22.171-18.636l39.936-460.964c.976-11.269-7.367-21.195-18.636-22.171s-21.195 7.367-22.171 18.636z"></path></g></svg>
+                        <button class="delete">Excluir</button>
+                    </td>
+                </tr>
+                <tr class="fields">
+                    <td>002</td>
+                    <td>John Cena</td>
+                    <td>WWE@email.com</td>
+                    <td>(21) 91234-5678</td>
+                    <td class="actions">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#40c734"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M21.2799 6.40005L11.7399 15.94C10.7899 16.89 7.96987 17.33 7.33987 16.7C6.70987 16.07 7.13987 13.25 8.08987 12.3L17.6399 2.75002C17.8754 2.49308 18.1605 2.28654 18.4781 2.14284C18.7956 1.99914 19.139 1.92124 19.4875 1.9139C19.8359 1.90657 20.1823 1.96991 20.5056 2.10012C20.8289 2.23033 21.1225 2.42473 21.3686 2.67153C21.6147 2.91833 21.8083 3.21243 21.9376 3.53609C22.0669 3.85976 22.1294 4.20626 22.1211 4.55471C22.1128 4.90316 22.0339 5.24635 21.8894 5.5635C21.7448 5.88065 21.5375 6.16524 21.2799 6.40005V6.40005Z" stroke="#40c734" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M11 4H6C4.93913 4 3.92178 4.42142 3.17163 5.17157C2.42149 5.92172 2 6.93913 2 8V18C2 19.0609 2.42149 20.0783 3.17163 20.8284C3.92178 21.5786 4.93913 22 6 22H17C19.21 22 20 20.2 20 18V13" stroke="#40c734" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+                        <button class="edit">Editar</button>
+                        <svg fill="#e40202" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" stroke="#e40202"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M831.24 280.772c5.657 0 10.24-4.583 10.24-10.24v-83.528c0-5.657-4.583-10.24-10.24-10.24H194.558a10.238 10.238 0 00-10.24 10.24v83.528c0 5.657 4.583 10.24 10.24 10.24H831.24zm0 40.96H194.558c-28.278 0-51.2-22.922-51.2-51.2v-83.528c0-28.278 22.922-51.2 51.2-51.2H831.24c28.278 0 51.2 22.922 51.2 51.2v83.528c0 28.278-22.922 51.2-51.2 51.2z"></path><path d="M806.809 304.688l-58.245 666.45c-.544 6.246-6.714 11.9-12.99 11.9H290.226c-6.276 0-12.447-5.654-12.99-11.893L218.99 304.688c-.985-11.268-10.917-19.604-22.185-18.619s-19.604 10.917-18.619 22.185l58.245 666.45c2.385 27.401 26.278 49.294 53.795 49.294h445.348c27.517 0 51.41-21.893 53.796-49.301l58.244-666.443c.985-11.268-7.351-21.201-18.619-22.185s-21.201 7.351-22.185 18.619zM422.02 155.082V51.3c0-5.726 4.601-10.342 10.24-10.342h161.28c5.639 0 10.24 4.617 10.24 10.342v103.782c0 11.311 9.169 20.48 20.48 20.48s20.48-9.169 20.48-20.48V51.3c0-28.316-22.908-51.302-51.2-51.302H432.26c-28.292 0-51.2 22.987-51.2 51.302v103.782c0 11.311 9.169 20.48 20.48 20.48s20.48-9.169 20.48-20.48z"></path><path d="M496.004 410.821v460.964c0 11.311 9.169 20.48 20.48 20.48s20.48-9.169 20.48-20.48V410.821c0-11.311-9.169-20.48-20.48-20.48s-20.48 9.169-20.48 20.48zm-192.435 1.767l39.936 460.964c.976 11.269 10.903 19.612 22.171 18.636s19.612-10.903 18.636-22.171l-39.936-460.964c-.976-11.269-10.903-19.612-22.171-18.636s-19.612 10.903-18.636 22.171zm377.856-3.535l-39.936 460.964c-.976 11.269 7.367 21.195 18.636 22.171s21.195-7.367 22.171-18.636l39.936-460.964c.976-11.269-7.367-21.195-18.636-22.171s-21.195 7.367-22.171 18.636z"></path></g></svg>
+                        <button class="delete">Excluir</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- Modal de Adicionar Cliente -->
+        <div class="modal fade" id="addClientModal" tabindex="-1" aria-labelledby="addClientModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="addClientModalLabel">Cadastro de Cliente</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                    <label for="clientName" class="form-label">Nome</label>
+                    <input type="text" class="form-control" id="clientName" placeholder="Digite o nome do cliente" required>
+                    </div>
+                    <div class="mb-3">
+                    <label for="clientEmail" class="form-label">E-mail</label>
+                    <input type="email" class="form-control" id="clientEmail" placeholder="Digite o e-mail" required>
+                    </div>
+                    <div class="mb-3">
+                    <label for="clientPhone" class="form-label">Telefone</label>
+                    <input type="text" class="form-control" id="clientPhone" placeholder="Digite o telefone" required>
+                    </div>
+                    <div class="mb-3">
+                    <label for="clientAddress" class="form-label">Endereço</label>
+                    <input type="text" class="form-control" id="clientAddress" placeholder="Digite o endereço" required>
+                    </div>
+                </form>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" id="saveClientButton">Salvar</button>
+                </div>
+            </div>
+            </div>
+        </div>
+  
+  
+
+        
+    </main>
+    
+    <button id="toggle-theme" style="background: none; border: none; cursor: pointer; position: fixed; bottom: 20px; right: 20px; z-index: 1000;">
+        <span id="theme-icon">☀️</span>
+    </button>
+
+    <!-- MENSAGENS ERRO -->
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <script>
+            alert("{{ messages[0] }}");
+        </script>
+      {% endif %}
+    {% endwith %}
+
+ </body>
+</html>

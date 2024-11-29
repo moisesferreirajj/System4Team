@@ -38,7 +38,7 @@ html{
   font-weight: 100;
   font-style: normal;
   flex-direction: column;
-  width: 70%;
+  width: 30%;
   height: 40%;
   margin-left: 1%;
   margin-top: 1%;
@@ -57,8 +57,22 @@ h3 {
 
 #VendasMensaisValor{
   color: rgb(211, 211, 211);
-  flex-direction: column
+  flex-direction: column;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 20px;
+margin-bottom: 10px;
+
 }   
+
+#VendasAnuaisValor{
+  color: rgb(211, 211, 211);
+  flex-direction: column;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
 
 #canvas {
   background-color: rgba(255, 255, 255, 0.05);
@@ -78,12 +92,41 @@ h3 {
 #Vendas_Anuais_Mensais h1 {
   margin: auto;
   text-align: center;
+}
+
+#MetaVendas{
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+  padding: 20px;
+
+}
+.MetaProgresso{
+  color: rgb(211, 211, 211);
+  flex-direction: column;
   background-color: rgba(255, 255, 255, 0.1);
   padding: 20px;
   border-radius: 20px;
   margin-bottom: 10px;
-  width:50%;
+  text-align: center;
 }
+
+.MetaSubtitulo{
+  color: rgb(211, 211, 211);
+  font-size: 29px;
+  text-align: center;
+  font-weight: 100px;
+
+}
+
+#MetaTitulo{
+  font-size: 25px;
+  margin-bottom: 5px;
+  border-bottom: 3px solid rgba(211, 211, 211, 0.545);
+  font-weight: 100px;
+    
+}
+
 
 #Pedidos {
   display: flex;
@@ -94,7 +137,8 @@ h3 {
   box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
   padding: 20px;
   color: #e6e6ef;
-  width: 60%;
+  width: 50%;
+  margin-top: 10px;
 }
 
 #GerenciarPedidos {
@@ -125,16 +169,28 @@ h3 {
 
 #ListaPedidos {
   margin-top: 20px;
+  overflow-y: auto;
+  border: 3px solid rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  scrollbar-color: rgb(36, 36, 36); 
 }
-
+#ListaPedidos::-webkit-scrollbar-thumb {
+  background: rgba(17, 30, 46, 0.531);
+  border: 2px solid rgba(255, 255, 255, 0.05);
+}
+#VendasTitulo{
+  margin-bottom: 5px;
+}
 #ListaPedidos h3 {
   margin-bottom: 10px;
 }
 
 #PedidosLista {
   list-style: none;
+  list-style-type: none;
   padding: 0;
   color: #e6e6ef;
+  
 }
 
 #PedidosLista li {
