@@ -1,6 +1,6 @@
 async function fetchDadosPainel() {
     try {
-        const response = await fetch('/dados-vendas');
+        const response = await fetch('/json/dados-vendas');
         const data = await response.json();
 
         // Função para formatar números como moeda
@@ -48,4 +48,40 @@ async function fetchDadosPainel() {
     }
 }
 
-document.addEventListener("DOMContentLoaded", fetchDadosPainel);
+async function fetchPedidos() {
+    try {
+        const response = await fetch('/json/listagem-pedidos');
+        const data = await response.json();
+
+        if (!data.pedidos) {
+            throw new Error("Dados de pedidos não encontrados.");
+        }
+
+        const pedidosLista = document.getElementById('PedidosLista');
+        pedidosLista.innerHTML = '';
+
+        data.pedidos.forEach(pedido => {
+            const listItem = document.createElement('li');
+            const pedidoInfo = `Venda #${pedido.id_venda} - ${pedido.cliente_nome} | ${pedido.produto_nome} (${pedido.quantidade}) - Data: ${pedido.data_pedido} <br>`;
+            
+            const statusSpan = document.createElement('span');
+            if (pedido.finalizado) {
+                statusSpan.classList.add('badge', 'bg-success');
+                statusSpan.textContent = 'Finalizado';
+            } else {
+                statusSpan.classList.add('badge', 'bg-danger');
+                statusSpan.textContent = 'Não Finalizado';
+            }
+
+            listItem.innerHTML = pedidoInfo + ' ' + statusSpan.outerHTML;
+            pedidosLista.appendChild(listItem);
+        });
+    } catch (error) {
+        console.error("Erro ao carregar os pedidos:", error);
+    }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    fetchDadosPainel();
+    fetchPedidos();
+});

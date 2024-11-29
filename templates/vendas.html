@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -85,25 +84,29 @@
                 <span class="item-description">Logout</span>
             </a>
         </div>
-                
     </nav>
-    
+
     <section id="Principal">
         <div class="Vendas">
             <div id="Vendas_Anuais_Mensais">
-                <h3>Valor Anual</h3><h1><span id="VendasAnuaisValor">R$ {{ vendas_anuais }}</span></h1><br>
-                <h3>Valor Mensal</h3><h1><span id="VendasMensaisValor">R$ {{ vendas_mensais }}</span></h1>
+                <h3>Valor Anual</h3><h1 id="VendasAnuaisValor">R$ {{ vendas_anuais }}</h1><br>
+                <h3>Valor Mensal</h3><h1 id="VendasMensaisValor">R$ {{ vendas_mensais }}</h1>
             </div>
     
             <div id="canvas">
                 <canvas id="lucroChart"></canvas>
             </div>
         </div>
-        <div class="Meta">
-            <div id="MetaVendas">
-                <h3>Meta De Vendas</h3><h1><span id="MetaValor1">$100k</span></h1>
-                <h1><span id="MetaValor2">$50k</span></h1>
-                <h1><span id="MetaValor3">$25k</span></h1>
+        <div id="Pedidos">
+            <div id="GerenciarPedidos">
+                <button id="btnAdicionar">Adicionar Pedido</button>
+                <button id="btnEditar">Editar Pedido</button>
+            </div>
+            <div id="ListaPedidos">
+                <h3>Lista de vendas:</h3>
+                <ul id="PedidosLista">
+                    <!-- Vai ser inserido aqui via JS -->
+                </ul>
             </div>
         </div>
     </section>
@@ -111,7 +114,6 @@
     <button id="toggle-theme" style="background: none; border: none; cursor: pointer; position: fixed; bottom: 20px; right: 20px; z-index: 1000;">
         <span id="theme-icon">☀️</span>
     </button>
-
 
     <!-- MENSAGENS ERRO -->
     {% with messages = get_flashed_messages() %}

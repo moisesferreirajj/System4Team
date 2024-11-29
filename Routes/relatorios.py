@@ -4,13 +4,10 @@ from sqlalchemy import func
 
 relatorios_bp = Blueprint('relatorios', __name__)
 
-# NOME DO MÊS, PUXAR ELE
-Meses = ["", "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", 
-            "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"]
-
-@relatorios_bp.app_template_filter('nomedomes')
-def nomedomes(mes):
-    return Meses[int(mes)] if 1 <= int(mes) <= 12 else ''
+meses_portugues = [
+    "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
+    "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"
+]
 
 # RELATÓRIOS, COMEÇA A LÓGICA AQUI
 @relatorios_bp.route("/relatorios", methods=['GET', 'POST'])
@@ -48,19 +45,21 @@ def relatorios():
     mes = request.form.get('mes')
     ano = request.form.get('ano')
 
-    # OBTER MESES_ANOS
-    meses_anos = db.session.query(
-        func.extract('month', Pedido.data_pedido).label('mes'),
-        func.extract('year', Pedido.data_pedido).label('ano')
-    ).filter(Pedido.finalizado == True).distinct().all()
+    # OBTER TODOS OS PEDIDOS
+    pedidos = Pedido.query.all()  # Buscar todos os pedidos, sem filtrar por finalizado
+
+    # CRIAR LISTA DE MESES E ANOS ÚNICOS
+    meses_anos = []
+    for pedido in pedidos:
+        mes_ano = (pedido.data_pedido.month, pedido.data_pedido.year)
+        if mes_ano not in meses_anos:  # Evitar duplicatas
+            meses_anos.append(mes_ano)
 
     # FILTRA O PEDIDO DO MÊS E ANO
-    pedidos = Pedido.query.filter(Pedido.finalizado == True)
     if ano:
-        pedidos = pedidos.filter(func.extract('year', Pedido.data_pedido) == int(ano))
+        pedidos = [pedido for pedido in pedidos if pedido.data_pedido.year == int(ano)]
     if mes:
-        pedidos = pedidos.filter(func.extract('month', Pedido.data_pedido) == int(mes))
-    pedidos = pedidos.all()
+        pedidos = [pedido for pedido in pedidos if pedido.data_pedido.month == int(mes)]
 
     # CALCULAR VENDAS E PEDIDOS POR ID_VENDA
     total_vendas = 0
@@ -86,8 +85,7 @@ def relatorios():
 
     # Garantir que a imagem esteja configurada corretamente
     imagem_usuario = usuario.imagem if usuario.imagem else 'default.png'
-    print(imagem_usuario)  # Verifique se o nome da imagem está correto
-
+    
     return render_template(
         'relatorios.html',
         username=username,
@@ -97,5 +95,7 @@ def relatorios():
         total_vendas=total_vendas,
         total_pedidos=total_pedidos,
         total_clientes=total_clientes,
-        meses_anos=meses_anos
+        meses_anos=meses_anos,
+        meses_portugues=meses_portugues
     )
+

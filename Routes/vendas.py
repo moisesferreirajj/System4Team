@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, session, redirect, url_for, flash, jsonify
-from models import Usuario, Pedido, Produto, Despesa, Cargo, db 
+from models import Usuario, Pedido, Produto, Empresa, Cliente, Cargo, db 
 from sqlalchemy import func, extract, cast, Date
 from datetime import datetime, timedelta
 
@@ -66,7 +66,7 @@ def vendas():
         vendas_mensais=vendas_mensais_formatado
     )
     
-@vendas_bp.route("/dados-vendas")
+@vendas_bp.route("/json/dados-vendas")
 def dados():
     if 'username' not in session:
         flash('Você precisa fazer login primeiro!')
@@ -116,4 +116,56 @@ def dados():
         'produtos_mais_vendidos': produtos_dados,
         'labels': labels,
         'vendas_produtos': vendas_produtos
+    })
+
+@vendas_bp.route("/json/listagem-pedidos")
+def listagem():
+    if 'username' not in session:
+        flash('Você precisa fazer login primeiro!')
+        return redirect(url_for('auth.login'))
+    
+    username = session['username']
+    if username and username[0].islower():
+        username = username.capitalize()
+
+    usuario = Usuario.query.filter_by(usuario=username).first()
+    if not usuario:
+        flash('Usuário não encontrado!')
+        return redirect(url_for('auth.login'))
+
+    cargo_relacionado = usuario.cargo_relacionado
+    if not cargo_relacionado or cargo_relacionado.id not in [1, 2, 3, 4, 5]:
+        session.pop('username', None)
+        flash('Você não tem permissão para acessar o painel!')
+        return redirect(url_for('auth.login'))
+
+    # Obter todos os pedidos com os produtos e quantidades
+    pedidos = db.session.query(
+        Pedido.id_venda,
+        Pedido.id_cliente,
+        Pedido.id_empresa,
+        Pedido.data_pedido,
+        Pedido.finalizado,
+        Cliente.nome.label('cliente_nome'),
+        Empresa.nome.label('empresa_nome'),
+        Produto.nome.label('produto_nome'),
+        Pedido.quantidade.label('quantidade')
+    ).join(Cliente, Pedido.id_cliente == Cliente.id).join(Empresa, Pedido.id_empresa == Empresa.id).join(Produto, Pedido.id_produto == Produto.id).all()
+
+    pedidos_serializados = []
+    for pedido in pedidos:
+        pedidos_serializados.append({
+            'id_venda': pedido.id_venda,
+            'id_cliente': pedido.id_cliente,
+            'cliente_nome': pedido.cliente_nome,
+            'data_pedido': pedido.data_pedido.strftime('%d/%m/%Y'),
+            'id_empresa': pedido.id_empresa,
+            'empresa_nome': pedido.empresa_nome,
+            'produto_nome': pedido.produto_nome,
+            'quantidade': pedido.quantidade,
+            'finalizado': pedido.finalizado
+        })
+
+    return jsonify({
+        'pedidos': pedidos_serializados
     })

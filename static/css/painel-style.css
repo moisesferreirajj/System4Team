@@ -187,10 +187,6 @@ h2 {
   color:rgba(255, 0, 0, 0.795)
 }
 
-body.light #logout_btn {
-  color:rgb(0, 0, 0);
-}
-
 #open_btn {
   position: absolute;
   top: 30px;
@@ -257,6 +253,7 @@ body.light #logout_btn {
     min-width: 82px;
   }
 }
+
 @media (max-width:899px){
   #sidebar {
     font-family: 'Poppins', sans-serif;
@@ -280,6 +277,7 @@ body.light #logout_btn {
     margin-left: 120px;
   }
 }
+
 @media (max-width: 820px) {
   #Principal {
     margin: 0 auto;

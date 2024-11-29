@@ -90,29 +90,22 @@
             <fieldset class="input-wrapper">
                 <legend>Pesquisar</legend>
                 
-                <label for="mes" class="label">Mês</label>
-                <div class="select-wrapper">
-                    <select name="mes" id="mes" class="input">
-                        <option value="">Escolha</option>
-                        {% for mes_ano in meses_anos %}
-                            <option value="{{ mes_ano.mes }}">{{ mes_ano.mes | nomedomes }}</option>
-                        {% endfor %}
-                    </select>
-                </div>
-        
-                <label for="ano" class="label">Ano</label>
-                <div class="select-wrapper">
-                    <select name="ano" id="ano" class="input">
-                        <option value="">Escolha</option>
-                        {% for mes_ano in meses_anos %}
-                            <option value="{{ mes_ano.ano }}">{{ mes_ano.ano }}</option>
-                        {% endfor %}
-                    </select>
-                </div>
+                <!-- SELEÇÃO DE MÊS -->
+                <select name="mes" id="mes" class="input">
+                    <option value="">Escolha</option>
+                    {% for mes_ano in meses_anos %}
+                        <option value="{{ mes_ano[0] }}">{{ meses_portugues[mes_ano[0] - 1] }}</option>
+                    {% endfor %}
+                </select>
         
                 <button class="search-btn" type="submit">
                     Pesquisar
                 </button>
+
+                <button class="relatorio-btn" type="submit">
+                    Relatório
+                </button>
+
             </fieldset>
         </form>
         
@@ -127,6 +120,7 @@
                             <th class="tb-title">Quantidade</th>
                             <th class="tb-title">Preço Total</th>
                             <th class="tb-title">Data</th>
+                            <th class="tb-title">Status</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -142,6 +136,13 @@
                                 <td>{{ pedido.quantidade }}</td>
                                 <td>R${{ pedido.produto.preco }}</td>
                                 <td>{{ pedido.data_pedido.strftime('%d/%m/%Y') }}</td>
+                                <td> <!-- STATUS DO PEDIDO --> 
+                                    {% if pedido.finalizado %}
+                                        <span class="badge bg-success">Finalizado</span>
+                                    {% else %}
+                                        <span class="badge bg-danger">Não Finalizado</span>
+                                    {% endif %}
+                                </td> <!-- VERIFICA SE ELE ESTÁ FINALIZADO OU NAO -->                    
                             </tr>
                         {% endfor %}
                     </tbody>
@@ -155,6 +156,7 @@
     </div>
             
     </section>
+    
     <button id="toggle-theme" style="background: none; border: none; cursor: pointer; position: fixed; bottom: 20px; right: 20px; z-index: 1000;">
         <span id="theme-icon">☀️</span>
     </button>

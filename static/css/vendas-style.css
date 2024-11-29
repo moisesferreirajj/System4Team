@@ -10,13 +10,26 @@ body {
   display: flex;
 }
 
+body.light {
+  background-color: rgb(255, 255, 255);
+  height: 100vh;
+  width: 100%;
+  color: #000000;
+  display: flex;
+}
+
+#logout_btnlight {
+  color:white;
+}
+
+
 html{
   font-family: "Poppins", sans-serif;
 }
 
 #Principal {
-  height: inherit;
-  width: inherit;
+  width: 100%;
+  height: 100vh;
   display: flex;
 }
 
@@ -25,62 +38,112 @@ html{
   font-weight: 100;
   font-style: normal;
   flex-direction: column;
-  width: 100%;
+  width: 70%;
   height: 40%;
+  margin-left: 1%;
+  margin-top: 1%;
+}
+
+h3 {
+  margin-bottom: -25px;
 }
 
 #Vendas_Anuais_Mensais{
   background-color: rgba(255, 255, 255, 0.05);
-  margin: 20px;
   border-radius: 10px;
   box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
-  width: 50%;
   padding: 20px;
 }
 
 #VendasMensaisValor{
   color: rgb(211, 211, 211);
-  flex-direction: column;
-  display: flex;
+  flex-direction: column
 }   
 
-.Meta{
+#canvas {
   background-color: rgba(255, 255, 255, 0.05);
-  margin: 20px;
   border-radius: 10px;
   box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
-  height: 50%;
-  padding: 20px;
-  text-align: center;
-  width: 400px;
+  margin: auto;
+  margin-top: 30px;
+  width: 100%;
+  padding: 10px;
 }
 
+#Vendas_Anuais_Mensais h3 {
+  padding: 5px;
+  text-align: center;
+}
 
+#Vendas_Anuais_Mensais h1 {
+  margin: auto;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+  width:50%;
+}
 
+#Pedidos {
+  display: flex;
+  flex-direction: column;
+  margin: 5%;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  color: #e6e6ef;
+  width: 60%;
+}
 
+#GerenciarPedidos {
+  display: flex;
+  justify-content: Center;
+  margin-bottom: 20px;
+}
 
+#btnAdicionar, #btnEditar {
+  padding: 10px 20px;
+  background-color: rgb(42, 94, 197);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  margin-right: 20px;
+}
 
+#btnAdicionar:hover {
+  background-color: rgb(34, 175, 72);
+}
 
+#btnEditar:hover {
+  background-color: rgb(255, 196, 0);
+}
 
+#ListaPedidos {
+  margin-top: 20px;
+}
 
+#ListaPedidos h3 {
+  margin-bottom: 10px;
+}
 
+#PedidosLista {
+  list-style: none;
+  padding: 0;
+  color: #e6e6ef;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#PedidosLista li {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
 
 /*Sidebar do Painel*/
 #sidebar-content {
@@ -251,6 +314,7 @@ html{
     min-width: 82px;
   }
 }
+
 @media (max-width:899px){
   #sidebar {
     font-family: 'Poppins', sans-serif;
@@ -274,14 +338,20 @@ html{
     margin-left: 120px;
   }
 }
+
 @media (max-width: 820px) {
   #Principal {
     margin: 0 auto;
+    margin-top: 20px;
     padding-bottom: 60px; /* Espaço para a barra horizontal */
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+  }
+
+  h2 {
+    font-size: 1.5rem;
   }
 
   #dados {
@@ -293,10 +363,19 @@ html{
     align-items: center;
   }
 
+  #dados-botoes {
+    display: flex;
+    flex-wrap: wrap;  
+    gap: 10px;  
+    justify-content: center; 
+    margin: 0 auto;
+    margin-bottom: 10px;
+  }
+
   .card {
-    height: 4.5rem;
+    height: 3.5rem;
     cursor: pointer;
-    width: 10rem;
+    width: 8rem;
     background-color: #2a5ec5;
     border-radius: 20px;
   }
@@ -305,17 +384,14 @@ html{
     background-color: #1a5ada;
   }
 
-  #canvas-e-titulo{
-    width: 80%;
-    display: flex;
-    flex-direction: column;
-    height:350px;
-    align-items: center;
-  }
+  .content {
+    color:white;
+    font-size: 1rem;
+    text-align: center;
+  } 
   
   #lucroChart {
     width: 100% !important;
-  
     max-width: 800px;   
   }
 
@@ -374,9 +450,9 @@ html{
     border: none;
     padding: 0;
     margin: 0;
-    top: 20px;
-    right: 0;
-    margin-bottom: 16px;
+    top: 3px;
+    right: 30px;
+    z-index: 1000;
   }
 
   #logout_btn {
@@ -393,10 +469,15 @@ html{
   }
 
   #toggle-theme {
-    top: 0;
+    top: 10px;
+    height: 30px;
   }
 
   @media (max-width: 370px) {
+    h2 {
+      font-size: 1rem;
+    }
+        
     #sidebar {
       position: fixed;
       bottom: 0;
@@ -428,7 +509,6 @@ html{
   }
 }
 
-
 /**Scroll Página**/
 ::-webkit-scrollbar {
   width:13px;
@@ -441,4 +521,4 @@ html{
 ::-webkit-scrollbar-thumb {
   background-color: #1146c3;
   border-radius: 15px;
-} 
+}
