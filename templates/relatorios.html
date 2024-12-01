@@ -148,19 +148,21 @@
                         {% endfor %}
                     </tbody>
                 </table>
-                <div id="p-total">
-                    <div id="total-vendas">
-                        <h5>Total de Vendas: </h5>
-                        <p>R$ {{ total_vendas }}</p>
+                <div id="fundo-p-total">
+                    <div id="p-total">
+                        <div id="total-vendas">
+                            <h5>Total de Vendas: </h5>
+                            <p>R$ {{ total_vendas }}</p>
+                        </div>
+                        <div id="total-pedidos">
+                            <h5>Total de Pedidos:</h5>  
+                            <p>{{ total_pedidos }}</p> 
+                        </div> 
+                        {% else %}
+                            <p>Nenhum pedido encontrado para o período selecionado.</p>
+                        {% endif %}
                     </div>
-                    <div id="total-pedidos">
-                        <h5>Total de Pedidos:</h5>  
-                        <p>{{ total_pedidos }}</p> 
-                    </div> 
-                    {% else %}
-                        <p>Nenhum pedido encontrado para o período selecionado.</p>
-                    {% endif %}
-                </div>
+                </div>                
         </div>
     </section>
 

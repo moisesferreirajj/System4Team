@@ -469,6 +469,10 @@ h2 {
   flex-wrap: wrap;
 }
 
+.fa-solid {
+  margin-left: 10%;
+}
+
 .input {
   max-width: 170px;
   border: 1px solid rgba(255, 255, 255, 0.3);
@@ -587,6 +591,9 @@ form{
 .tabela{
   width:80%;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .tb-title, .itns {
@@ -631,6 +638,11 @@ form{
 
 .desc:hover{
   cursor: pointer;
+}
+
+#fundo-p-total {
+  width: 100%;
+  justify-items: right;
 }
 
 #p-total {

@@ -88,18 +88,21 @@
 
     <section id="Principal">
         <div class="Vendas">
-            <div id="Vendas_Anuais_Mensais">
-                <h3>Valor Anual</h3><h1 id="VendasAnuaisValor">R$ {{ vendas_anuais }}</h1><br>
-                <h3>Valor Mensal</h3><h1 id="VendasMensaisValor">R$ {{ vendas_mensais }}</h1>
+            <div id="vendas-metas">
+                <div id="Vendas_Anuais_Mensais">
+                    <h3>Valor Anual</h3><h1 id="VendasAnuaisValor">R$ {{ vendas_anuais }}</h1>
+                    <h3>Valor Mensal</h3><h1 id="VendasMensaisValor">R$ {{ vendas_mensais }}</h1>
+                    <h3>Valor Semanal</h3><h1 id="VendasMensaisValor">R$ {{ vendas_semanais }}</h1>
+                </div>
+                <div id="MetaVendas">
+                    <h1 id="MetaTitulo">Meta De Vendas</h1>
+                    <h2 class="MetaSubtitulo">Meta Anual</h2>
+                    <h3 class="MetaProgresso">QTD_Anual</h3>
+                    <h2 class="MetaSubtitulo">Meta Mensal</h2>
+                    <h3 class="MetaProgresso">QTD_Mensal</h3>
+                </div>
             </div>
-            <div id="MetaVendas">
-                <h1 id="MetaTitulo">Meta De Vendas</h1>
-                <h2 class="MetaSubtitulo">Meta Anual</h2>
-                <h3 class="MetaProgresso">QTD_Anual</h3>
-                <h2 class="MetaSubtitulo">Meta Mensal</h2>
-                <h3 class="MetaProgresso">QTD_Mensal</h3>
-            </div>
-    
+
             <div id="canvas">
                 <canvas id="lucroChart"></canvas>
             </div>
