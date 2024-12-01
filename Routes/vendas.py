@@ -42,6 +42,7 @@ def vendas():
     hoje = datetime.now()
     um_ano_atras = hoje - timedelta(days=365)
     um_mes_atras = hoje - timedelta(days=30)
+    uma_semana_atras = hoje - timedelta(days=7)
 
     vendas_anuais = db.session.query(
         func.sum(Produto.preco * Pedido.quantidade).label('total')
@@ -53,9 +54,15 @@ def vendas():
     ).join(Pedido, Produto.id == Pedido.id_produto
     ).filter(Pedido.finalizado == True, Pedido.data_pedido >= um_mes_atras).scalar() or 0
 
+    vendas_semanais = db.session.query(
+        func.sum(Produto.preco * Pedido.quantidade).label('total')
+    ).join(Pedido, Produto.id == Pedido.id_produto
+    ).filter(Pedido.finalizado == True, Pedido.data_pedido >= uma_semana_atras).scalar() or 0
+
     #FORMATAÇÃO
     vendas_anuais_formatado = f'{vendas_anuais:,.2f}'.replace(",", ".")
     vendas_mensais_formatado = f'{vendas_mensais:,.2f}'.replace(",", ".") if vendas_mensais else '0'
+    vendas_semanais_formatado = f'{vendas_semanais:,.2f}'.replace(",", ".") if vendas_mensais else '0'
 
     return render_template(
         'vendas.html',
@@ -63,7 +70,8 @@ def vendas():
         imagem_usuario=imagem_usuario,
         cargo=cargo_relacionado.nome,
         vendas_anuais=vendas_anuais_formatado,
-        vendas_mensais=vendas_mensais_formatado
+        vendas_mensais=vendas_mensais_formatado,
+        vendas_semanais=vendas_semanais_formatado
     )
     
 @vendas_bp.route("/json/dados-vendas")

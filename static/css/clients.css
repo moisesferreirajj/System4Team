@@ -16,57 +16,13 @@ body.light {
   color: white;
 }
 
-#Principal {
+.tabela {
   width: 100%;
   height: 100vh;
-  display: flex; 
-  margin-top: 5%;
-  margin-bottom: 0;
 }
   
 body.light h2 {
   color: black;
-}
-
-h2 {
-  color: white;
-  text-align: center;
-  font-size: 30px;
-}
-
-.card {
-  height: 100%;
-}
-
-.content {
-  color:white;
-  font-size:20px;
-  text-align: center;
-}
-
-#dados {
-  display: flex;
-  margin: 0 auto;
-  padding: 0;
-  flex-direction: column;
-  height: 100vh;
-  width: 100%;
-}
-
-#dados-botoes {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;  
-  margin: 0 auto;
-}
-
-#canvas-e-titulo{
-  width: 50rem;
-  display: flex;
-  flex-direction: column;
-  height:350px;
-  align-items: center;
-  margin: 0 auto;
 }
 
 /*Sidebar do Painel*/
@@ -469,34 +425,47 @@ h2 {
 }
 
 table {
-  width: 98.5%;
+  width: 70%;
   background: rgb(17, 25, 36);
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   border-radius: 10px;
   overflow: hidden;
-  margin-left: 10px;
+  margin: 0 auto;
 }
+
 form{
   width:100%;
   margin-bottom:20px;
 }
 
-.search-bar {
-    width: 100%;
-    height: 45px;
-    padding: 5px;
-    box-sizing: content-box;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+.tabela{
+  width:100%;
+  height: 100vh;
 }
 
-.tabela{
-    width:100%
+.nav-bar {
+  min-width: 70%;
+  width: 70%;
+  height: 5%;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  margin-bottom: 2%;
+}
+
+.nav-bar h2 {
+  flex-grow: 1; 
+  text-align: left; 
+  margin: 0;
+  font-size: 2.5rem; 
+  color: white; 
+}
+
+#barra-pesquisa {
+  display: flex;
+  height: 2.5rem;
 }
 
 .search{
@@ -504,7 +473,6 @@ form{
     color:white;
     font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     border-style: none;
-    margin-right:40px;
     border: 1px solid #0241be;
     border-radius:0 20px 20px 0;
     transition: background-color 0.5s ease, color 0.5s ease;
@@ -524,7 +492,6 @@ form{
     color:white;
     border-radius: 10px 0 0 10px;
     padding-left:10px;
-    margin-left:350px;
 }
 
 .input[type="text"]::placeholder{
@@ -536,7 +503,7 @@ form{
     color:white;
     font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     border-style: none;
-    margin-right:40px;
+    margin-left: 40px;
     border: 1px solid #0241be;
     border-radius:20px;
     transition: background-color 0.5s ease, color 0.5s ease;
@@ -583,78 +550,134 @@ form{
     background: rgb(0, 38, 90);
   }
 
-  /* Modal container */
-#addClientModal {
-    
+
+.cad {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 350px;
+  background-color: #111E2E;
+  padding: 20px;
+  border-radius: 20px;
+  position: relative;
 }
 
-/* Modal dialog */
-#addClientModal .modal-dialog {
 
+.flex {
+  display: flex;
+  width: 100%;
+  gap: 6px;
 }
 
-/* Modal content */
-#addClientModal .modal-content {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    max-width: 350px;
-    padding: 20px;
-    padding-bottom:-30px;
-    border-radius: 20px;
-    position: relative;
-    background-color: #1a1a1a;
-    color: #fff;
-    border: 1px solid #333;
-    justify-content: center;
-    margin: 0 auto;
+.cad label {
+  position: relative;
 }
 
-/* Modal header */  
-#addClientModal .modal-header {
-    
+.cad label .input {
+  width: 100%;
+  padding: 10px 10px 20px 10px;
+  outline: 0;
+  border: 1px solid rgba(105, 105, 105, 0.397);
+  border-radius: 10px;
+  height:40px;
 }
 
-/* Modal title */
-#addClientModal .modal-title {
-    font-size: 28px;
-    font-weight: 600;
-    letter-spacing: -1px;
-    position: relative;
-    display: flex;
-    align-items: center;
-    color: #00bfff; 
+.cad label .input + span {
+  position: absolute;
+  left: 10px;
+  top: 15px;
+  color: grey;
+  font-size: 0.9em;
+  cursor: text;
+  transition: 0.3s ease;
 }
 
-/* Close button */
-#addClientModal .btn-close {
-    color:white;
+.cad label .input:placeholder-shown + span {
+  top: 15px;
+  font-size: 0.9em;
 }
 
-/* Modal body */
-#addClientModal .modal-body {
-    
+.cad label .input:focus + span,.cad label .input:valid + span {
+  top: 30px;
+  font-size: 0.7em;
+  font-weight: 600;
 }
 
-/* Form input fields */
-#addClientModal .form-label {
-    
+.cad label .input:valid + span {
+  color: green;
 }
 
-#addClientModal .form-control {
-    
+.submit {
+  border: none;
+  outline: none;
+  background-color: royalblue;
+  padding: 10px;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 16px;
+  transform: .3s ease;
+  width:70px;
+  font-size: 17px;
 }
 
-/* Modal footer */
-#addClientModal .modal-footer {
+.submit:hover {
+  background-color: rgb(56, 90, 194);
 }
 
-/* Cancel button */
-#addClientModal .btn-secondary {
-    
+.modal-content{
+  background-color: transparent;
+  border:none;
 }
 
-/* Save button */
-#addClientModal .btn-primary {
-    
+.modal-body{
+  display:flex;
+  justify-content:center;
+  align-items: center;
+  margin-top:-50px;
+  
+}
+
+.title {
+  font-size: 28Px;
+  color: rgb(255, 255, 255);
+  font-weight: 600;
+  letter-spacing: -1px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-left: 30px;
+  margin-left:50px;
+  margin-bottom: 15px;
+}
+
+.modal-header{
+  border:none;
+  margin-top: 20px;
+}
+
+.label-form{
+  margin-bottom:0px;
+}
+
+.modal fade{
+  background: rgba(0, 0, 0, 0.068);
+}
+
+.deny{
+  width:70px;
+  background-color: transparent;
+  color: royalblue;
+  border: none;
+  padding: 10px;
+  margin-right:7px;
+  font-family: 17px;
+  transform: .3s ease;
+}
+.deny:hover{
+  color: rgb(104, 142, 255);
+}
+.ops{
+  display:flex;
+  flex-direction: row-reverse;
+  align-items:flex-start;
 }
