@@ -95,45 +95,36 @@
             </div>
         </div>
         
-
         <table class="clients">
             <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nome</th>
-                    <th>Email</th>
-                    <th>Telefone</th>
-                    <th>Ações</th>
-                </tr>
-            </thead>
-            <tbody>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>CPF</th>
+                <th>Endereço</th>
+                <th>Telefone</th>
+                <th>Email</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for cliente in clientes %}
                 <tr class="fields">
-                    <td>001</td>
-                    <td>DeideCosta</td>
-                    <td>BalãoSuspeito@email.com</td>
-                    <td>(11) 98765-4321</td>
+                    <td>{{ cliente.id }}</td>
+                    <td>{{ cliente.nome }}</td>
+                    <td>{{ cliente.cpf }}</td>
+                    <td>{{ cliente.endereco }}</td>
+                    <td>{{ cliente.telefone }}</td>
+                    <td>{{ cliente.email }}</td>
                     <td class="actions">
                         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#40c734"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M21.2799 6.40005L11.7399 15.94C10.7899 16.89 7.96987 17.33 7.33987 16.7C6.70987 16.07 7.13987 13.25 8.08987 12.3L17.6399 2.75002C17.8754 2.49308 18.1605 2.28654 18.4781 2.14284C18.7956 1.99914 19.139 1.92124 19.4875 1.9139C19.8359 1.90657 20.1823 1.96991 20.5056 2.10012C20.8289 2.23033 21.1225 2.42473 21.3686 2.67153C21.6147 2.91833 21.8083 3.21243 21.9376 3.53609C22.0669 3.85976 22.1294 4.20626 22.1211 4.55471C22.1128 4.90316 22.0339 5.24635 21.8894 5.5635C21.7448 5.88065 21.5375 6.16524 21.2799 6.40005V6.40005Z" stroke="#40c734" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M11 4H6C4.93913 4 3.92178 4.42142 3.17163 5.17157C2.42149 5.92172 2 6.93913 2 8V18C2 19.0609 2.42149 20.0783 3.17163 20.8284C3.92178 21.5786 4.93913 22 6 22H17C19.21 22 20 20.2 20 18V13" stroke="#40c734" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
-                        <button class="edit" >Editar</button>
-                        <svg fill="#e40202" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" stroke="#e40202"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M831.24 280.772c5.657 0 10.24-4.583 10.24-10.24v-83.528c0-5.657-4.583-10.24-10.24-10.24H194.558a10.238 10.238 0 00-10.24 10.24v83.528c0 5.657 4.583 10.24 10.24 10.24H831.24zm0 40.96H194.558c-28.278 0-51.2-22.922-51.2-51.2v-83.528c0-28.278 22.922-51.2 51.2-51.2H831.24c28.278 0 51.2 22.922 51.2 51.2v83.528c0 28.278-22.922 51.2-51.2 51.2z"></path><path d="M806.809 304.688l-58.245 666.45c-.544 6.246-6.714 11.9-12.99 11.9H290.226c-6.276 0-12.447-5.654-12.99-11.893L218.99 304.688c-.985-11.268-10.917-19.604-22.185-18.619s-19.604 10.917-18.619 22.185l58.245 666.45c2.385 27.401 26.278 49.294 53.795 49.294h445.348c27.517 0 51.41-21.893 53.796-49.301l58.244-666.443c.985-11.268-7.351-21.201-18.619-22.185s-21.201 7.351-22.185 18.619zM422.02 155.082V51.3c0-5.726 4.601-10.342 10.24-10.342h161.28c5.639 0 10.24 4.617 10.24 10.342v103.782c0 11.311 9.169 20.48 20.48 20.48s20.48-9.169 20.48-20.48V51.3c0-28.316-22.908-51.302-51.2-51.302H432.26c-28.292 0-51.2 22.987-51.2 51.302v103.782c0 11.311 9.169 20.48 20.48 20.48s20.48-9.169 20.48-20.48z"></path><path d="M496.004 410.821v460.964c0 11.311 9.169 20.48 20.48 20.48s20.48-9.169 20.48-20.48V410.821c0-11.311-9.169-20.48-20.48-20.48s-20.48 9.169-20.48 20.48zm-192.435 1.767l39.936 460.964c.976 11.269 10.903 19.612 22.171 18.636s19.612-10.903 18.636-22.171l-39.936-460.964c-.976-11.269-10.903-19.612-22.171-18.636s-19.612 10.903-18.636 22.171zm377.856-3.535l-39.936 460.964c-.976 11.269 7.367 21.195 18.636 22.171s21.195-7.367 22.171-18.636l39.936-460.964c.976-11.269-7.367-21.195-18.636-22.171s-21.195 7.367-22.171 18.636z"></path></g></svg>
-                        <button class="delete">Excluir</button>
+                        <button class="btn-edit"  type="button" data-bs-toggle="modal" data-bs-target="#modal1">Editar</button>
                     </td>
                 </tr>
-                <tr class="fields">
-                    <td>002</td>
-                    <td>John Cena</td>
-                    <td>WWE@email.com</td>
-                    <td>(21) 91234-5678</td>
-                    <td class="actions">
-                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#40c734"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M21.2799 6.40005L11.7399 15.94C10.7899 16.89 7.96987 17.33 7.33987 16.7C6.70987 16.07 7.13987 13.25 8.08987 12.3L17.6399 2.75002C17.8754 2.49308 18.1605 2.28654 18.4781 2.14284C18.7956 1.99914 19.139 1.92124 19.4875 1.9139C19.8359 1.90657 20.1823 1.96991 20.5056 2.10012C20.8289 2.23033 21.1225 2.42473 21.3686 2.67153C21.6147 2.91833 21.8083 3.21243 21.9376 3.53609C22.0669 3.85976 22.1294 4.20626 22.1211 4.55471C22.1128 4.90316 22.0339 5.24635 21.8894 5.5635C21.7448 5.88065 21.5375 6.16524 21.2799 6.40005V6.40005Z" stroke="#40c734" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M11 4H6C4.93913 4 3.92178 4.42142 3.17163 5.17157C2.42149 5.92172 2 6.93913 2 8V18C2 19.0609 2.42149 20.0783 3.17163 20.8284C3.92178 21.5786 4.93913 22 6 22H17C19.21 22 20 20.2 20 18V13" stroke="#40c734" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
-                        <button class="edit"  type="button" data-bs-toggle="modal" data-bs-target="#edit">Editar</button>
-                        <svg fill="#e40202" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" stroke="#e40202"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M831.24 280.772c5.657 0 10.24-4.583 10.24-10.24v-83.528c0-5.657-4.583-10.24-10.24-10.24H194.558a10.238 10.238 0 00-10.24 10.24v83.528c0 5.657 4.583 10.24 10.24 10.24H831.24zm0 40.96H194.558c-28.278 0-51.2-22.922-51.2-51.2v-83.528c0-28.278 22.922-51.2 51.2-51.2H831.24c28.278 0 51.2 22.922 51.2 51.2v83.528c0 28.278-22.922 51.2-51.2 51.2z"></path><path d="M806.809 304.688l-58.245 666.45c-.544 6.246-6.714 11.9-12.99 11.9H290.226c-6.276 0-12.447-5.654-12.99-11.893L218.99 304.688c-.985-11.268-10.917-19.604-22.185-18.619s-19.604 10.917-18.619 22.185l58.245 666.45c2.385 27.401 26.278 49.294 53.795 49.294h445.348c27.517 0 51.41-21.893 53.796-49.301l58.244-666.443c.985-11.268-7.351-21.201-18.619-22.185s-21.201 7.351-22.185 18.619zM422.02 155.082V51.3c0-5.726 4.601-10.342 10.24-10.342h161.28c5.639 0 10.24 4.617 10.24 10.342v103.782c0 11.311 9.169 20.48 20.48 20.48s20.48-9.169 20.48-20.48V51.3c0-28.316-22.908-51.302-51.2-51.302H432.26c-28.292 0-51.2 22.987-51.2 51.302v103.782c0 11.311 9.169 20.48 20.48 20.48s20.48-9.169 20.48-20.48z"></path><path d="M496.004 410.821v460.964c0 11.311 9.169 20.48 20.48 20.48s20.48-9.169 20.48-20.48V410.821c0-11.311-9.169-20.48-20.48-20.48s-20.48 9.169-20.48 20.48zm-192.435 1.767l39.936 460.964c.976 11.269 10.903 19.612 22.171 18.636s19.612-10.903 18.636-22.171l-39.936-460.964c-.976-11.269-10.903-19.612-22.171-18.636s-19.612 10.903-18.636 22.171zm377.856-3.535l-39.936 460.964c-.976 11.269 7.367 21.195 18.636 22.171s21.195-7.367 22.171-18.636l39.936-460.964c.976-11.269-7.367-21.195-18.636-22.171s-21.195 7.367-22.171 18.636z"></path></g></svg>
-                        <button class="delete">Excluir</button>
-                    </td>
-                </tr>
-            </tbody>
+            {% endfor %}
+        </tbody>
         </table>
-        <!-- Modal deito por mim, inteiramente por mim-->
+        <!-- Modal para adicionar clientes -->
         <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="modallabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -141,84 +132,68 @@
                         <p class="title">Cadastro de Cliente</p>
                     </div>
                     <div class="modal-body">
-                        <form class="cad">
-                            <div class="flex">
-                                <label>
-                                    <p class="label-form">Nome</p>
-                                    <input placeholder="" type="text" class="input">
-                                    
-                                </label>
-                                <label>
-                                    <p class="label-form">Sobrenome</p>
-                                    <input placeholder="" type="text" class="input">
-                                   
-                                </label>
-                            </div>
-                                <label>
-                                    <p class="label-form">CPF/CNPJ</p>
-                                    <input placeholder="" type="text" class="input">
-                                    
-                                </label>
-                                <label>
-                                    <p class="label-form">E-mail</p>
-                                    <input placeholder="" type="text" class="input">
-                                    
-                                </label>
-                                <label>
-                                    <p class="label-form">Telefone</p>
-                                    <input placeholder="+55 (99) 99999-9999" type="text" class="input">
-                                    
-                                </label>
-                                <label>
-                                    <p class="label-form">Endereço</p>
-                                    <input placeholder="Rua N° Cidade" type="text" class="input">
-                                    
-                                </label>
-                                <div class="ops">
-                                    <button class="submit">Enviar</button>
-                                    <button class="deny">Cancelar</button>
-                                <div>
-                            </div>
+                        <form class="cad" action="/adicionar_cliente" method="POST">
+                            <label>
+                                <p class="label-form">Nome</p>
+                                <input placeholder="" type="text" class="input" name="nome" required>
+                            </label>
+                            <label>
+                                <p class="label-form">CPF/CNPJ</p>
+                                <input placeholder="" type="text" class="input" name="cpf" required>
+                            </label>
+                            <label>
+                                <p class="label-form">E-mail</p>
+                                <input placeholder="" type="email" class="input" name="email" required>
+                            </label>
+                            <label>
+                                <p class="label-form">Telefone</p>
+                                <input placeholder="" type="text" class="input" name="telefone" required>
+                            </label>
+                            <label>
+                                <p class="label-form">Endereço</p>
+                                <input placeholder="" type="text" class="input" name="endereco" required>
+                            </label>
+                            <button type="submit" class="submit">Salvar</button>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="modallabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
+        <!-- Edição de clientes -->
+        <div class="modal fade" id="modal1" tabindex="-1" aria-labelledby="modal1Label" aria-hidden="true">
+            <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <p class="title">Editar Cliente</p>
                     </div>
                     <div class="modal-body">
-                        <form class="edit">
+                        <form class="edit" action="/editar_cliente" method="POST">
+                            <label>
+                                <p class="label-form">Nome</p>
+                                <input placeholder="" type="text" class="input" name="nome" required>
+                            </label>
                             <label>
                                 <p class="label-form">E-mail</p>
-                                <input required="" placeholder="Digite o e-mail" type="text" class="input" id="edit-email">
+                                <input placeholder="" type="email" class="input" name="email" required>
                             </label>
                             <label>
                                 <p class="label-form">Telefone</p>
-                                <input required="" placeholder="+55 (99) 99999-9999" type="text" class="input" id="edit-telefone">
+                                <input placeholder="" type="text" class="input" name="telefone" required>
                             </label>
                             <label>
                                 <p class="label-form">Endereço</p>
-                                <input required="" placeholder="Rua N° Cidade" type="text" class="input" id="edit-telefone">
+                                <input placeholder="" type="text" class="input" name="endereco" required>
                             </label>
                             <div class="ops">
                                 <button type="submit" class="submit">Salvar</button>
-                                <button type="button" class="deny" data-dismiss="modal">Cancelar</button>
+                                <button class="deny" data-bs-dismiss="modal">Cancelar</button>
                             </div>
                         </form>
+                        <h3>* Caso algum dos dados permaneça o mesmo, &nbsp; &nbspreescreva da mesma forma sem alteração!</h3>
                     </div>
                 </div>
             </div>
         </div>
-        
-            
-  
-  
-
-        
     </section>
     
     <button id="toggle-theme" style="background: none; border: none; cursor: pointer; position: fixed; bottom: 20px; right: 20px; z-index: 1000;">

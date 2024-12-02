@@ -62,35 +62,49 @@ def relatorios():
         pedidos = [pedido for pedido in pedidos if pedido.data_pedido.month == int(mes)]
 
     # CALCULAR VENDAS E PEDIDOS POR ID_VENDA
-    total_vendas = 0
     total_pedidos = 0
-    vendas_por_id = {}  # Dicionário para armazenar total de vendas por id_venda
+    venda_produto_quant = {} 
 
     for pedido in pedidos:
-        if pedido.id_venda not in vendas_por_id:
-            vendas_por_id[pedido.id_venda] = {'quantidade': 0, 'total_venda': 0}
-        
-        preco_total_pedido = pedido.produto.preco * pedido.quantidade
-        
-        vendas_por_id[pedido.id_venda]['quantidade'] += pedido.quantidade
-        vendas_por_id[pedido.id_venda]['total_venda'] += preco_total_pedido
-
-    # Calculando totais gerais
-    for venda in vendas_por_id.values():
-        total_vendas += venda['total_venda']
-        total_pedidos += venda['quantidade']
-
-    # Quantidade de clientes (exemplo de métrica adicional)
-    total_clientes = Cliente.query.count()
-
-    # Garantir que a imagem esteja configurada corretamente
-    imagem_usuario = usuario.imagem if usuario.imagem else 'default.png'
+        if pedido.id_venda not in venda_produto_quant:
+            venda_produto_quant[pedido.id_venda] = {
+                'quantidade': 0, 
+                'total_venda': 0,
+                'produtos': []  # LISTA ARMAZENAR CADA PRODUTO
+            }
+    #CALCULAR PREÇO TOTAL DE PEDIDOS
+    preco_total_pedido = pedido.produto.preco * pedido.quantidade
+    venda_produto_quant[pedido.id_venda]['produtos'].append({
+        'produto_nome': pedido.produto.nome,
+        'quantidade': pedido.quantidade,
+        'preco_total': preco_total_pedido
+    })
     
+    # Atualiza a quantidade total de produtos e o total de vendas por venda
+    venda_produto_quant[pedido.id_venda]['quantidade'] += pedido.quantidade
+    venda_produto_quant[pedido.id_venda]['total_venda'] += preco_total_pedido
+
+    for pedido in pedidos:
+        preco_total_pedido = pedido.produto.preco * pedido.quantidade
+        pedido.preco_total = preco_total_pedido
+
+    # Utilizar query pq eu já to morto - S2, Moises - 02/12
+    total_clientes = Cliente.query.count()
+    total_pedidos = Pedido.query.count()
+    
+    total_vendas = db.session.query(func.sum(Produto.preco * Pedido.quantidade).label('total')
+    ).join(Pedido, Produto.id == Pedido.id_produto
+    ).filter(Pedido.finalizado == True).scalar() or 0
+    
+    imagem_usuario = usuario.imagem if usuario.imagem else 'default.png'
+
+
     return render_template(
         'relatorios.html',
         username=username,
         imagem_usuario=imagem_usuario,
         cargo=cargo_nome,
+        venda_produto_quant=venda_produto_quant,
         pedidos=pedidos,
         total_vendas=total_vendas,
         total_pedidos=total_pedidos,

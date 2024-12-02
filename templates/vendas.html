@@ -56,7 +56,7 @@
                     </a>
                 </li>
                 <li class="side_item">
-                    <a href="#">
+                    <a href="/clientes">
                         <i class="fa-solid fa-user"></i>
                         <span class="item-description">
                             Clientes
@@ -91,18 +91,22 @@
             <div id="vendas-metas">
                 <div id="Vendas_Anuais_Mensais">
                     <h1 id="Vendas-Titulo">Vendas</h1>
-                    <h3>Valor Anual</h3><h1 id="VendasAnuaisValor">R$ {{ vendas_anuais }}</h1>
-                    <h3>Valor Mensal</h3><h1 id="VendasMensaisValor">R$ {{ vendas_mensais }}</h1>
-                    <h3>Valor Semanal</h3><h1 id="VendasMensaisValor">R$ {{ vendas_semanais }}</h1>
+                    <div class="Scroll-Y">
+                        <p class="Periodo-Valor">Valor Anual</p><p class="Valor-Vendas">R$ {{ vendas_anuais }}</p>
+                        <p class="Periodo-Valor">Valor Mensal</p><p class="Valor-Vendas">R$ {{ vendas_mensais }}</p>
+                        <p class="Periodo-Valor">Valor Semanal</p><p class="Valor-Vendas">R$ {{ vendas_semanais }}</p>
+                    </div>
                 </div>
                 <div id="MetaVendas">
                     <h1 id="MetaTitulo">Meta De Vendas</h1>
-                    <h3 class="MetaSubtitulo">Meta Anual</h3>
-                    <h3 class="MetaProgresso">QTD_Anual</h3>
-                    <h3 class="MetaSubtitulo">Meta Mensal</h3>
-                    <h3 class="MetaProgresso">QTD_Mensal</h3>
-                    <h3 class="MetaSubtitulo">Meta Semanal</h3>
-                    <h3 class="MetaProgresso">QTD_Semanal</h3>
+                    <div class="Scroll-Y">
+                        <p class="MetaSubtitulo">Meta Anual</p>
+                        <p class="MetaProgresso">QTD_Anual</p>
+                        <p class="MetaSubtitulo">Meta Mensal</p>
+                        <p class="MetaProgresso">QTD_Mensal</p>
+                        <p class="MetaSubtitulo">Meta Semanal</p>
+                        <p class="MetaProgresso">QTD_Semanal</p>
+                    </div>
                 </div>
             </div>
 

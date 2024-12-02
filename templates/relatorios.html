@@ -135,7 +135,7 @@
                                  </span>
                                 </td>
                                 <td>{{ pedido.quantidade }}</td>
-                                <td>R${{ pedido.produto.preco }}</td>
+                                <td>R${{ pedido.preco_total }}</td>
                                 <td>{{ pedido.data_pedido.strftime('%d/%m/%Y') }}</td>
                                 <td> <!-- STATUS DO PEDIDO --> 
                                     {% if pedido.finalizado %}
@@ -151,11 +151,11 @@
                 <div id="fundo-p-total">
                     <div id="p-total">
                         <div id="total-vendas">
-                            <h5>Total de Vendas: </h5>
+                            <h5>Lucro em vendas: </h5>
                             <p>R$ {{ total_vendas }}</p>
                         </div>
                         <div id="total-pedidos">
-                            <h5>Total de Pedidos:</h5>  
+                            <h5>Total de pedidos:</h5>  
                             <p>{{ total_pedidos }}</p> 
                         </div> 
                         {% else %}
