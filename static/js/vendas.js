@@ -85,3 +85,31 @@ document.addEventListener("DOMContentLoaded", () => {
     fetchDadosPainel();
     fetchPedidos();
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    const switchModal = () => {
+        const modal = document.querySelector('.modal');
+        const actualStyle = modal.style.display;
+        if (actualStyle === 'block') {
+            modal.style.display = 'none';
+        } else {
+            modal.style.display = 'block';
+        }
+    };
+
+    const btn = document.querySelector('#btnAdicionar');
+    if (btn) { // Verifica se o botão existe
+        btn.addEventListener('click', switchModal);
+    }
+    const btn1 = document.querySelector('#btnEditar');
+    if (btn1) { // Verifica se o botão existe
+        btn1.addEventListener('click', switchModal);
+    }
+
+    window.onclick = function(event) {
+        const modal = document.querySelector('.modal');
+        if (event.target === modal) {
+            switchModal();
+        }
+    };
+});

@@ -93,7 +93,7 @@
                 
                 <!-- SELEÇÃO DE MÊS -->
                 <select name="mes" id="mes" class="input">
-                    <option value="">Pesquisar</option>
+                    <option value="" selected hidden>Pesquisar</option>
                     {% for mes_ano in meses_anos %}
                         <option value="{{ mes_ano[0] }}">{{ meses_portugues[mes_ano[0] - 1] }}</option>
                     {% endfor %}

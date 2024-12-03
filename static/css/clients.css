@@ -431,6 +431,7 @@ table {
   border-radius: 10px 10px 4px 4px;
   overflow: hidden;
   margin: 0 auto;
+  margin-top:40px;
 }
 
 form{
@@ -467,6 +468,7 @@ form{
   display: flex;
   height: 2.5rem;
   margin-top:20px;
+  
 }
 
 .search{
