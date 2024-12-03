@@ -9,10 +9,6 @@ body {
   display: flex;
 }
 
-body.light {
-  background-color: #fff;
-  color: white;
-}
 
 #Principal {
   width: 100%;
@@ -22,9 +18,6 @@ body.light {
   margin-bottom: 0;
 }
   
-body.light h2 {
-  color: black;
-}
 
 h2 {
   color: white;
@@ -47,7 +40,9 @@ h2 {
   flex-wrap: wrap;
   gap: 20px;  
   margin: 0 auto;
-  margin-bottom: 10px;
+  margin-bottom: 2%;
+  justify-items: center;
+  align-items: center;
 }
 
 .card {
@@ -70,18 +65,20 @@ h2 {
   text-align: center;
 } 
 
-#canvas{
+#canvas-e-titulo{
   width: 100%;
   display: flex;
   flex-direction: column;
-  height:350px;
+  height: auto;
+  max-height: 50%;
   align-items: center;
 }
 
 #lucroChart {
   width: 100% !important;
-
-  max-width: 800px;   
+  max-width: 50%;   
+  height: 100%;
+  max-height: 100%;
 }
 
 /*Sidebar do Painel*/
@@ -487,10 +484,68 @@ h2 {
 
 /* Parte Branca(Apartheid Reverso) */
 body.light {
-  background-color: #fff;
-  color: white;
+  background-color: #f5f4f4;
 }
 
 body.light h2 {
   color: black;
+}
+
+
+body.light .card {
+  background-color: #f2f2f2;
+  font-weight: bold;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+body.light .content {
+  color: #333;
+}
+
+body.light .side_item.active {
+  background-color: #ffffff;
+  font-weight: bold;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+
+body.light #sidebar {
+  background-color: #dcdcdcf1;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+body.light #sidebar i{
+  color:#2a5ec5;
+}
+
+body.light .side_item a {
+  color: #2a5ec5;
+}
+body.light #logout_btn .item-description a{
+  color:#2a5ec5
+}
+body.light #logout_btn{
+  color:#2a5ec5;
+}
+body.light #logout_btn:hover .item-description{
+  color:#ff0000;
+  background: transparent;
+}
+body.light #logout_btn:hover i{
+  color:#ff0000;
+  background: transparent;
+}
+body.light #open_btn i{
+  color:white;
+}
+
+body.light ::-webkit-scrollbar {
+  overflow-y:hidden;
+}
+body.light p .item-description{
+  color:black;
+  font-weight: bold;
+}
+body.light .side_item:hover:not(.active), #logout_btn:hover {
+  background-color: #fffffff1;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
 }

@@ -101,11 +101,11 @@
                     <h1 id="MetaTitulo">Meta De Vendas</h1>
                     <div class="Scroll-Y">
                         <p class="MetaSubtitulo">Meta Anual</p>
-                        <p class="MetaProgresso">QTD_Anual</p>
+                        <p class="MetaProgresso">Barra Progresso</p>
                         <p class="MetaSubtitulo">Meta Mensal</p>
-                        <p class="MetaProgresso">QTD_Mensal</p>
+                        <p class="MetaProgresso">Barra Progresso</p>
                         <p class="MetaSubtitulo">Meta Semanal</p>
-                        <p class="MetaProgresso">QTD_Semanal</p>
+                        <p class="MetaProgresso">Barra Progresso</p>
                     </div>
                 </div>
             </div>
@@ -116,9 +116,136 @@
         </div>
         <div id="Pedidos">
             <div id="GerenciarPedidos">
+
+                <!--Modal do Botão Adicionar-->
+                <div class="modal">
+                    <div class="content">
+                        <form class="cad" action="/editar_pedido" method="POST">
+                            <label for="input">
+                                <p class="label-form">Nome</p>
+                                <input placeholder="Digite aqui" type="text" class="input" name="nome" required>
+                            </label>
+                            <label for="produto">
+                                <p class="label-form">Produto</p>
+                                <select name="produto" id="produto" class="input" required>
+                                    <option value="produto" selected hidden>Produto</option>
+                                </select>
+                            </label>
+                            <label for="funcionario">
+                                <p class="label-form">Funcionario</p>
+                                <select name="funcionario" id="funcionario" class="input" required>
+                                    <option value="funcionario" selected hidden>Funcionario</option>
+                                </select>
+                            </label>
+                            <label for="quantidade">
+                                <p class="label-form">Quantidade</p>
+                                <input placeholder="Qtde." type="number" class="input" name="nome" required>
+                            </label>
+                            <label for="venda">
+                                <p class="label-form">Venda nº</p>
+                                <select name="venda-n" id="venda-n" class="input" required>
+                                    <option value="venda-n" selected hidden>Venda</option>
+                                </select>
+                            </label>
+                            <label for="empresa">
+                                <p class="label-form">Empresa</p>
+                                <select name="empresa" id="empresa" class="input" required>
+                                    <option value="empresa" selected hidden>Empresa</option>
+                                </select>
+                            </label>
+                            <label for="data">
+                                <p class="label-form">Data</p>
+                                <input type="datetime-local" 
+                                        id="data" 
+                                        name="data"  
+                                        min="2023-06-07T00:00" 
+                                        max="2030-06-07T00:00"
+                                        required/>
+                            </label>
+                            <p class="label-form">Finalizado</p>
+                            <div class="finalizado-radio">
+                                <label class="finalizado-item">
+                                    <input type="radio" name="finalizado" class="finalizado" value="opcao1" id="opcao1">
+                                    Sim
+                                </label>
+                                <label class="finalizado-item">
+                                    <input type="radio" name="finalizado" class="finalizado" value="opcao2" id="opcao2">
+                                    Não
+                                </label>
+                            </div>
+                            <button type="submit" class="submit">Salvar</button>
+                            <button class="deny" data-bs-dismiss="modal">Cancelar</button>
+                        </form>
+                    </div>
+                </div>
+
                 <button id="btnAdicionar">Adicionar Pedido</button>
+
+                <!--Modal do Botão Editar-->
+                <div class="modal">
+                    <div class="content">
+                        <form class="cad" action="/editar_pedido" method="POST">
+                            <label for="input">
+                                <p class="label-form">Nome</p>
+                                <input placeholder="Digite aqui" type="text" class="input" name="nome" required>
+                            </label>
+                            <label for="produto">
+                                <p class="label-form">Produto</p>
+                                <select name="produto" id="produto" class="input" required>
+                                    <option value="produto" selected hidden>Produto</option>
+                                </select>
+                            </label>
+                            <label for="funcionario">
+                                <p class="label-form">Funcionario</p>
+                                <select name="funcionario" id="funcionario" class="input" required>
+                                    <option value="funcionario" selected hidden>Funcionario</option>
+                                </select>
+                            </label>
+                            <label for="quantidade">
+                                <p class="label-form">Quantidade</p>
+                                <input placeholder="Qtde." type="number" class="input" name="nome" required>
+                            </label>
+                            <label for="venda">
+                                <p class="label-form">Venda nº</p>
+                                <select name="venda-n" id="venda-n" class="input" required>
+                                    <option value="venda-n" selected hidden>Venda</option>
+                                </select>
+                            </label>
+                            <label for="empresa">
+                                <p class="label-form">Empresa</p>
+                                <select name="empresa" id="empresa" class="input" required>
+                                    <option value="empresa" selected hidden>Empresa</option>
+                                </select>
+                            </label>
+                            <label for="data">
+                                <p class="label-form">Data</p>
+                                <input type="datetime-local" 
+                                        id="data" 
+                                        name="data"  
+                                        min="2023-06-07T00:00" 
+                                        max="2030-06-07T00:00"
+                                        required/>
+                            </label>
+                            <p class="label-form">Finalizado</p>
+                            <div class="finalizado-radio">
+                                <label class="finalizado-item">
+                                    <input type="radio" name="finalizado" class="finalizado" value="opcao1" id="opcao1">
+                                    Sim
+                                </label>
+                                <label class="finalizado-item">
+                                    <input type="radio" name="finalizado" class="finalizado" value="opcao2" id="opcao2">
+                                    Não
+                                </label>
+                            </div>
+                            <button type="submit" class="submit">Salvar</button>
+                            <button class="deny" data-bs-dismiss="modal">Cancelar</button>
+                        </form>
+                    </div>
+                </div>
+
                 <button id="btnEditar">Editar Pedido</button>
             </div>
+
             <div>
                 <h3 id="VendasTitulo">Lista de vendas:</h3>
             </div>
