@@ -19,6 +19,7 @@ from Routes.configuracoes import configuracoes_bp
 from Routes.gerar_pdf import gerar_relatorios_bp
 from Routes.clientes import clientes_bp
 from Routes.usuarios import usuarios_bp
+from Routes.funcionarios import funcionarios_bp
 
 app = Flask(__name__, static_folder='static')
 app.config.from_object(Config)
@@ -41,6 +42,7 @@ app.register_blueprint(configuracoes_bp)
 app.register_blueprint(gerar_relatorios_bp)
 app.register_blueprint(clientes_bp)
 app.register_blueprint(usuarios_bp)
+app.register_blueprint(funcionarios_bp)
 
 # CRIA A CONNECTION DO DB
 with app.app_context():

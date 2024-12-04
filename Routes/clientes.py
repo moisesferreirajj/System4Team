@@ -87,7 +87,7 @@ def adicionar_cliente():
         return jsonify({"error": "Erro ao adicionar cliente. Tente novamente."}), 500
 
 #EDITAR CLIENTES - ROUTE POST
-@clientes_bp.route("/json/editar_cliente/<int:cliente_id>", methods=['POST'])
+@clientes_bp.route("/json/editar-cliente/<int:cliente_id>", methods=['POST'])
 def editar_cliente(cliente_id):
     if 'username' not in session:
         return jsonify({"error": "Você precisa fazer login primeiro!"}), 401
@@ -121,7 +121,7 @@ def editar_cliente(cliente_id):
         return jsonify({"error": "Erro ao editar cliente. Tente novamente."}), 500
 
 #BUSCAR ID DO CLIENTE - ROUTE GET
-@clientes_bp.route("/json/buscar_cliente/<int:cliente_id>", methods=['GET'])
+@clientes_bp.route("/json/buscar-cliente/<int:cliente_id>", methods=['GET'])
 def obter_cliente(cliente_id):
     if 'username' not in session:
         return jsonify({"error": "Você precisa fazer login primeiro!"}), 401

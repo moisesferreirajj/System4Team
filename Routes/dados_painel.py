@@ -8,7 +8,7 @@ meses_portugues = [
     "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"
 ]
 
-@dados_painel_bp.route("/json/dados_painel")
+@dados_painel_bp.route("/json/dados-painel")
 def dados_painel():
     # Buscar apenas pedidos finalizados (finalizado == True ou 1)
     pedidos_finalizados = Pedido.query.filter(Pedido.finalizado == True).all()

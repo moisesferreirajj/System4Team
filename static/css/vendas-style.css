@@ -260,6 +260,7 @@ html{
 }#user_infos {
   display: flex;
   flex-direction: column;
+  font-weight: bold;
 }
 
 #user_infos span:last-child {
@@ -579,15 +580,18 @@ html{
 }
 
 .modal .content {
-  background-color: rgb(0, 59, 177);
-  width: 15%; 
+  background-color: #111E2E;
+  width: 350px; 
   display: flex;
-  flex-direction: column;
   margin: 0 auto;
   margin-top: 2%;
-  padding: 1%;
+  padding: 1.5%;
   border-radius: 10px;
   box-shadow: 7px 7px 10px rgba(0, 0, 0, 0.603);
+}
+
+.cad {
+  width: 100%;
 }
 
 .label-form {
@@ -600,34 +604,59 @@ html{
 .cad label {
   display: block;
   width: 100%;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 .cad .input {
   width: 100%;
   box-sizing: border-box;
-  padding: 8px;
-  margin-top: 5px;
+  outline: 0;
+  border: 1px solid rgba(105, 105, 105, 0.397);
+  border-radius: 10px;
+  height:40px;
+  background-color: #25374D;
+  color: white;
+}
+
+.cad .input::placeholder {
+  color: white;
+}
+
+.cad .produto-func {
+  display: flex;
+  width: 100%;
+}
+
+.cad #produto {
+  width: 40%;
+}
+
+.cad #funcionario {
+  width: 40%;
 }
 
 .cad .finalizado-radio {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  margin-bottom: 15px;
-}
-
-.finalizado-radio label {
-  width: 50%;
+  width: 150px;
 }
 
 .cad button {
-  width: 40%;
+  width: 30%;
   padding: 5px;
   margin-top: 0;
   font-size: 16px;
   border-radius: 10px;
+}
+
+.cad #data {
+  width: 50%;
+  padding: 4px;
+  color: white;
+  background-color: #25374D;
+  border-radius: 10px;
+  border: none;
 }
 
 /**Scroll Página**/
@@ -645,15 +674,50 @@ html{
 }
 
 .bar-container {
-  width:100%;
-  background-color: #c1c1c1;
-  border-radius: 10px;
+  width:90%;
+  --height: 30px;
+  margin: 0 auto;
+  display: flex;
+  box-sizing: border-box;
+  padding: 5px;
+  height: var(--height);
+  background-color:#c5c5c5;
+  border-radius: 15px;
+  box-shadow: #0c0c0c -2px 2px 4px 0px;
 }
 
-#ProgressBar {
+#ProgressBarAnual {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  --height: 20px;
   width:1%;
-  height: 30px;
-  background-color:rgb(3, 18, 177);
-  border-radius: 10px;
-  transition: width 0.3 ease-in-out;
+  height: var(--height);
+  overflow: hidden;
+  background-color: #0e3ba5;
+  border-radius: 15px;
+}
+
+#ProgressBarMensal {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  --height: 20px;
+  width:1%;
+  height: var(--height);
+  overflow: hidden;
+  background-color: #0e3ba5;
+  border-radius: 15px;
+}
+
+#ProgressBarSemanal {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  --height: 20px;
+  width:1%;
+  height: var(--height);
+  overflow: hidden;
+  background-color: #0e3ba5;
+  border-radius: 15px;
 }

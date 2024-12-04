@@ -40,7 +40,7 @@ def usuarios():
                            imagem_usuario=imagem_usuario)
 
 #BUSCAR USUARIO - ROUTE GET
-@usuarios_bp.route("/json/buscar_usuario/<int:id>", methods=["GET"])
+@usuarios_bp.route("/json/buscar-usuario/<int:id>", methods=["GET"])
 def get_usuario_data(id):
     usuario = Usuario.query.get(id)
     if not usuario:
@@ -55,7 +55,7 @@ def get_usuario_data(id):
     })
 
 # EDITAR USUÁRIO - ROUTE POST
-@usuarios_bp.route("/json/editar_usuario/<int:id>", methods=["POST"])
+@usuarios_bp.route("/json/editar-usuario/<int:id>", methods=["POST"])
 def editar_usuario(id):
     if 'username' not in session:
         return jsonify({"error": "Você precisa estar logado!"}), 401

@@ -114,28 +114,37 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 });
 
-async function ProgressMeta() {
+async function ProgressPeriod() {
     const response = await fetch('/json/dados-vendas');
     const data = await response.json();
     const produtos = data.produtos_mais_vendidos;
-    const lucrosProdutos = produtos.map(produto => parseFloat(produto.lucro)); 
-    let lucroAtual = lucrosProdutos.reduce((acc, current)=> acc + current, 0);
-    var bar = document.getElementById('ProgressBar');
-    const Meta = 100;
-    let width = 50;
+    const lucrosProdutos = produtos.map(produto => parseFloat(produto.lucro));
+
+    let lucroAtual = lucrosProdutos.reduce((acc, current) => acc + current, 0);
+    const barAnual = document.getElementById('ProgressBarAnual');
+    const barMensal = document.getElementById('ProgressBarMensal');
+    const barSemanal = document.getElementById('ProgressBarSemanal');
+
+    const MetaAnual = 100000;
+    const MetaMensal = MetaAnual / 12;
+    const MetaSemanal = MetaMensal / 4;
+
+    // Calcula a largura das barras
+    let widthAnual = (lucroAtual / MetaAnual) * 100;
+    let widthMensal = (lucroAtual / MetaMensal) * 100;
+    let widthSemanal = (lucroAtual / MetaSemanal) * 100;
 
     // Garante que a barra não ultrapasse 100%
-    if (width > 100){
-        width =100;
-    }
-    
+    widthAnual = Math.min(widthAnual, 100);
+    widthMensal = Math.min(widthMensal, 100);
+    widthSemanal = Math.min(widthSemanal, 100);
 
-        if (width >= 100){
-        } else {
-            width++;
-            bar.style.width = width + "%";
-        }
-};
-window.onload = function(){
-    ProgressMeta();
+    // Atualiza a largura das barras de progresso
+    barAnual.style.width = widthAnual + "%";
+    barMensal.style.width = widthMensal + "%";
+    barSemanal.style.width = widthSemanal + "%";
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+    ProgressPeriod();
+});

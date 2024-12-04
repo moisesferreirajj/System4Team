@@ -9,6 +9,7 @@ body {
   display: flex;
   transition: background-color 0.3s ease, color 0.5;
   overflow-x: hidden;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 
@@ -85,6 +86,7 @@ h2 {
 }#user_infos {
   display: flex;
   flex-direction: column;
+  font-weight: bold;
 }
 
 #user_infos span:last-child {
@@ -163,7 +165,8 @@ h2 {
 }
 
 #logout_btn:hover {
-  color:rgba(255, 0, 0, 0.795)
+  color:rgba(255, 0, 0, 0.795);
+  background-color: rgb(75, 99, 128);
 }
 
 #open_btn {
@@ -515,19 +518,19 @@ h2 {
   font-weight: 500;
   font-size: 45px;
   color: rgb(255, 255, 255);
-  margin-top:70px;
+  margin-top:50px;
   margin-left:20px;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 .barra {
-  margin-top:70px;
+  margin-top:50px;
   color:rgba(240, 233, 233, 0.525);
 }
 .profile__subtitle {
   font-weight: 400;
   font-size: 45px;
   color: rgb(255, 255, 255);
-  margin-top:70px;
+  margin-top:50px;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
@@ -541,7 +544,7 @@ h2 {
 }
 
 .profile__name{
-  margin-top: -40px;
+  margin-top: -60px;
   margin-bottom:7.5px;
   margin-left:200px;
   font-size: 20px;
@@ -564,7 +567,7 @@ h2 {
   padding: 0px 10px;
 }
 
-.card .list .element {
+.card .list .element{
   display: flex;
   align-items: center;
   color: #7e8590;
@@ -634,6 +637,27 @@ h2 {
   margin-top: 30px;
 }
 
+
+#imagem_input{
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  border-radius: 10px 10p;
+
+}
+#upload_imagem_form {
+  display:none;
+}
+
+#imagem_input {
+  display:none;
+}
+
+
+
+#upload_imagem_form input[type="file"]{
+  display:none;
+}
+
+
 /* Parte Branca(Apartheid Reverso) */
 body.light {
   background-color: #f5f4f4;
@@ -678,7 +702,7 @@ body.light #logout_btn .item-description a{
 body.light #logout_btn{
   color:#2a5ec5;
 }
-body.light #logout_btn:hover .item-description{
+body.light #logout_btn:hover a{
   color:#ff0000;
   background: transparent;
 }
@@ -693,7 +717,7 @@ body.light #open_btn i{
 body.light ::-webkit-scrollbar {
   overflow-y:hidden;
 }
-body.light p .item-description{
+body.light p.item-description{
   color:black;
   font-weight: bold;
 }
@@ -703,8 +727,21 @@ body.light .side_item:hover:not(.active), #logout_btn:hover {
 }
 
 body.light .profile__title,.profile__subtitle,.barra{
-  color:#333;
+  color:#000;
 }
+
+body.light .profile__subtitle{
+  color:#000;
+}
+
+body.light .barra{
+  color:#000;
+}
+
+.profile__title,.profile__subtitle,.barra{
+  color:#fff;
+}
+
 body.light .subcard{
   background: #e1f3ff;
 }

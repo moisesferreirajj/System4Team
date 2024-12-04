@@ -1,56 +1,90 @@
 <!-- SIDEBAR - INCLUDE BY MOISES, YOHAN DESIGN AND FRONT BY IGOR -->
-<ul id="side_items">
-    <li class="side_item {% if request.path == '/painel' %}active{% endif %}">
-        <a href="/painel">
-            <i class="fa-solid fa-house"></i>
-            <span class="item-description">
-                Inicio
-            </span>
+<nav id="sidebar">
+    <div id="sidebar-content">
+        <div id="user">
+            <img src="{{ url_for('static', filename='images/profile/' + imagem_usuario) }}" alt="Logo" id="logo-sidebar">
+
+            <p id="user_infos">
+                <span class="item-description">{{ username }}</span>
+                <span class="item-description">Cargo: {{ cargo }}</span>
+            </p>
+        </div>
+
+    <ul id="side_items">
+        <li class="side_item {% if request.path == '/painel' %}active{% endif %}">
+            <a href="/painel">
+                <i class="fa-solid fa-house"></i>
+                <span class="item-description">
+                    Inicio
+                </span>
+            </a>
+        </li>
+        
+        <li class="side_item {% if request.path == '/clientes' %}active{% endif %}">
+            <a href="/clientes">
+                <i class="fa-solid fa-user"></i>
+                <span class="item-description">
+                    Clientes
+                </span>
+            </a>
+        </li>
+
+        <li class="side_item {% if request.path == '/funcionarios' %}active{% endif %}">
+            <a href="/funcionarios">
+                <i class="fa-solid fa-fingerprint"></i>
+                <span class="item-description">
+                    Funcionários
+                </span>
+            </a>
+        </li>
+
+        <li class="side_item {% if request.path == '/relatorios' %}active{% endif %}">
+            <a href="/relatorios">
+                <i class="fa-solid fa-chart-line"></i>
+                <span class="item-description">
+                    Relatórios
+                </span>
+            </a>
+        </li>
+        
+        <li class="side_item {% if request.path == '/usuarios' %}active{% endif %}">
+            <a href="/usuarios">
+                <i class="fa-solid fa-thumbtack"></i>
+                <span class="item-description">
+                    Usuários
+                </span>
+            </a>
+        </li>
+        
+        <li class="side_item {% if request.path == '/vendas' %}active{% endif %}">
+            <a href="/vendas">
+                <i class="fa-solid fa-money-bill-1"></i>
+                <span class="item-description">
+                    Vendas
+                </span>
+            </a>
+        </li>
+        
+        <li class="side_item {% if request.path == '/configuracoes' %}active{% endif %}">
+            <a href="/configuracoes">
+                <i class="fa-solid fa-gear"></i>
+                <span class="item-description">
+                    Configurações
+                </span>
+            </a>
+        </li>
+    </ul>
+
+        <button id="open_btn">
+            <i class="fa-solid fa-chevron-right" id="open_btn_icon"></i>
+        </button>
+    </div>
+
+    <div id="logout">
+        <a href="{{ url_for('auth.logout') }}" id="logout_btn" style="width: 100%; text-decoration: none;">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            <span class="item-description">Logout</span>
         </a>
-    </li>
-    
-    <li class="side_item {% if request.path == '/clientes' %}active{% endif %}">
-        <a href="/clientes">
-            <i class="fa-solid fa-user"></i>
-            <span class="item-description">
-                Clientes
-            </span>
-        </a>
-    </li>
-    
-    <li class="side_item {% if request.path == '/relatorios' %}active{% endif %}">
-        <a href="/relatorios">
-            <i class="fa-solid fa-chart-line"></i>
-            <span class="item-description">
-                Relatórios
-            </span>
-        </a>
-    </li>
-    
-    <li class="side_item {% if request.path == '/usuarios' %}active{% endif %}">
-        <a href="/usuarios">
-            <i class="fa-solid fa-thumbtack"></i>
-            <span class="item-description">
-                Usuários
-            </span>
-        </a>
-    </li>
-    
-    <li class="side_item {% if request.path == '/vendas' %}active{% endif %}">
-        <a href="/vendas">
-            <i class="fa-solid fa-money-bill-1"></i>
-            <span class="item-description">
-                Vendas
-            </span>
-        </a>
-    </li>
-    
-    <li class="side_item {% if request.path == '/configuracoes' %}active{% endif %}">
-        <a href="/configuracoes">
-            <i class="fa-solid fa-gear"></i>
-            <span class="item-description">
-                Configurações
-            </span>
-        </a>
-    </li>
-</ul>
+    </div>
+            
+</nav> 

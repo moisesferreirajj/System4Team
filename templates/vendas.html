@@ -17,32 +17,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>      
-    <nav id="sidebar">
-        <div id="sidebar-content">
-            <div id="user">
-                <img src="{{ url_for('static', filename='images/profile/' + imagem_usuario) }}" alt="Logo" id="logo-sidebar">
 
-                <p id="user_infos">
-                    <span class="item-description">{{ username }}</span>
-                    <span class="item-description">Cargo: {{ cargo }}</span>
-                </p>
-            </div>
+    <!-- Sidebar feita por Yohan e M -->
+    {% include 'sidebar.html' %}
 
-            <!-- Sidebar feita por Yohan e M -->
-            {% include 'sidebar.html' %}
-
-            <button id="open_btn">
-                <i class="fa-solid fa-chevron-right" id="open_btn_icon"></i>
-            </button>
-        </div>
-
-        <div id="logout">
-            <a href="{{ url_for('auth.logout') }}" id="logout_btn" style="width: 100%; text-decoration: none;">
-                <i class="fa-solid fa-right-from-bracket"></i>
-                <span class="item-description">Logout</span>
-            </a>
-        </div>
-    </nav>
 
     <section id="Principal">
         <div class="Vendas">
@@ -60,12 +38,16 @@
                     <div class="Scroll-Y">
                         <p class="MetaSubtitulo">Meta Anual</p>
                         <div class="bar-container">
-                            <div class="progressBar" id="ProgressBar"></div>
+                            <div class="progressBar" id="ProgressBarAnual"></div>
                         </div>
                         <p class="MetaSubtitulo">Meta Mensal</p>
-                        
+                        <div class="bar-container">
+                            <div class="progressBar" id="ProgressBarMensal"></div>
+                        </div>
                         <p class="MetaSubtitulo">Meta Semanal</p>
-                        
+                        <div class="bar-container">
+                            <div class="progressBar" id="ProgressBarSemanal"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -100,13 +82,11 @@
                             </label>
                             <label for="quantidade">
                                 <p class="label-form">Quantidade</p>
-                                <input placeholder="Qtde." type="number" class="input" id="quantidade" min="0" name="nome" required>
+                                <input placeholder="Qtde." type="number" class="input" id="quantidade" min="0" name="quantidade" required>
                             </label>
                             <label for="venda">
-                                <p class="label-form">Venda nº</p>
-                                <select name="venda-n" id="venda-n" class="input" required>
-                                    <option value="venda-n" selected hidden>Venda</option>
-                                </select>
+                                <p class="label-form">Venda</p>
+                                <input placeholder="Venda nº" type="number" class="input" id="venda" min="0" name="venda" required>
                             </label>
                             <label for="empresa">
                                 <p class="label-form">Empresa</p>

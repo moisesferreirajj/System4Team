@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 //BUSCA O USUARIO - Route - GET
                 const usuarioId = button.getAttribute('data-id');
-                fetch(`/json/buscar_usuario/${usuarioId}`)
+                fetch(`/json/buscar-usuario/${usuarioId}`)
                     .then(response => response.json())
                     .then(data => {
                         if (data) {
@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // EDITA O USUÁRIO COM O DATA-ID - Route - POST
             const formData = new FormData(editForm);
-            fetch(`/json/editar_usuario/${usuarioId}`, {
+            fetch(`/json/editar-usuario/${usuarioId}`, {
                 method: 'POST',
                 body: formData
             })

@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 // BUSCA O CLIENTE - ROUTE - GET
                 const clienteId = button.getAttribute('data-id');
-                fetch(`/json/buscar_cliente/${clienteId}`)
+                fetch(`/json/buscar-cliente/${clienteId}`)
                     .then(response => response.json())
                     .then(data => {
                         if (data) {
@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // EDITA O CLIENTE - ROUTE - POST
             const formData = new FormData(editForm);
-            fetch(`/json/editar_cliente/${clienteId}`, {
+            fetch(`/json/editar-cliente/${clienteId}`, {
                 method: 'POST',
                 body: formData
             })

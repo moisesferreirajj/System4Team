@@ -1,6 +1,6 @@
 async function fetchDadosPainel() {
     try {
-        const response = await fetch('/json/dados_painel');
+        const response = await fetch('/json/dados-painel');
         const data = await response.json();
 
         // Atualizar valores principais no dashboard

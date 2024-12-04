@@ -25,7 +25,7 @@ def esqueceu():
             db.session.commit()
 
             # URL da logo
-            logo_url = "https://raw.githubusercontent.com/MoisesFerreiraSun/System4Team/refs/heads/main/static/images/Impact.png?token=GHSAT0AAAAAACZPI7YS36XWXVQJFMPCPSI4ZZ7RAXQ"
+            logo_url = "https://i.imgur.com/EVYkjiK.png"
             msg = Message('Recuperação de Senha', recipients=[email])
             #DEFINE O NOME DO USUARIO NO EMAIL
             nome_usuario = usuario.funcionario_relacionado.nome if usuario.funcionario_relacionado else usuario.usuario

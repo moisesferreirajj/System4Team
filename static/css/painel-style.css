@@ -103,6 +103,7 @@ h2 {
 }#user_infos {
   display: flex;
   flex-direction: column;
+  font-weight: bold;
 }
 
 #user_infos span:last-child {

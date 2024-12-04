@@ -47,6 +47,7 @@ body.light h2 {
 }#user_infos {
   display: flex;
   flex-direction: column;
+  font-weight: bold;
 }
 
 #user_infos span:last-child {
@@ -521,6 +522,25 @@ form{
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
 }
 
+.add-funcionario{
+  background-color: #0241be;
+  color:white;
+  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  border-style: none;
+  margin-left: 40px;
+  border: 1px solid #0241be;
+  border-radius:20px;
+  transition: background-color 0.5s ease, color 0.5s ease;
+
+}
+.add-funcionario:hover{
+  background-color: #ffffff;
+  color:#0241be;
+  border: 1px solid transparent;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+}
+
+
 .btn-edit{
     color:rgb(64, 199, 52);
     border-radius: 5px;
@@ -608,7 +628,6 @@ form{
   color: green;
 }
 
-
 .editar {
   display: flex;
   flex-direction: column;
@@ -670,7 +689,6 @@ form{
   font-size: 16px;
   transform: .3s ease;
   width:70px;
-  font-size: 17px;
 }
 
 .submit:hover {
