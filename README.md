@@ -10,7 +10,7 @@ O **SystemForTeam** é um sistema robusto desenvolvido para otimizar o gerenciam
 
 <div align="center">
     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" width="50" height="50" /><br>
-    <strong>Python</strong><br>O backend é construído em Python, utilizando frameworks como Flask ou Django, garantindo escalabilidade e desempenho.
+    <strong>Python</strong><br>O backend é construído em Python, utilizando framework Flask e outras bibliotecas, garantindo escalabilidade e desempenho.
 </div>
 <br>
 
