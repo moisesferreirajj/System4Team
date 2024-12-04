@@ -1,0 +1,56 @@
+<!-- SIDEBAR - INCLUDE BY MOISES, YOHAN DESIGN AND FRONT BY IGOR -->
+<ul id="side_items">
+    <li class="side_item {% if request.path == '/painel' %}active{% endif %}">
+        <a href="/painel">
+            <i class="fa-solid fa-house"></i>
+            <span class="item-description">
+                Inicio
+            </span>
+        </a>
+    </li>
+    
+    <li class="side_item {% if request.path == '/clientes' %}active{% endif %}">
+        <a href="/clientes">
+            <i class="fa-solid fa-user"></i>
+            <span class="item-description">
+                Clientes
+            </span>
+        </a>
+    </li>
+    
+    <li class="side_item {% if request.path == '/relatorios' %}active{% endif %}">
+        <a href="/relatorios">
+            <i class="fa-solid fa-chart-line"></i>
+            <span class="item-description">
+                Relatórios
+            </span>
+        </a>
+    </li>
+    
+    <li class="side_item {% if request.path == '/usuarios' %}active{% endif %}">
+        <a href="/usuarios">
+            <i class="fa-solid fa-thumbtack"></i>
+            <span class="item-description">
+                Usuários
+            </span>
+        </a>
+    </li>
+    
+    <li class="side_item {% if request.path == '/vendas' %}active{% endif %}">
+        <a href="/vendas">
+            <i class="fa-solid fa-money-bill-1"></i>
+            <span class="item-description">
+                Vendas
+            </span>
+        </a>
+    </li>
+    
+    <li class="side_item {% if request.path == '/configuracoes' %}active{% endif %}">
+        <a href="/configuracoes">
+            <i class="fa-solid fa-gear"></i>
+            <span class="item-description">
+                Configurações
+            </span>
+        </a>
+    </li>
+</ul>

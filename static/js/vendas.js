@@ -113,3 +113,29 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 });
+
+async function ProgressMeta() {
+    const response = await fetch('/json/dados-vendas');
+    const data = await response.json();
+    const produtos = data.produtos_mais_vendidos;
+    const lucrosProdutos = produtos.map(produto => parseFloat(produto.lucro)); 
+    let lucroAtual = lucrosProdutos.reduce((acc, current)=> acc + current, 0);
+    var bar = document.getElementById('ProgressBar');
+    const Meta = 100;
+    let width = 50;
+
+    // Garante que a barra não ultrapasse 100%
+    if (width > 100){
+        width =100;
+    }
+    
+
+        if (width >= 100){
+        } else {
+            width++;
+            bar.style.width = width + "%";
+        }
+};
+window.onload = function(){
+    ProgressMeta();
+}

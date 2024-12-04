@@ -1,16 +1,23 @@
 from flask import Blueprint, render_template, request, session, redirect, url_for, flash, make_response
-from models import Pedido, Usuario, Cliente, Produto, db
+from models import Pedido, Usuario, Cliente, Produto
 from reportlab.lib.pagesizes import letter
 from reportlab.pdfgen import canvas
+from reportlab.lib import colors
+from reportlab.pdfbase.ttfonts import TTFont
+from reportlab.pdfbase import pdfmetrics
 from io import BytesIO
 
 gerar_relatorios_bp = Blueprint('gerar_relatorios', __name__)
+
+# FONTE ARIAL
+pdfmetrics.registerFont(TTFont('Arial', 'static/fonts/arial.ttf'))
 
 @gerar_relatorios_bp.route("/gerar-relatorio-pdf", methods=['POST'])
 def gerar_relatorio_pdf():
     if 'username' not in session:
         flash('Você precisa fazer login primeiro!')
         return redirect(url_for('auth.login'))
+    
     username = session['username']
     if username and username[0].islower():
         username = username.capitalize()
@@ -36,56 +43,119 @@ def gerar_relatorio_pdf():
     if mes:
         pedidos = [pedido for pedido in pedidos if pedido.data_pedido.month == int(mes)]
 
+    # VARIÁVEIS BÁSICAS
     total_vendas = 0
+    total_receita = 0
     total_pedidos = 0
+    total_pedidos_finalizados = 0
     vendas_por_id = {}
 
     for pedido in pedidos:
+        preco_total_pedido = pedido.produto.preco * pedido.quantidade
+        # CONTABILIZAR TODOS PEDIDOS
+        total_receita += preco_total_pedido
+        # CONTABILIZAR PEDIDOS FINALIZADOS E NÃO FINALIZADOS
+        total_pedidos += 1
+        if pedido.finalizado:
+            total_vendas += preco_total_pedido
+            total_pedidos_finalizados += 1
+
+        # CONTABILIZAR VENDAS POR ID
         if pedido.id_venda not in vendas_por_id:
             vendas_por_id[pedido.id_venda] = {'quantidade': 0, 'total_venda': 0}
         
-        preco_total_pedido = pedido.produto.preco * pedido.quantidade
         vendas_por_id[pedido.id_venda]['quantidade'] += pedido.quantidade
         vendas_por_id[pedido.id_venda]['total_venda'] += preco_total_pedido
 
-    for venda in vendas_por_id.values():
-        total_vendas += venda['total_venda']
-        total_pedidos += venda['quantidade']
-
     total_clientes = Cliente.query.count()
 
-    # Gerando o conteúdo do PDF com ReportLab
+    # GERANDO O PDF COM A BIBLIOTECA REPORTLAB
     buffer = BytesIO()
     c = canvas.Canvas(buffer, pagesize=letter)
     width, height = letter
 
-    # Títulos
+    # TITULO PDF
+    c.setTitle("Relatório de Vendas - System4Team")
+    logo_path = "http://127.0.0.1:5001/static/images/logo.png"
+    c.drawImage(logo_path, 30, height - 50, width=80, height=25, mask='auto')  # LOGO E FUNDO
+    c.setFont("Helvetica-Bold", 24)
+    c.drawString(140, height - 50, "Relatório de Vendas - System4Team")
+    c.setStrokeColor(colors.black)
+    c.setLineWidth(1)
+    c.line(30, height - 80, width - 30, height - 80)
     c.setFont("Helvetica-Bold", 16)
-    c.drawString(100, height - 40, "Relatório de Vendas")
+    c.drawString(30, height - 130, "Resumo do Relatório:")
     
-    c.setFont("Helvetica", 12)
-    c.drawString(100, height - 80, f"Total de Vendas: R$ {total_vendas:.2f}")
-    c.drawString(100, height - 100, f"Total de Pedidos: {total_pedidos}")
-    c.drawString(100, height - 120, f"Total de Clientes: {total_clientes}")
+    # INFORMAÇÕES ANTES DA TABELA
+    c.setFont("Arial", 14)
+    c.drawString(30, height - 200, f"Total de Receita: R$ {total_receita:.2f} (todos os pedidos)")
+    c.drawString(30, height - 170, f"Total de Vendas: R$ {total_vendas:.2f} (somente pedidos finalizados)")
+    c.drawString(30, height - 290, f"Total de Clientes: {total_clientes}")
+    c.drawString(30, height - 230, f"Total de Pedidos: {total_pedidos}")
+    c.drawString(30, height - 260, f"Total de Pedidos Finalizados: {total_pedidos_finalizados}")
+    
+    # ADICIONANDO BORDAS AS TABELAS
+    y_position = height - 340
+    c.setFont("Helvetica-Bold", 14)
+    c.drawString(30, y_position, "ID Pedido")
+    c.drawString(150, y_position, "Cliente")
+    c.drawString(270, y_position, "Produto")
+    c.drawString(390, y_position, "Quantidade")
+    c.drawString(510, y_position, "Preço Total")
+    c.setLineWidth(0.5)
+    c.line(30, y_position - 5, 600, y_position - 5)
+    y_position -= 20
+    c.setFont("Arial", 14)
 
-    # Adicionar informações dos pedidos
-    y_position = height - 160
-    c.setFont("Helvetica", 10)
+    # PEDIDOS INFORMAÇÕES
     for pedido in pedidos:
-        c.drawString(100, y_position, f"Pedido ID: {pedido.id_venda}, Cliente: {pedido.cliente.nome}, Total: R$ {pedido.produto.preco * pedido.quantidade:.2f}")
-        y_position -= 20
-        if y_position < 100:  # Adicionar nova página se o espaço for pequeno
-            c.showPage()
-            y_position = height - 40
+        # ID DO PEDIDO CENTRALIZADO
+        c.drawString(30, y_position, str(pedido.id_venda))
+        status = "F" if pedido.finalizado else "N"
+        status_color = colors.green if pedido.finalizado else colors.red
+        c.setFillColor(status_color)
+        c.circle(70, y_position + 3, 7, fill=1)  # CÍRCULO FERRADO
+        c.setFillColor(colors.white)
+        c.setFont("Arial", 12)
+        c.drawString(66, y_position - 2, status)  # TEXTO DENTRO DO CÍRCULO
+        c.setFillColor(colors.black)  # RETORNA A COR NORMAL
+        # INFORMAÇÕES ADICIONAIS CENTRALIZADAS
+        c.drawString(150, y_position, pedido.cliente.nome)
+        c.drawString(270, y_position, pedido.produto.nome)
+        c.drawString(390, y_position, str(pedido.quantidade))
+        c.drawString(510, y_position, f"R$ {pedido.produto.preco * pedido.quantidade:.2f}")        
+        y_position -= 30
+    
+    # TABELA SEPARADA, APENAS ID PEDIDO E DATA VENDA
+    y_position -= 40
+    c.setFont("Helvetica-Bold", 14)
+    c.drawString(30, y_position, "ID Pedido")
+    c.drawString(520, y_position, "Data")
+    c.setLineWidth(0.5)
+    c.line(30, y_position - 5, 600, y_position - 5)
+    y_position -= 20
+    c.setFont("Arial", 14)
 
-    c.showPage()
+    for pedido in pedidos:
+        c.drawString(30, y_position, str(pedido.id_venda))
+        status = "F" if pedido.finalizado else "N"
+        status_color = colors.green if pedido.finalizado else colors.red
+        c.setFillColor(status_color)
+        c.circle(70, y_position + 3, 7, fill=1)  # CÍRCULO PEQUENO
+        c.setFillColor(colors.white)
+        c.setFont("Arial", 12)
+        c.drawString(66, y_position - 2, status)  # N OU F NO CÍRCULO
+        c.setFillColor(colors.black)  # RETORNA COR PRETA
+        c.drawString(520, y_position, pedido.data_pedido.strftime('%d/%m/%Y'))
+        y_position -= 30
+
+    # FINALIZANDO E SALVANDO O PDF
     c.save()
 
-    # Enviar o PDF gerado como resposta
+    # ENVIAR O PDF GERADO COMO RESPOSTA
     pdf = buffer.getvalue()
     buffer.close()
-
     response = make_response(pdf)
     response.headers['Content-Type'] = 'application/pdf'
-    response.headers['Content-Disposition'] = 'attachment; filename=relatorio.pdf'
+    response.headers['Content-Disposition'] = 'attachment; filename="Relatório de Vendas - System4Team.pdf"'
     return response

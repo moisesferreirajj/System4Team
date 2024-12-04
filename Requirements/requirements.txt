@@ -5,3 +5,4 @@ Flask-SQLAlchemy
 mysql-connector
 SQLAlchemy
 python-dotenv
+reportlab

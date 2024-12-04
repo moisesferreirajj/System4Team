@@ -1,0 +1,8 @@
+    <!-- MENSAGENS ERRO -->
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <script>
+            alert("{{ messages[0] }}");
+        </script>
+      {% endif %}
+    {% endwith %}

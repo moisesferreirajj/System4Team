@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>System4Team - Painel Administrativo</title>
+    <title>System4Team - Vendas</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/vendas-style.css') }}">
     <script src="{{ url_for('static', filename='js/vendas.js') }}"></script>
@@ -28,50 +28,8 @@
                 </p>
             </div>
 
-            <!-- NAVBAR BY MOISES AND YOHAN -->
-            <ul id="side_items">
-                <li class="side_item">
-                    <a href="/painel">
-                        <i class="fa-solid fa-house"></i>
-                        <span class="item-description">
-                            Inicio
-                        </span>
-                    </a>
-                </li>
-                
-                <li class="side_item active">
-                    <a href="/vendas">
-                        <i class="fa-solid fa-money-bill-1"></i>
-                        <span class="item-description">
-                            Vendas
-                        </span>
-                    </a>
-                </li>
-                <li class="side_item">
-                    <a href="/relatorios">
-                        <i class="fa-solid fa-chart-line"></i>
-                        <span class="item-description">
-                            Relatórios
-                        </span>
-                    </a>
-                </li>
-                <li class="side_item">
-                    <a href="/clientes">
-                        <i class="fa-solid fa-user"></i>
-                        <span class="item-description">
-                            Clientes
-                        </span>
-                    </a>
-                </li>
-                <li class="side_item">
-                    <a href="/configuracoes">
-                        <i class="fa-solid fa-gear"></i>
-                        <span class="item-description">
-                            Configurações
-                        </span>
-                    </a>
-                </li>
-            </ul>
+            <!-- Sidebar feita por Yohan e M -->
+            {% include 'sidebar.html' %}
 
             <button id="open_btn">
                 <i class="fa-solid fa-chevron-right" id="open_btn_icon"></i>
@@ -101,19 +59,22 @@
                     <h1 id="MetaTitulo">Meta De Vendas</h1>
                     <div class="Scroll-Y">
                         <p class="MetaSubtitulo">Meta Anual</p>
-                        <p class="MetaProgresso">Barra Progresso</p>
+                        <div class="bar-container">
+                            <div class="progressBar" id="ProgressBar"></div>
+                        </div>
                         <p class="MetaSubtitulo">Meta Mensal</p>
-                        <p class="MetaProgresso">Barra Progresso</p>
+                        
                         <p class="MetaSubtitulo">Meta Semanal</p>
-                        <p class="MetaProgresso">Barra Progresso</p>
+                        
                     </div>
                 </div>
             </div>
-
-            <div id="canvas">
+            
+            <div id="grafico">
                 <canvas id="lucroChart"></canvas>
             </div>
         </div>
+
         <div id="Pedidos">
             <div id="GerenciarPedidos">
 
@@ -123,7 +84,7 @@
                         <form class="cad" action="/editar_pedido" method="POST">
                             <label for="input">
                                 <p class="label-form">Nome</p>
-                                <input placeholder="Digite aqui" type="text" class="input" name="nome" required>
+                                <input placeholder="Digite aqui" type="text" class="input" id="nome" name="nome" required>
                             </label>
                             <label for="produto">
                                 <p class="label-form">Produto</p>
@@ -139,7 +100,7 @@
                             </label>
                             <label for="quantidade">
                                 <p class="label-form">Quantidade</p>
-                                <input placeholder="Qtde." type="number" class="input" name="nome" required>
+                                <input placeholder="Qtde." type="number" class="input" id="quantidade" min="0" name="nome" required>
                             </label>
                             <label for="venda">
                                 <p class="label-form">Venda nº</p>
@@ -203,7 +164,7 @@
                             </label>
                             <label for="quantidade">
                                 <p class="label-form">Quantidade</p>
-                                <input placeholder="Qtde." type="number" class="input" name="nome" required>
+                                <input type="number" placeholder="Qtde." class="input" id="quantidade" name="quantidad" min="0" required>
                             </label>
                             <label for="venda">
                                 <p class="label-form">Venda nº</p>
@@ -228,7 +189,7 @@
                             </label>
                             <p class="label-form">Finalizado</p>
                             <div class="finalizado-radio">
-                                <label class="finalizado-item">
+                                <label for="finalizado-item">
                                     <input type="radio" name="finalizado" class="finalizado" value="opcao1" id="opcao1">
                                     Sim
                                 </label>

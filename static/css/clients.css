@@ -489,7 +489,7 @@ form{
 
 }
 
-.input[type="text"]{
+.input[type="text"],[type="email"]{
     background-color:rgb(37, 55, 77);
     border: 1px solid rgba(37, 55, 77, 0.575);
     color:white;
@@ -598,6 +598,58 @@ form{
 }
 
 .cad label .input:focus + span,.cad label .input:valid + span {
+  top: 30px;
+  font-size: 0.7em;
+  font-weight: 600;
+  border:none;
+}
+
+.cad label .input:valid + span {
+  color: green;
+}
+
+
+.editar {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 350px;
+  background-color: #111E2E;
+  padding: 20px;
+  border-radius: 20px;
+  position: relative;
+}
+
+.editar label {
+  position: relative;
+}
+
+.editar label .input {
+  width: 100%;
+  outline: 0;
+  border: 1px solid rgba(105, 105, 105, 0.397);
+  border-radius: 10px;
+  height:40px;
+  margin-top: 5px;
+  background-color: #25374D;
+}
+
+.editar label .input + span {
+  position: absolute;
+  left: 10px;
+  top: 15px;
+  color: grey;
+  font-size: 0.9em;
+  cursor: text;
+  transition: 0.3s ease;
+}
+
+.editar label .input:placeholder-shown + span {
+  top: 15px;
+  font-size: 0.9em;
+}
+
+.editar label .input:focus + span,.editar label .input:valid + span {
   top: 30px;
   font-size: 0.7em;
   font-weight: 600;

@@ -11,10 +11,6 @@ body {
   overflow-x: hidden;
 }
 
-body.light {
-  background-color: #fff;
-  color: white;
-}
 
 #Principal {
   width: 100%;
@@ -24,9 +20,7 @@ body.light {
   margin-bottom: 0;
 }
   
-body.light h2 {
-  color: black;
-}
+
 
 h2 {
   color: white;
@@ -590,6 +584,8 @@ h2 {
   transition: all 0.3s ease-out;
   margin-right: 15px;
   margin-left:10px;
+  stroke:rgb(255, 255, 255);
+  fill:none;
 }
 
 .card .list .element:hover {
@@ -626,13 +622,124 @@ h2 {
 
 .subcard{
   width:83%;
-  height:90%;
   display: flex;
   padding: 10px 20px;
   flex-direction: column;
   border-radius: 10px;
   position: relative;
   margin-left:50px;
+  margin-right:50px;
   background: rgb(17, 30, 46);
   margin-bottom: 20px;
+  margin-top: 30px;
+}
+
+/* Parte Branca(Apartheid Reverso) */
+body.light {
+  background-color: #f5f4f4;
+}
+
+body.light h2 {
+  color: black;
+}
+
+
+body.light .card {
+  background-color: #e1f3ff;
+  font-weight: bold;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+body.light .content {
+  color: #333;
+}
+
+body.light .side_item.active {
+  background-color: #ffffff;
+  font-weight: bold;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+
+body.light #sidebar {
+  background-color: #dcdcdcf1;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+body.light #sidebar i{
+  color:#2a5ec5;
+}
+
+body.light .side_item a {
+  color: #2a5ec5;
+}
+body.light #logout_btn .item-description a{
+  color:#2a5ec5
+}
+body.light #logout_btn{
+  color:#2a5ec5;
+}
+body.light #logout_btn:hover .item-description{
+  color:#ff0000;
+  background: transparent;
+}
+body.light #logout_btn:hover i{
+  color:#ff0000;
+  background: transparent;
+}
+body.light #open_btn i{
+  color:white;
+}
+
+body.light ::-webkit-scrollbar {
+  overflow-y:hidden;
+}
+body.light p .item-description{
+  color:black;
+  font-weight: bold;
+}
+body.light .side_item:hover:not(.active), #logout_btn:hover {
+  background-color: #fffffff1;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+body.light .profile__title,.profile__subtitle,.barra{
+  color:#333;
+}
+body.light .subcard{
+  background: #e1f3ff;
+}
+body.light .element{
+  color:black;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+body.light .list .element svg {
+  stroke:  #2a5ec5;
+  fill: none;
+}
+
+body.light .list .element path {
+  stroke:  #2a5ec5;
+  fill: none;
+}
+
+body.light .list .element svg:hover {
+  stroke:  rgb(255, 255, 255);
+  fill: none;
+}
+
+body.light .list .element path:hover {
+  stroke:  rgb(255, 255, 255);
+  fill: none;
+}
+
+body.light .profile__action{
+  color:#2a5ec5;
+}
+
+body.light .profile__name{
+  color:#4f4f4f;
+}
+
+body.light .separator{
+  border:none;
 }

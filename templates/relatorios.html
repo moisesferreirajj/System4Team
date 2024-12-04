@@ -28,49 +28,7 @@
             </div>
 
             <!-- NAVBAR BY MOISES AND YOHAN -->
-            <ul id="side_items">
-                <li class="side_item">
-                    <a href="/painel">
-                        <i class="fa-solid fa-house"></i>
-                        <span class="item-description">
-                            Inicio
-                        </span>
-                    </a>
-                </li>
-                
-                <li class="side_item">
-                    <a href="/vendas">
-                        <i class="fa-solid fa-money-bill-1"></i>
-                        <span class="item-description">
-                            Vendas
-                        </span>
-                    </a>
-                </li>
-                <li class="side_item active">
-                    <a href="/relatorios">
-                        <i class="fa-solid fa-chart-line"></i>
-                        <span class="item-description">
-                            Relatórios
-                        </span>
-                    </a>
-                </li>
-                <li class="side_item">
-                    <a href="/clientes">
-                        <i class="fa-solid fa-user"></i>
-                        <span class="item-description">
-                            Clientes
-                        </span>
-                    </a>
-                </li>
-                <li class="side_item">
-                    <a href="/configuracoes">
-                        <i class="fa-solid fa-gear"></i>
-                        <span class="item-description">
-                            Configurações
-                        </span>
-                    </a>
-                </li>
-            </ul>
+            {% include 'sidebar.html' %}
 
             <button id="open_btn">
                 <i class="fa-solid fa-chevron-right" id="open_btn_icon"></i>
@@ -87,7 +45,7 @@
     </nav>
 
     <section class="opop">
-        <form method="POST" action="/relatorios">
+        <form method="POST" action="{{ url_for('gerar_relatorios.gerar_relatorio_pdf') }}">
             <fieldset class="input-wrapper">
                 <i class="fa-solid fa-magnifying-glass"></i>
                 
@@ -102,14 +60,13 @@
                 <button class="search-btn" type="submit">
                     Pesquisar
                 </button>
-
+        
                 <button class="relatorio-btn" type="submit">
                     Relatório
                 </button>
-
             </fieldset>
         </form>
-        
+                
         <div class="tabela">
             {% if pedidos %}
                 <table class="table">
@@ -171,13 +128,7 @@
     </button>
 
     <!-- MENSAGENS ERRO -->
-    {% with messages = get_flashed_messages() %}
-      {% if messages %}
-        <script>
-            alert("{{ messages[0] }}");
-        </script>
-      {% endif %}
-    {% endwith %}
+    {% include 'error.html' %}
 
  </body>
 </html>

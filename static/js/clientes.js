@@ -1,93 +1,90 @@
-document.addEventListener("DOMContentLoaded", function() {
-    const clientTableBody = document.querySelector('.clients tbody');
-    const editClientForm = document.querySelector('.edit');
-    const modalTitle = document.querySelector('.modal-header .title');
+document.addEventListener('DOMContentLoaded', function() {    
+    const form = document.getElementById('cad');
+    if (form) {
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();  // EVITA O ENVIO PADRÃO DO FORMULÁRIO
 
-    // Função para carregar os dados do cliente no modal
-    clientTableBody.addEventListener('click', function(event) {
-        if (event.target.classList.contains('btn-edit')) {
-            const clienteId = event.target.closest('tr').dataset.id;
-
-            //ENVIA A REQUISIÇÃO PARA PEGAR O CODIGO DOS CLIENTES
-            fetch(`/buscar_cliente/${clienteId}`)
-                .then(response => response.json())
-                .then(data => {
-                    //PREENCHER CAMPOS
-                    modalTitle.textContent = `Editar Cliente - ${data.nome}`;
-                    editClientForm.querySelector('input[name="nome"]').value = data.nome;
-                    editClientForm.querySelector('input[name="email"]').value = data.email;
-                    editClientForm.querySelector('input[name="telefone"]').value = data.telefone;
-                    editClientForm.querySelector('input[name="endereco"]').value = data.endereco;
-
-                    //ATUALIZA O ATB DE ACORDO AO MODAL
-                    editClientForm.action = `/editar_cliente/${data.id}`;
-                })
-                .catch(err => {
-                    alert('Erro ao carregar os dados do cliente');
-                });
-        }
-    });
-
-    editClientForm.addEventListener('submit', function(event) {
-        event.preventDefault();
-
-        //DADOS DO FORMULARIO
-        const nome = editClientForm.querySelector('input[name="nome"]').value;
-        const email = editClientForm.querySelector('input[name="email"]').value;
-        const telefone = editClientForm.querySelector('input[name="telefone"]').value;
-        const endereco = editClientForm.querySelector('input[name="endereco"]').value;
-
-        //VERIFICA CAMPO PREENCHIDO OU NAO
-        if (!nome || !email || !telefone || !endereco) {
-            alert('Todos os campos são obrigatórios!');
-            return;
-        }
-
-        //ENVIA OS DADOS
-        fetch(editClientForm.action, {
-            method: 'POST',
-            body: new URLSearchParams(new FormData(editClientForm)),
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-            },
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.message) {
-                alert(data.message);
-                //ATUALIZAR TABELA
-                atualizarTabela();
-                //FECHAR MODAL APÓS SALVAR
-                $('#modal1').modal('hide');
-            } else {
-                alert(data.error || 'Erro ao atualizar o cliente. Tente novamente.');
-            }
-        })
-        .catch(err => {
-            alert('Erro ao enviar dados para o servidor');
-        });
-    });
-
-    //FUNÇÃO PARA ATUALIZAR TABELA
-    function atualizarTabela() {
-        fetch('/clientes')
+            // ADICIONAR CLIENTE - ROUTE - POST
+            const formData = new FormData(this);
+            fetch('json/adicionar_cliente', {
+                method: 'POST',
+                body: formData
+            })
             .then(response => response.json())
-            .then(clientes => {
-                const rows = clientes.map(cliente => {
-                    return `<tr data-id="${cliente.id}">
-                        <td>${cliente.id}</td>
-                        <td>${cliente.nome}</td>
-                        <td>${cliente.email}</td>
-                        <td>${cliente.telefone}</td>
-                        <td>
-                            <button class="btn-edit" data-bs-toggle="modal" data-bs-target="#modal1">Editar</button>
-                            <button class="delete">Excluir</button>
-                        </td>
-                    </tr>`;
-                }).join('');
-                clientTableBody.innerHTML = rows;
-            });
+            .then(data => {
+                if (data.message) {
+                    alert(data.message);  // MOSTRA O ALERTA COM A RESPOSTA DO /JSON/ADICIONAR_CLIENTE
+                    const modal = bootstrap.Modal.getInstance(document.getElementById('add'));
+                    modal.hide(); // FECHA O MODAL
+                    location.reload();  // RECARREGA PARA APARECER A INFO
+                } else if (data.error) {
+                    alert(data.error);  // MOSTRA O ERRO
+                }
+            })
+            .catch(error => alert('Erro ao adicionar cliente: ' + error));
+        });
+    } else {
+        console.error('Formulário com ID "cad" não encontrado.');
     }
 
-    atualizarTabela();
+    // EDIÇÃO DE CLIENTE
+    const editForm = document.querySelector('#modal1 form');
+    if (editForm) {
+        const modal = new bootstrap.Modal(document.getElementById('modal1'));
+        const editButton = document.querySelectorAll('.btn-edit');
+        editButton.forEach(button => {
+            button.addEventListener('click', function() {
+
+                // BUSCA O CLIENTE - ROUTE - GET
+                const clienteId = button.getAttribute('data-id');
+                fetch(`/json/buscar_cliente/${clienteId}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data) {
+                            const cliente = data;
+                            editForm.querySelector('input[name="nome"]').value = cliente.nome;
+                            editForm.querySelector('input[name="email"]').value = cliente.email;
+                            editForm.querySelector('input[name="telefone"]').value = cliente.telefone;
+                            editForm.querySelector('input[name="endereco"]').value = cliente.endereco;
+                            editForm.setAttribute('data-id', cliente.id);  // ID DO CLIENTE PARA SER ENVIADO VIA POST
+                        } else {
+                            alert('Dados do cliente não encontrados.');
+                        }
+                    })
+                    .catch(error => alert('Erro ao carregar dados do cliente: ' + error));
+
+                modal.show();  // MOSTRA O MODAL
+            });
+        });
+
+        // AO ACEITAR A EDIÇÃO
+        editForm.addEventListener('submit', function(event) {
+            event.preventDefault();  // ENVIA O FORMULÁRIO
+            const clienteId = editForm.getAttribute('data-id');  // PEGA O ID DO CLIENTE
+            if (!clienteId) {
+                alert('ID do cliente não encontrado.');  // VERIFICA SE O ID DO CLIENTE EXISTE
+                return;
+            }
+
+            // EDITA O CLIENTE - ROUTE - POST
+            const formData = new FormData(editForm);
+            fetch(`/json/editar_cliente/${clienteId}`, {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.message) {
+                    alert(data.message);  // MOSTRA O ALERTA COM A RESPOSTA DO /JSON/EDITAR_CLIENTE
+                    const modal = bootstrap.Modal.getInstance(document.getElementById('modal1'));
+                    modal.hide();  // FECHA O MODAL
+                    location.reload();  // RECARREGA PARA APARECER A INFO
+                } else if (data.error) {
+                    alert(data.error);  // MOSTRA O ERRO
+                }
+            })
+            .catch(error => alert('Erro ao editar cliente: ' + error));
+        });
+
+    }
 });

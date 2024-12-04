@@ -16,7 +16,6 @@ def dados_painel():
 
     total_vendas = 0
     total_nao_finalizadas = 0
-    total_pedidos = 0  # Todos os pedidos, finalizados ou não
     vendas_por_id = {}
     vendas_por_mes = {}
     vendas_nao_finalizadas_por_mes = {}
@@ -46,13 +45,12 @@ def dados_painel():
         # ACUMULANDO TODAS VENDAS, FINALIZADAS OU NAO FINALIZADAS
         total_nao_finalizadas += preco_total_pedido
 
-        # Acumulando todos os pedidos, finalizados ou não
-        total_pedidos += pedido.quantidade
-
     # TOTAL DE VENDAS E PEDIDOS ;P
     for venda in vendas_por_id.values():
         total_vendas += venda['total_venda']
-
+        
+    # Acumulando todos os pedidos, finalizados ou não (To com preguiça de fazer logica, então deixei a query)
+    total_pedidos = Pedido.query.count()
     total_clientes = Cliente.query.count()
 
     # ARRAY DE MESES, PARA IDENTIFICAR COM O VALOR DE CADA UM

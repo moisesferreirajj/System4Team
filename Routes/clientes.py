@@ -4,7 +4,7 @@ from sqlalchemy import func
 
 clientes_bp = Blueprint('clientes', __name__)
 
-# CLIENTES, COMEÇA A LÓGICA AQUI
+#CLIENTES, APENAS RETORNA TEMPLATE
 @clientes_bp.route("/clientes", methods=['GET', 'POST'])
 def inicio():
     if 'username' not in session:
@@ -51,7 +51,8 @@ def inicio():
         clientes=clientes
     )
 
-@clientes_bp.route("/adicionar_cliente", methods=['POST'])
+#ADICIONAR CLIENTES - ROUTE POST
+@clientes_bp.route("/json/adicionar_cliente", methods=['POST'])
 def adicionar_cliente():
     if 'username' not in session:
         return jsonify({"error": "Você precisa fazer login primeiro!"}), 401
@@ -85,7 +86,8 @@ def adicionar_cliente():
         db.session.rollback()
         return jsonify({"error": "Erro ao adicionar cliente. Tente novamente."}), 500
 
-@clientes_bp.route("/editar_cliente/<int:cliente_id>", methods=['POST'])
+#EDITAR CLIENTES - ROUTE POST
+@clientes_bp.route("/json/editar_cliente/<int:cliente_id>", methods=['POST'])
 def editar_cliente(cliente_id):
     if 'username' not in session:
         return jsonify({"error": "Você precisa fazer login primeiro!"}), 401
@@ -95,11 +97,10 @@ def editar_cliente(cliente_id):
         return jsonify({"error": "Cliente não encontrado!"}), 404
 
     # PEGA OS DADOS DO MODAL
-    dados = request.form
-    nome = dados.get('nome')
-    email = dados.get('email')
-    telefone = dados.get('telefone')
-    endereco = dados.get('endereco')
+    nome = request.form.get('nome')
+    email = request.form.get('email')
+    telefone = request.form.get('telefone')
+    endereco = request.form.get('endereco')
 
     if not nome or not email or not telefone or not endereco:
         return jsonify({"error": "Todos os campos são obrigatórios!"}), 400
@@ -113,14 +114,14 @@ def editar_cliente(cliente_id):
     try:
         #TENTA ADC NO BANCO
         db.session.commit()
-        return jsonify({"message": "Cliente atualizado com sucesso!"}), 200
-    except Exception as e:
+        return jsonify({"message": "Cliente editado com sucesso!"}), 200
+    except:
         #CASO AJA ERRO DE ATUALIZAR
         db.session.rollback()
-        return jsonify({"error": f"Erro ao atualizar cliente. Tente novamente. Erro: {str(e)}"}), 500
+        return jsonify({"error": "Erro ao editar cliente. Tente novamente."}), 500
 
-#BUSCAR ID DO CLIENTE
-@clientes_bp.route("/buscar_cliente/<int:cliente_id>", methods=['GET'])
+#BUSCAR ID DO CLIENTE - ROUTE GET
+@clientes_bp.route("/json/buscar_cliente/<int:cliente_id>", methods=['GET'])
 def obter_cliente(cliente_id):
     if 'username' not in session:
         return jsonify({"error": "Você precisa fazer login primeiro!"}), 401
