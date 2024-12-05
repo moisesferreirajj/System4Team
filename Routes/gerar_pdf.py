@@ -76,7 +76,7 @@ def gerar_relatorio_pdf():
 
     # TITULO PDF
     c.setTitle("Relatório de Vendas - System4Team")
-    logo_path = "https://i.imgur.com/EVYkjiK.png"
+    logo_path = "http://127.0.0.1:5001/static/images/logo.png"
     c.drawImage(logo_path, 30, height - 50, width=80, height=25, mask='auto')  # LOGO E FUNDO
     c.setFont("Helvetica-Bold", 24)
     c.drawString(140, height - 50, "Relatório de Vendas - System4Team")

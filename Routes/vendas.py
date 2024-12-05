@@ -1,5 +1,5 @@
-from flask import Blueprint, render_template, session, redirect, url_for, flash, jsonify
-from models import Usuario, Pedido, Produto, Empresa, Cliente, Cargo, db 
+from flask import Blueprint, render_template, session, redirect, url_for, flash, jsonify, request
+from models import Usuario, Pedido, Produto, Empresa, Funcionario, Cliente, Cargo, db 
 from sqlalchemy import func, extract, cast, Date
 from datetime import datetime, timedelta
 
@@ -174,3 +174,76 @@ def listagem():
     return jsonify({
         'pedidos': pedidos_serializados
     })
+
+#ADICIONAR_PEDIDO, ADICIONA O PEDIDO NO BANCO
+@vendas_bp.route("/adicionar_pedido", methods=['POST'])
+def adicionar_pedido():
+    if 'username' not in session:
+        return jsonify({"error": "Você precisa fazer login primeiro!"}), 401
+
+    #PEGA OS DADOS DO MODAL
+    cliente = request.form.get('cliente')
+    produto = request.form.get('produto')
+    funcionario = request.form.get('funcionario')
+    empresa = request.form.get('empresa')
+    quantidade = request.form.get('quantidade')
+    venda = request.form.get('venda')
+    data = request.form.get('data')
+    finalizado = request.form.get('finalizado')
+
+    #VERIFICA SE OS CAMPOS FORAM PREENCHIDOS
+    if not all([cliente, produto, funcionario, empresa, quantidade, venda, data, finalizado]):
+        return jsonify({"error": "Todos os campos são obrigatórios!"}), 400
+
+    try:
+        #CONVERTE OS CAMPOS PARA FORMA CORRETA
+        cliente = int(cliente)
+        produto = int(produto)
+        funcionario = int(funcionario)
+        empresa = int(empresa)
+        quantidade = int(quantidade)
+        venda = int(venda)
+        data = datetime.strptime(data, '%Y-%m-%dT%H:%M')  #FORMATO DE HORARIO LOCAL
+        finalizado = True if finalizado == 'opcao1' else False  #CONVERTE PARA BOOL
+
+        #CRIA O NOVO PEDIDO A PARTIR DAS INFORMAÇÕES DO MODAL
+        novo_pedido = Pedido(
+            id_cliente=cliente,
+            id_produto=produto,
+            id_funcionario=funcionario,
+            id_empresa=empresa,
+            quantidade=quantidade,
+            id_venda=venda,
+            data_pedido=data,
+            finalizado=finalizado
+        )
+
+        #ADICIONA E COMMITA/ENVIA AS INFORMAÇÕES NO BANCO
+        db.session.add(novo_pedido)
+        db.session.commit()
+        return jsonify({"message": "Pedido adicionado com sucesso!"}), 201
+
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({"error": f"Erro ao adicionar pedido. Tente novamente. {str(e)}"}), 500
+
+#PEDIDOS INFORMAÇÕES, PARA O FUNCIONARIO PODER BUSCAR DE FORMA MAIS DIRETA    
+@vendas_bp.route("/json/pedidos-info", methods=['GET'])
+def buscar_dados():
+    if 'username' not in session:
+        return jsonify({"error": "Você precisa fazer login primeiro!"}), 401
+
+    #CONSULTA DE CLIENTES, PRODUTOS, FUNCIONARIOS, EMPRESAS
+    clientes = Cliente.query.all()
+    produtos = Produto.query.all()
+    funcionarios = Funcionario.query.all()
+    empresas = Empresa.query.all()
+
+    #DEIXA OS DADOS EM SERIE, COMO UM VERDADEIRO JSON
+    dados = {
+        "clientes": [{"id": c.id, "nome": c.nome} for c in clientes],
+        "produtos": [{"id": p.id, "nome": p.nome} for p in produtos],
+        "funcionarios": [{"id": f.id, "nome": f.nome} for f in funcionarios],
+        "empresas": [{"id": e.id, "nome": e.nome} for e in empresas],
+    }
+    return jsonify(dados)

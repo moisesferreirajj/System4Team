@@ -23,8 +23,8 @@ async function fetchDadosPainel() {
                     {
                         label: 'Lucro por Produto',
                         data: lucrosProdutos,  // Dados de lucro para cada produto
-                        backgroundColor: 'rgba(54, 162, 235, 0.2)',  // Cor de fundo azul
-                        borderColor: 'rgba(54, 162, 235, 1)',  // Cor da borda azul
+                        backgroundColor: 'rgba(55, 116, 240, 0.7)',  // Cor de fundo azul
+                        borderColor: 'rgba(95, 115, 240, 1)',  // Cor da borda azul
                         borderWidth: 1
                     }
                 ]
@@ -86,33 +86,9 @@ document.addEventListener("DOMContentLoaded", () => {
     fetchPedidos();
 });
 
-document.addEventListener('DOMContentLoaded', () => {
-    const switchModal = () => {
-        const modal = document.querySelector('.modal');
-        const actualStyle = modal.style.display;
-        if (actualStyle === 'block') {
-            modal.style.display = 'none';
-        } else {
-            modal.style.display = 'block';
-        }
-    };
-
-    const btn = document.querySelector('#btnAdicionar');
-    if (btn) { // Verifica se o botão existe
-        btn.addEventListener('click', switchModal);
-    }
-    const btn1 = document.querySelector('#btnEditar');
-    if (btn1) { // Verifica se o botão existe
-        btn1.addEventListener('click', switchModal);
-    }
-
-    window.onclick = function(event) {
-        const modal = document.querySelector('.modal');
-        if (event.target === modal) {
-            switchModal();
-        }
-    };
-});
+function arredondar(valor, base) {
+    return Math.ceil(valor / base) * base;
+}
 
 async function ProgressPeriod() {
     const response = await fetch('/json/dados-vendas');
@@ -125,9 +101,13 @@ async function ProgressPeriod() {
     const barMensal = document.getElementById('ProgressBarMensal');
     const barSemanal = document.getElementById('ProgressBarSemanal');
 
-    const MetaAnual = 100000;
-    const MetaMensal = MetaAnual / 12;
-    const MetaSemanal = MetaMensal / 4;
+    const MetaAnual = 1000000;
+    let MetaMensal = MetaAnual / 12;
+    let MetaSemanal = MetaMensal / 4;
+
+    //ARREDONDA PARA VALORES PRÓXIMOS
+    MetaMensal = arredondar(MetaMensal, 1000);
+    MetaSemanal = arredondar(MetaSemanal, 1000);
 
     // Calcula a largura das barras
     let widthAnual = (lucroAtual / MetaAnual) * 100;
@@ -143,6 +123,14 @@ async function ProgressPeriod() {
     barAnual.style.width = widthAnual + "%";
     barMensal.style.width = widthMensal + "%";
     barSemanal.style.width = widthSemanal + "%";
+
+    const budgetAnual = document.querySelector('#ProgressBarAnual + .budget');
+    const budgetMensal = document.querySelector('#ProgressBarMensal + .budget');
+    const budgetSemanal = document.querySelector('#ProgressBarSemanal + .budget');    
+
+    budgetAnual.textContent = `R$ ${MetaAnual.toFixed(2).replace(".", ",")}`;
+    budgetMensal.textContent = `R$ ${MetaMensal.toFixed(2).replace(".", ",")}`;
+    budgetSemanal.textContent = `R$ ${MetaSemanal.toFixed(2).replace(".", ",")}`;    
 }
 
 document.addEventListener("DOMContentLoaded", () => {

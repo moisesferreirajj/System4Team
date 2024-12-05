@@ -10,7 +10,7 @@
     <script src="{{ url_for('static', filename='js/vendas.js') }}"></script>
     <script src="{{ url_for('static', filename='js/theme.js') }}"></script>
     <script src="{{ url_for('static', filename='js/navbar.js') }}"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="{{ url_for('static', filename='js/modal-vendas.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/favicon.png') }}">
@@ -27,6 +27,7 @@
             <div id="vendas-metas">
                 <div id="Vendas_Anuais_Mensais">
                     <h1 id="Vendas-Titulo">Vendas</h1>
+                    <div class="separator"></div>
                     <div class="Scroll-Y">
                         <p class="Periodo-Valor">Valor Anual</p><p class="Valor-Vendas">R$ {{ vendas_anuais }}</p>
                         <p class="Periodo-Valor">Valor Mensal</p><p class="Valor-Vendas">R$ {{ vendas_mensais }}</p>
@@ -35,18 +36,22 @@
                 </div>
                 <div id="MetaVendas">
                     <h1 id="MetaTitulo">Meta De Vendas</h1>
+                    <div class="separator"></div>
                     <div class="Scroll-Y">
                         <p class="MetaSubtitulo">Meta Anual</p>
                         <div class="bar-container">
                             <div class="progressBar" id="ProgressBarAnual"></div>
+                            <p class="budget"></p>
                         </div>
                         <p class="MetaSubtitulo">Meta Mensal</p>
                         <div class="bar-container">
                             <div class="progressBar" id="ProgressBarMensal"></div>
+                            <p class="budget"></p>
                         </div>
                         <p class="MetaSubtitulo">Meta Semanal</p>
                         <div class="bar-container">
                             <div class="progressBar" id="ProgressBarSemanal"></div>
+                            <p class="budget"></p>
                         </div>
                     </div>
                 </div>
@@ -61,140 +66,91 @@
             <div id="GerenciarPedidos">
 
                 <!--Modal do Botão Adicionar-->
-                <div class="modal">
-                    <div class="content">
-                        <form class="cad" action="/editar_pedido" method="POST">
-                            <label for="input">
-                                <p class="label-form">Nome</p>
-                                <input placeholder="Digite aqui" type="text" class="input" id="nome" name="nome" required>
-                            </label>
-                            <label for="produto">
-                                <p class="label-form">Produto</p>
-                                <select name="produto" id="produto" class="input" required>
-                                    <option value="produto" selected hidden>Produto</option>
-                                </select>
-                            </label>
-                            <label for="funcionario">
-                                <p class="label-form">Funcionario</p>
-                                <select name="funcionario" id="funcionario" class="input" required>
-                                    <option value="funcionario" selected hidden>Funcionario</option>
-                                </select>
-                            </label>
-                            <label for="quantidade">
-                                <p class="label-form">Quantidade</p>
-                                <input placeholder="Qtde." type="number" class="input" id="quantidade" min="0" name="quantidade" required>
-                            </label>
-                            <label for="venda">
-                                <p class="label-form">Venda</p>
-                                <input placeholder="Venda nº" type="number" class="input" id="venda" min="0" name="venda" required>
-                            </label>
-                            <label for="empresa">
-                                <p class="label-form">Empresa</p>
-                                <select name="empresa" id="empresa" class="input" required>
-                                    <option value="empresa" selected hidden>Empresa</option>
-                                </select>
-                            </label>
-                            <label for="data">
-                                <p class="label-form">Data</p>
-                                <input type="datetime-local" 
-                                        id="data" 
-                                        name="data"  
-                                        min="2023-06-07T00:00" 
-                                        max="2030-06-07T00:00"
-                                        required/>
-                            </label>
-                            <p class="label-form">Finalizado</p>
-                            <div class="finalizado-radio">
-                                <label class="finalizado-item">
-                                    <input type="radio" name="finalizado" class="finalizado" value="opcao1" id="opcao1">
-                                    Sim
-                                </label>
-                                <label class="finalizado-item">
-                                    <input type="radio" name="finalizado" class="finalizado" value="opcao2" id="opcao2">
-                                    Não
-                                </label>
-                            </div>
-                            <button type="submit" class="submit">Salvar</button>
-                            <button class="deny" data-bs-dismiss="modal">Cancelar</button>
-                        </form>
+                <div class="modal fade" id="adicionarPedidoModal" tabindex="-1" aria-labelledby="adicionarPedidoModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <form class="adicionarpedido" action="/adicionar_pedido" method="POST">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="adicionarPedidoModalLabel">Adicionar Pedido</h5>
+                                </div>
+                                <div class="modal-body">
+                                    <!-- Campos do formulário -->
+                                    <label for="cliente">
+                                        <p class="label-form">Cliente</p>
+                                        <select name="cliente" id="cliente" class="input" required>
+                                            <option value="cliente" selected hidden>Cliente</option>
+                                        </select>
+                                    </label>
+                                    <div class="metadinha">
+                                        <label for="produto">
+                                            <p class="label-form">Produto</p>
+                                            <select name="produto" id="produto" class="input" required>
+                                                <option value="produto" selected hidden>Produto</option>
+                                            </select>
+                                        </label>
+                                        <label for="funcionario">
+                                            <p class="label-form left">Funcionario</p>
+                                            <select name="funcionario" id="funcionario" class="input" required>
+                                                <option value="funcionario" selected hidden>Funcionario</option>
+                                            </select>
+                                        </label>
+                                    </div>
+                                    <label for="empresa">
+                                        <p class="label-form">Empresa</p>
+                                        <select name="empresa" id="empresa" class="input" required>
+                                            <option value="empresa" selected hidden>Empresa</option>
+                                        </select>
+                                    </label>
+                                    <div class="metadinha">
+                                        <label for="quantidade">
+                                            <p class="label-form">Quantidade</p>
+                                            <input placeholder="Qtde." type="number" class="input" id="quantidade" min="0" name="quantidade" required>
+                                        </label>
+                                        <label for="venda">
+                                            <p class="label-form left">Venda</p>
+                                            <input placeholder="Venda nº" type="number" class="input" id="venda" min="0" name="venda" required>
+                                        </label>
+                                    </div>
+                                    <div class="metadinha">
+                                        <label for="data" class="metade">
+                                            <p class="label-form">Data</p>
+                                            <input type="datetime-local" id="data" name="data" min="2023-06-07T00:00" max="2030-06-07T00:00" required />
+                                        </label>
+                                        <div class="finalizado-radio metade">
+                                            <p class="label-form">Finalizado</p>
+                                            <div class="metadinha">
+                                                <label class="finalizado-item">
+                                                    <input type="radio" name="finalizado" class="finalizado" value="opcao1" id="opcao1"> Sim
+                                                </label>
+                                                <label class="finalizado-item">
+                                                    <input type="radio" name="finalizado" class="finalizado" value="opcao2" id="opcao2"> Não
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="submit">Salvar</button>
+                                    <button type="button" class="deny" data-bs-dismiss="modal">Cancelar</button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
-
-                <button id="btnAdicionar">Adicionar Pedido</button>
-
-                <!--Modal do Botão Editar-->
-                <div class="modal">
-                    <div class="content">
-                        <form class="cad" action="/editar_pedido" method="POST">
-                            <label for="input">
-                                <p class="label-form">Nome</p>
-                                <input placeholder="Digite aqui" type="text" class="input" name="nome" required>
-                            </label>
-                            <label for="produto">
-                                <p class="label-form">Produto</p>
-                                <select name="produto" id="produto" class="input" required>
-                                    <option value="produto" selected hidden>Produto</option>
-                                </select>
-                            </label>
-                            <label for="funcionario">
-                                <p class="label-form">Funcionario</p>
-                                <select name="funcionario" id="funcionario" class="input" required>
-                                    <option value="funcionario" selected hidden>Funcionario</option>
-                                </select>
-                            </label>
-                            <label for="quantidade">
-                                <p class="label-form">Quantidade</p>
-                                <input type="number" placeholder="Qtde." class="input" id="quantidade" name="quantidad" min="0" required>
-                            </label>
-                            <label for="venda">
-                                <p class="label-form">Venda nº</p>
-                                <select name="venda-n" id="venda-n" class="input" required>
-                                    <option value="venda-n" selected hidden>Venda</option>
-                                </select>
-                            </label>
-                            <label for="empresa">
-                                <p class="label-form">Empresa</p>
-                                <select name="empresa" id="empresa" class="input" required>
-                                    <option value="empresa" selected hidden>Empresa</option>
-                                </select>
-                            </label>
-                            <label for="data">
-                                <p class="label-form">Data</p>
-                                <input type="datetime-local" 
-                                        id="data" 
-                                        name="data"  
-                                        min="2023-06-07T00:00" 
-                                        max="2030-06-07T00:00"
-                                        required/>
-                            </label>
-                            <p class="label-form">Finalizado</p>
-                            <div class="finalizado-radio">
-                                <label for="finalizado-item">
-                                    <input type="radio" name="finalizado" class="finalizado" value="opcao1" id="opcao1">
-                                    Sim
-                                </label>
-                                <label class="finalizado-item">
-                                    <input type="radio" name="finalizado" class="finalizado" value="opcao2" id="opcao2">
-                                    Não
-                                </label>
-                            </div>
-                            <button type="submit" class="submit">Salvar</button>
-                            <button class="deny" data-bs-dismiss="modal">Cancelar</button>
-                        </form>
-                    </div>
-                </div>
-
-                <button id="btnEditar">Editar Pedido</button>
-            </div>
-
-            <div>
-                <h3 id="VendasTitulo">Lista de vendas:</h3>
-            </div>
-            <div id="ListaPedidos">
                 
-                <ul id="PedidosLista">
-                    <!-- Vai ser inserido aqui via JS -->
-                </ul>
+                <!-- LISTAGEM DE VENDAS ABAIXO -->
+                <button id="btnAdicionar" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#adicionarPedidoModal">
+                    Adicionar Pedido
+                </button>
+                <h3 id="VendasTitulo">Lista de vendas:</h3>
+
+                <div class="Scroll-Y">
+                    <div id="ListaPedidos">
+                        <ul id="PedidosLista">
+                            <!-- Vai ser inserido aqui via JS -->
+                        </ul>
+                    </div>
+                </div>  
             </div>
         </div>
     </section>

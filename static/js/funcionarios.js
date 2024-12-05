@@ -44,8 +44,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             const funcionario = data;
                             editForm.querySelector('input[name="nome"]').value = funcionario.nome;
                             editForm.querySelector('input[name="email"]').value = funcionario.email;
-                            editForm.querySelector('input[name="telefone"]').value = funcionario.telefone;
-                            editForm.setAttribute('data-id', funcionario.id);  // ID DO FUNCIONARIO PARA SER ENVIADO VIA POST
+                            editForm.querySelector('input[name="telefone"]').value = funcionario.telefone;                            editForm.setAttribute('data-id', funcionario.id);  // ID DO FUNCIONARIO PARA SER ENVIADO VIA POST
                         } else {
                             alert('Dados do funcionario não encontrados.');
                         }
